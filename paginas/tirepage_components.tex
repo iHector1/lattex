@@ -1,5 +1,5 @@
 %% paginas/tirepage_components.tex
-%% Componentes para la página de Llantas y Frenos (versión completa)
+%% Componentes reorganizados para la página de Llantas y Frenos
 
 \makeatletter
 \@ifundefined{TireAndBrakesComponentsLoaded}{%
@@ -9,130 +9,204 @@
 }
 \makeatother
 
-% ============================================================
+% =========================
 % COLORES
-% ============================================================
+% =========================
 \providecolor{TFBlue}{HTML}{0B4AA2}
 \providecolor{TFHeadGray}{HTML}{D9D9D9}
-\providecolor{TFPanelGray}{HTML}{EFEFEF}
-\providecolor{TFSoftGray}{HTML}{E8E8E8}
+\providecolor{TFSoftGray}{HTML}{ECECEC}
 \providecolor{TFYellow}{HTML}{F4BE16}
 \providecolor{TFGreenBG}{HTML}{DFF3D7}
-\providecolor{TFGreenText}{HTML}{5AA53A}
-\providecolor{TFText}{HTML}{1C1C1C}
+\providecolor{TFGreenText}{HTML}{63A83D}
+\providecolor{TFText}{HTML}{1D1D1D}
+\providecolor{TFPSIBlue}{HTML}{5C90D6}
 
-% ============================================================
-% MEDIDAS BASE
-% ============================================================
+% =========================
+% ESCALA / MEDIDAS
+% =========================
+\newcommand{\TFTitleSize}{15}
+\newcommand{\TFCardPad}{1.6mm}
+\newcommand{\TFCardBorder}{0.6pt}
 \newcommand{\TFCardW}{\linewidth}
-\newcommand{\TFHeaderH}{8.4mm}
-\newcommand{\TFTagH}{6.0mm}
-\newcommand{\TFValH}{6.8mm}
-\newcommand{\TFGap}{0.9mm}
 
-% ============================================================
-% PIEZAS
-% ============================================================
+\newcommand{\TFHeaderH}{8.2mm}
+\newcommand{\TFLabelH}{5.8mm}
+\newcommand{\TFValueH}{6.4mm}
+\newcommand{\TFSectionH}{6.0mm}
+\newcommand{\TFRowH}{5.9mm}
+
+% =========================
+% TÍTULO DE POSICIÓN
+% =========================
 \newcommand{\TFTitle}[1]{%
-  {\centering\kodemono\fontseries{sb}\fontsize{13}{15}\selectfont #1\par}
-  \vspace{1.4mm}
+  {\centering\kodemono\fontseries{sb}\fontsize{\TFTitleSize}{17}\selectfont #1\par}
+  \vspace{1.1mm}%
 }
 
+% =========================
+% CABECERA DE TARJETA
+% =========================
 \newcommand{\TFHeader}[2]{%
   \noindent
+  \begin{minipage}[c][\TFHeaderH][c]{0.35\linewidth}
+    \tcbox[
+      enhanced,
+      colback=TFBlue,colframe=TFBlue,boxrule=0pt,arc=0mm,
+      width=\linewidth,height=\TFHeaderH,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]{\includegraphics[height=4.0mm]{#1}}%
+  \end{minipage}%
+  \begin{minipage}[c][\TFHeaderH][c]{0.65\linewidth}
+    \tcbox[
+      enhanced,
+      colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=0mm,
+      width=\linewidth,height=\TFHeaderH,
+      left=1.5mm,right=1mm,top=0mm,bottom=0mm,
+      valign=center,halign=left
+    ]{{\fontsize{7.0}{8.0}\selectfont\bfseries\color{TFText} #2}}%
+  \end{minipage}%
+}
+
+% =========================
+% CELDA NORMAL
+% =========================
+\newcommand{\TFMetricCell}[2]{%
   \begin{tcolorbox}[
+    enhanced,
     colback=white,colframe=white,boxrule=0pt,arc=0mm,
     left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm
   ]
-    \begin{minipage}[c][\TFHeaderH][c]{0.38\linewidth}
-      \tcbox[
-        colback=TFBlue,colframe=TFBlue,boxrule=0pt,arc=0mm,
-        left=0mm,right=0mm,top=0mm,bottom=0mm,width=\linewidth,height=\TFHeaderH,
-        valign=center,halign=center
-      ]{\includegraphics[height=4.2mm]{#1}}
-    \end{minipage}%
-    \begin{minipage}[c][\TFHeaderH][c]{0.62\linewidth}
-      \tcbox[
-        colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=0mm,
-        left=2mm,right=1mm,top=0mm,bottom=0mm,width=\linewidth,height=\TFHeaderH,
-        valign=center,halign=left
-      ]{{\fontsize{7.4}{8.6}\selectfont\bfseries\color{TFText} #2}}
-    \end{minipage}
+    \tcbox[
+      enhanced,
+      colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.3mm,
+      width=\linewidth,height=\TFLabelH,
+      left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
+      valign=center,halign=center
+    ]{{\fontsize{7.0}{7.8}\selectfont\bfseries #1}}%
+
+    \vspace{0.7mm}%
+
+    \tcbox[
+      enhanced,
+      colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
+      width=\linewidth,height=\TFValueH,
+      left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
+      valign=center,halign=center
+    ]{{\fontsize{8.0}{9.0}\selectfont\bfseries #2}}%
   \end{tcolorbox}%
 }
 
-\newcommand{\TFMetricCell}[2]{%
-  \begin{minipage}[t]{0.19\linewidth}
-    \tcbox[
-      colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.5mm,
-      left=0.8mm,right=0.8mm,top=0.8mm,bottom=0.8mm,
-      width=\linewidth,height=\TFTagH,valign=center,halign=center
-    ]{{\fontsize{7.2}{8.2}\selectfont\bfseries #1}}
-
-    \vspace{\TFGap}
-
-    \tcbox[
-      colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.4mm,
-      left=0.8mm,right=0.8mm,top=0.8mm,bottom=0.8mm,
-      width=\linewidth,height=\TFValH,valign=center,halign=center
-    ]{{\fontsize{8.4}{9.4}\selectfont\bfseries #2}}
-  \end{minipage}%
-}
-
+% =========================
+% CELDA PSI
+% =========================
 \newcommand{\TFPSICell}[2]{%
-  \begin{minipage}[t]{0.19\linewidth}
-    \tcbox[
-      colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.5mm,
-      left=0.8mm,right=0.8mm,top=0.8mm,bottom=0.8mm,
-      width=\linewidth,height=\TFTagH,valign=center,halign=center
-    ]{{\fontsize{7.2}{8.2}\selectfont\bfseries PSI}}
-
-    \vspace{0.7mm}
-    \noindent
-    \tcbox[colback=TFGreenText,colframe=TFGreenText,boxrule=0pt,arc=1mm,left=0.3mm,right=0.3mm,top=0.4mm,bottom=0.4mm,width=0.5\linewidth,height=2.4mm,valign=center,halign=center]{\fontsize{3.9}{4.6}\selectfont\bfseries\color{white} RECOMENDADO}%
-    \tcbox[colback=blue!60,colframe=blue!60,boxrule=0pt,arc=1mm,left=0.3mm,right=0.3mm,top=0.4mm,bottom=0.4mm,width=0.5\linewidth,height=2.4mm,valign=center,halign=center]{\fontsize{4.0}{4.6}\selectfont\bfseries\color{white} ACTUAL}
-
-    \vspace{0.8mm}
-    \noindent
-    \tcbox[colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.4mm,left=0mm,right=0mm,top=0mm,bottom=0mm,width=0.5\linewidth,height=\TFValH,valign=center,halign=center]{{\fontsize{8.4}{9.4}\selectfont\bfseries #1}}%
-    \tcbox[colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.4mm,left=0mm,right=0mm,top=0mm,bottom=0mm,width=0.5\linewidth,height=\TFValH,valign=center,halign=center]{{\fontsize{8.4}{9.4}\selectfont\bfseries #2}}
-  \end{minipage}%
-}
-
-\newcommand{\TFBrakeRow}[4]{%
-  \noindent
-  \tcbox[colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.4mm,left=1mm,right=1mm,top=0.8mm,bottom=0.8mm,width=0.31\linewidth,height=6.2mm,valign=center,halign=center]{{\fontsize{8.8}{10}\selectfont #1}}\hfill%
-  \tcbox[colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.4mm,left=1mm,right=1mm,top=0.8mm,bottom=0.8mm,width=0.25\linewidth,height=6.2mm,valign=center,halign=center]{{\fontsize{8.8}{10}\selectfont\bfseries\color{TFGreenText} #2}}\hfill%
-  \tcbox[colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.4mm,left=1mm,right=1mm,top=0.8mm,bottom=0.8mm,width=0.18\linewidth,height=6.2mm,valign=center,halign=center]{{\fontsize{8.8}{10}\selectfont #3}}\hfill%
-  \tcbox[colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.4mm,left=1mm,right=1mm,top=0.8mm,bottom=0.8mm,width=0.14\linewidth,height=6.2mm,valign=center,halign=center]{{\fontsize{8.8}{10}\selectfont\bfseries\color{TFGreenText} #4}}
-}
-
-\newcommand{\TFTireCard}[1]{%
-  \par\noindent%
   \begin{tcolorbox}[
     enhanced,
-    colback=white,colframe=gray!30,boxrule=0.7pt,arc=3mm,
-    width=\TFCardW,left=1.6mm,right=1.6mm,top=1.6mm,bottom=1.6mm
+    colback=white,colframe=white,boxrule=0pt,arc=0mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm
+  ]
+    \tcbox[
+      enhanced,
+      colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.3mm,
+      width=\linewidth,height=\TFLabelH,
+      left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
+      valign=center,halign=center
+    ]{{\fontsize{7.0}{7.8}\selectfont\bfseries PSI}}%
+
+    \vspace{0.55mm}%
+
+    \noindent
+    \tcbox[
+      on line,enhanced,
+      colback=TFGreenText,colframe=TFGreenText,boxrule=0pt,arc=0.9mm,
+      width=0.50\linewidth,height=2.3mm,
+      left=0.1mm,right=0.1mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]{{\fontsize{3.7}{4.2}\selectfont\bfseries\color{white} RECOMENDADO}}%
+    \tcbox[
+      on line,enhanced,
+      colback=TFPSIBlue,colframe=TFPSIBlue,boxrule=0pt,arc=0.9mm,
+      width=0.50\linewidth,height=2.3mm,
+      left=0.1mm,right=0.1mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]{{\fontsize{3.8}{4.2}\selectfont\bfseries\color{white} ACTUAL}}%
+
+    \vspace{0.55mm}%
+
+    \noindent
+    \tcbox[
+      on line,enhanced,
+      colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
+      width=0.50\linewidth,height=\TFValueH,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]{{\fontsize{8.0}{9.0}\selectfont\bfseries #1}}%
+    \tcbox[
+      on line,enhanced,
+      colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
+      width=0.50\linewidth,height=\TFValueH,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]{{\fontsize{8.0}{9.0}\selectfont\bfseries #2}}%
+  \end{tcolorbox}%
+}
+
+% =========================
+% FILA DE FRENOS
+% =========================
+\newcommand{\TFBrakeRow}[4]{%
+  \noindent
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.35\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{8.5}{9.5}\selectfont #1}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.27\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{8.5}{9.5}\selectfont\bfseries\color{TFGreenText} #2}}%
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.20\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{8.5}{9.5}\selectfont #3}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.18\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{8.5}{9.5}\selectfont\bfseries\color{TFGreenText} #4}}%
+}
+
+% =========================
+% TARJETA COMPLETA
+% =========================
+\newcommand{\TFTireCard}[1]{%
+  \par\noindent
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,colframe=gray!30,boxrule=\TFCardBorder,arc=2.4mm,
+    width=\TFCardW,left=\TFCardPad,right=\TFCardPad,top=\TFCardPad,bottom=\TFCardPad
   ]
     \TFHeader{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
 
-    \vspace{1.4mm}
-    \noindent
-    \TFMetricCell{MEDIDA}{315/35/R21}\hfill%
-    \TFMetricCell{ÍNDICE DE\\VELOCIDAD}{210}\hfill%
-    \TFMetricCell{ÍNDICE DE\\CARGA}{210}\hfill%
-    \TFPSICell{35}{25}\hfill%
-    \TFMetricCell{PROFUNDIDAD\\DE BANDA (MM)}{3 mm}
+    \vspace{1.0mm}%
 
-    \vspace{1.6mm}
-    \tcbox[colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=1.2mm,width=\linewidth,height=6.2mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}
+    \begin{tcbraster}[
+      raster columns=5,
+      raster column skip=1.0mm,
+      raster left skip=0mm,
+      raster right skip=0mm
+    ]
+      \TFMetricCell{MEDIDA}{315/35/R21}
+      \TFMetricCell{ÍNDICE DE\\VELOCIDAD}{210}
+      \TFMetricCell{ÍNDICE DE\\CARGA}{210}
+      \TFPSICell{35}{25}
+      \TFMetricCell{PROFUNDIDAD\\DE BANDA (MM)}{3 mm}
+    \end{tcbraster}
 
-    \vspace{1.2mm}
+    \vspace{1.0mm}%
+
+    \tcbox[
+      enhanced,
+      colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=1.2mm,
+      width=\linewidth,height=\TFSectionH,
+      left=0.8mm,right=0.8mm,top=0.4mm,bottom=0.4mm,
+      valign=center,halign=center
+    ]{{\fontsize{9.2}{10.4}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}%
+
+    \vspace{0.8mm}%
     \TFBrakeRow{Balatas/Tambores}{BUENA (>9MM )}{Desgaste}{8 mm}
-    \vspace{1.0mm}
+
+    \vspace{0.7mm}%
     \TFBrakeRow{Discos}{BUENA (>9MM )}{Desgaste}{9 mm}
   \end{tcolorbox}%
-  \par%
+  \par
 }
 
 \endinput

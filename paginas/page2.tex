@@ -1,49 +1,54 @@
 %% page2.tex
-%% Layout completo de llantas y frenos (2x2 + carro al centro)
+%% Layout reorganizado de llantas y frenos
 
-% ============================================================
-% CONTROLES GENERALES DE ESTA PÁGINA
-% ============================================================
+% =========================
+% CONTROLES DE PÁGINA
+% =========================
 \newcommand{\TFPageTopGap}{1mm}
-\newcommand{\TFColumnsGapTop}{3mm}
-\newcommand{\TFCenterImageWidth}{0.98\linewidth}
-\newcommand{\TFMainBarHeight}{8mm}
+\newcommand{\TFTitleBarH}{7.5mm}
+\newcommand{\TFTitleBarTextSize}{16}
+\newcommand{\TFBetweenTopAndGrid}{2.6mm}
+\newcommand{\TFBetweenCards}{2.3mm}
+\newcommand{\TFCenterImageOffsetTop}{2mm}
+\newcommand{\TFCenterImageW}{0.97\linewidth}
 
 \vspace*{\TFPageTopGap}
 
-% Barra de título principal
+% Barra de título
 \noindent\makebox[\textwidth][c]{%
   \tcbox[
+    enhanced,
     colback=gray!25,colframe=gray!25,boxrule=0pt,arc=2mm,
-    width=0.94\textwidth,height=\TFMainBarHeight,valign=center,halign=center,
-    left=0mm,right=0mm,top=0mm,bottom=0mm
-  ]{{\fontsize{18}{20}\selectfont\bfseries Llantas y Frenos}}%
+    width=0.94\textwidth,height=\TFTitleBarH,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]{{\fontsize{\TFTitleBarTextSize}{18}\selectfont\bfseries Llantas y Frenos}}%
 }
 
-\vspace{\TFColumnsGapTop}
+\vspace{\TFBetweenTopAndGrid}
 
-% Bloque principal: izquierda / carro / derecha
+% Grid principal: izquierda / carro / derecha
 \noindent
 \begin{minipage}[t]{0.36\textwidth}
   \TFTitle{Delantero Derecha}
   \TFTireCard{FR}
 
-  \vspace{2.8mm}
+  \vspace{\TFBetweenCards}
 
   \TFTitle{Trasera Derecha}
   \TFTireCard{RR}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.24\textwidth}
-  \vspace{3mm}
-  \centering\includegraphics[width=\TFCenterImageWidth]{carro.png}
+  \vspace{\TFCenterImageOffsetTop}
+  \centering\includegraphics[width=\TFCenterImageW]{carro.png}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.36\textwidth}
   \TFTitle{Delantera Izquierda}
   \TFTireCard{FL}
 
-  \vspace{2.8mm}
+  \vspace{\TFBetweenCards}
 
   \TFTitle{Trasera Izquierda}
   \TFTireCard{RL}
