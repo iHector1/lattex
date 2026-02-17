@@ -51,29 +51,37 @@
 % =========================
 \newcommand{\TPCardHeader}[2]{%
   \noindent
-  \tcbox[
-    on line, enhanced,
-    colback=brandblue, colframe=brandblue,
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white, colframe=white,
     boxrule=0pt, arc=0mm,
-    left=2mm, right=2mm, top=1mm, bottom=1mm,
-    width=0.30\linewidth,
-    height=11.5mm,
-    valign=center, halign=center
-  ]{\includegraphics[height=7.0mm]{#1}}%
-  \tcbox[
-    on line, enhanced,
-    colback=headgray, colframe=headgray,
-    boxrule=0pt, arc=0mm,
-    left=2mm, right=2mm, top=0.9mm, bottom=0.9mm,
-    width=\dimexpr\linewidth-0.30\linewidth\relax,
-    height=11.5mm,
-    valign=center
-  ]{%
-    \begin{minipage}[c][11.5mm][c]{\linewidth}%
-      \raggedright%
-      \fontsize{9.8}{11.2}\selectfont\bfseries #2%
+    left=0mm, right=0mm, top=0mm, bottom=0mm,
+    boxsep=0mm
+  ]
+    \begin{minipage}[c][10.5mm][c]{0.30\linewidth}
+      \tcbox[
+        enhanced,
+        colback=brandblue, colframe=brandblue,
+        boxrule=0pt, arc=0mm,
+        left=0mm, right=0mm, top=0mm, bottom=0mm,
+        width=\linewidth,
+        height=10.5mm,
+        valign=center, halign=center
+      ]{\includegraphics[height=5.1mm]{#1}}%
     \end{minipage}%
-  }%
+    \begin{minipage}[c][10.5mm][c]{0.70\linewidth}
+      \tcbox[
+        enhanced,
+        colback=headgray, colframe=headgray,
+        boxrule=0pt, arc=0mm,
+        left=2.3mm, right=2mm, top=0mm, bottom=0mm,
+        width=\linewidth,
+        height=10.5mm,
+        valign=center,
+        halign=left
+      ]{\fontsize{10.2}{11.6}\selectfont\bfseries #2}%
+    \end{minipage}%
+  \end{tcolorbox}%
 }
 
 % =========================
