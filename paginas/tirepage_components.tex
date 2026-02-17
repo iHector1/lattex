@@ -25,15 +25,18 @@
 % ============================================================
 % CONTROLES DE TAMAÑO (AJUSTA AQUÍ)
 % ============================================================
+% Tamaño GENERAL del header:
+% - ANCHO total: depende del ancho del contenedor donde llames \TPCardHeader.
+% - ALTO total: lo controla \TPHeaderHeight.
 % Proporciones horizontales del header (deben sumar 1.00)
 \newcommand{\TPHeaderLeftWidth}{0.30\linewidth}   % ancho bloque imagen
 \newcommand{\TPHeaderRightWidth}{0.70\linewidth}  % ancho bloque título
 
-% Altura total del header (ambos lados usan la misma altura)
-\newcommand{\TPHeaderHeight}{10.5mm}
+% Altura total del header (RESPONSIVA: depende de \textwidth)
+\newcommand{\TPHeaderHeight}{0.048\textwidth}
 
-% Tamaño de la imagen/logo
-\newcommand{\TPHeaderImageHeight}{5.1mm}
+% Tamaño de la imagen/logo (RESPONSIVO)
+\newcommand{\TPHeaderImageHeight}{0.022\textwidth}
 
 % Tipografía del título (texto derecho)
 \newcommand{\TPHeaderTitleFontSize}{10.2}

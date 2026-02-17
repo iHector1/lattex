@@ -1,18 +1,36 @@
 %% page2.tex
 %% (SOLO CONTENIDO — NO PONGAS \documentclass NI \usepackage AQUÍ)
 
+% ============================================================
+% CONTROLES DEL CUADRO EXTERNO (AJUSTA AQUÍ)
+% ============================================================
+% ANCHO del cuadro gris (responsivo porque usa \textwidth)
+\newcommand{\TPOuterBoxWidth}{0.97\textwidth}
+
+% MARGEN/PADDING interno del cuadro gris
+% (lo dejamos en 0 para "quitar el espaciado")
+\newcommand{\TPOuterBoxPadX}{0mm}
+\newcommand{\TPOuterBoxPadY}{0mm}
+
+% Esquinas redondeadas del cuadro gris
+\newcommand{\TPOuterBoxArc}{3mm}
+
+% ============================================================
+% POSICIÓN VERTICAL (centrado a media hoja)
+% ============================================================
+% Estos dos \vspace*{\fill} dejan el bloque en la mitad vertical de la hoja.
 \vspace*{\fill}
 \noindent\makebox[\textwidth][c]{%
   \begin{tcolorbox}[
     colback=gray!15,
     colframe=gray!15,
-    width=0.97\textwidth,
-    arc=3mm,
+    width=\TPOuterBoxWidth,
+    arc=\TPOuterBoxArc,
     boxrule=0pt,
-    left=2.8mm,
-    right=2.8mm,
-    top=2.6mm,
-    bottom=2.6mm
+    left=\TPOuterBoxPadX,
+    right=\TPOuterBoxPadX,
+    top=\TPOuterBoxPadY,
+    bottom=\TPOuterBoxPadY
   ]
     \TPCardHeader{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
   \end{tcolorbox}%
