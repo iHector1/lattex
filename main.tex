@@ -1,0 +1,459 @@
+%% main.tex
+%% vergueado no, vergas si --Mike 2026
+
+\documentclass{article}
+
+% =========================
+% PAQUETES
+% =========================
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor} % <-- xcolor ANTES de definecolor
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% =========================
+% COLORES
+% =========================
+\definecolor{warningyellow}{HTML}{FCC01A}
+\definecolor{trackgray}{HTML}{E6E6E6}
+\definecolor{oiltrack}{HTML}{E6E6E6}
+
+% =========================
+% CONFIGURACIÓN DE PÁGINA
+% =========================
+\geometry{
+  margin=0cm,
+  top=0cm,
+  bottom=2cm,
+  left=0cm,
+  right=0cm
+}
+
+\pagestyle{empty}
+\parindent=0pt
+\parskip=0pt
+
+% =========================
+% FUENTES
+% =========================
+\setmainfont{Montserrat}
+
+% Kode Mono Variable (archivo local en la carpeta)
+\newfontfamily\kodemono[
+  Path=./,
+  Extension=.ttf,
+  UprightFont=*,
+  FontFace={l}{n}{Font=*, RawFeature={+wght=300}},
+  FontFace={m}{n}{Font=*, RawFeature={+wght=400}},
+  FontFace={sb}{n}{Font=*, RawFeature={+wght=600}},
+  FontFace={b}{n}{Font=*, RawFeature={+wght=700}}
+]{KodeMono-VariableFont_wght}
+
+% =========================
+% MEDIDAS
+% =========================
+\newcommand{\contentwidth}{0.90\textwidth}
+
+\newlength{\padlr}
+\setlength{\padlr}{0mm}
+
+\newlength{\innerwidth}
+\setlength{\innerwidth}{\dimexpr \contentwidth - 2\padlr \relax}
+
+% =========================
+% ESTILOS
+% =========================
+\newtcolorbox{inputbox}{
+  colback=white,
+  colframe=black!15,
+  arc=1mm,
+  boxrule=0.4pt,
+  left=2mm,
+  right=2mm,
+  top=1mm,
+  bottom=1mm,
+  height=7mm,
+  valign=center
+}
+
+\newtcolorbox{commentbox}{
+  colback=gray!10,
+  colframe=black!15,
+  arc=1.5mm,
+  boxrule=0.5pt,
+  left=4mm,
+  right=4mm,
+  top=3mm,
+  bottom=3mm,
+  height=18mm,      % ajustable
+  valign=top
+}
+
+\newcommand{\fieldlabel}[1]{%
+  {\fontsize{8.5}{10}\selectfont #1}\vspace{1mm}%
+}
+
+\newcommand{\uilabel}{\fontsize{8.5}{10}\selectfont\bfseries}
+\newcommand{\uilabelgray}{\fontsize{8.5}{10}\selectfont\bfseries\color{gray!60}}
+
+% =========================
+% CHIPS (ETIQUETAS)
+% =========================
+\newcommand{\chip}[1]{%
+  \tikz[baseline]
+    \node[
+      draw=none,
+      fill=gray!15,
+      rounded corners=2mm,
+      inner xsep=3mm,
+      inner ysep=1mm
+    ]{\fontsize{9}{11}\selectfont #1};%
+}
+
+% =========================
+% ICONOS (CÍRCULOS + PNG)
+% =========================
+\newcommand{\warniconsize}{0.72cm} % PNG
+\newcommand{\warnradius}{0.58}     % radio círculo
+\newcommand{\warngap}{0.45}        % separación horizontal
+\newcommand{\warnrowgap}{1.45}     % separación vertical
+
+\newcommand{\warnicon}[4]{%
+  \ifnum#4=1
+    \fill[warningyellow] (#1,#2) circle (\warnradius);
+  \else
+    \fill[gray!15] (#1,#2) circle (\warnradius);
+  \fi
+  \node at (#1,#2) {\includegraphics[width=\warniconsize]{#3}};
+}
+
+\newcommand{\warniconij}[4]{%
+  \pgfmathsetmacro{\step}{2*\warnradius + \warngap}%
+  \pgfmathsetmacro{\xx}{(#1)*\step}%
+  \pgfmathsetmacro{\yy}{-(#2)*\warnrowgap}%
+  \warnicon{\xx}{\yy}{#3}{#4}%
+}
+
+% =========================
+% BARRA NIVEL DE GASOLINA
+% =========================
+\newcommand{\gasfont}{\fontsize{9}{11}\selectfont\bfseries}
+
+% #1 = nivel seleccionado: 0..4
+\newcommand{\gasolinebar}[1]{%
+  \noindent\makebox[\innerwidth][c]{%
+    \begin{tikzpicture}
+
+      \pgfmathsetlengthmacro{\W}{0.90\innerwidth}
+      \pgfmathsetlengthmacro{\H}{3.2mm}
+      \pgfmathsetlengthmacro{\R}{1.6mm}
+      \pgfmathsetlengthmacro{\KnobR}{2.55mm}
+
+      \pgfmathsetlengthmacro{\yBar}{0mm}
+      \pgfmathsetlengthmacro{\yKnob}{-6.0mm}
+      \pgfmathsetlengthmacro{\yLabel}{-10.5mm}
+      \pgfmathsetlengthmacro{\yEF}{0.2mm}
+
+      \useasboundingbox (0,\yLabel-4mm) rectangle (\W,\yBar+4mm);
+
+      \coordinate (L) at (0,0);
+      \coordinate (Rr) at (\W,0);
+
+      % PUNTOS internos SOLO para bolitas (no para el fill)
+      \coordinate (Cleft)  at ($(L)!0.01!(Rr)$);
+      \coordinate (Cright) at ($(L)!0.99!(Rr)$);
+
+      \coordinate (P0) at (Cleft);
+      \coordinate (P1) at ($(Cleft)!0.25!(Cright)$);
+      \coordinate (P2) at ($(Cleft)!0.50!(Cright)$);
+      \coordinate (P3) at ($(Cleft)!0.75!(Cright)$);
+      \coordinate (P4) at (Cright);
+
+      % Track gris (real, de L a R)
+      \path[draw=none, fill=trackgray, rounded corners=\R]
+        ($(L)+(0,\yBar-\H/2)$) rectangle ($(Rr)+(0,\yBar+\H/2)$);
+
+      % Punto final del fill:
+      %   - 0..3 llega a P0..P3 (alineado con bolitas)
+      %   - 4 (LLENO) llega a R real (hasta el borde)
+      \ifcase#1
+        \coordinate (PF) at (P0);
+      \or
+        \coordinate (PF) at (P1);
+      \or
+        \coordinate (PF) at (P2);
+      \or
+        \coordinate (PF) at (P3);
+      \or
+        \coordinate (PF) at (Rr);
+      \fi
+
+      % Fill amarillo (SIEMPRE empieza en L real)
+      \path[draw=none, fill=warningyellow, rounded corners=\R]
+        ($(L)+(0,\yBar-\H/2)$) rectangle ($(PF)+(0,\yBar+\H/2)$);
+
+      % E y F
+      \node[anchor=east] at ($(L)+(-0.5mm,\yEF)$) {{\gasfont E}};
+      \node[anchor=west] at ($(Rr)+( 0.5mm,\yEF)$) {{\gasfont F}};
+
+      % knobs
+      \newcommand{\knob}[3]{%
+        \ifnum##2=1
+          \fill[warningyellow] ($ (##1) + (0,\yKnob) $) circle (\KnobR);
+        \else
+          \fill[trackgray] ($ (##1) + (0,\yKnob) $) circle (\KnobR);
+        \fi
+        \ifnum##2=1
+          \node[anchor=north, text=black] at ($ (##1) + (0,\yLabel) $) {{\gasfont ##3}};
+        \else
+          \node[anchor=north, text=gray!55] at ($ (##1) + (0,\yLabel) $) {{\gasfont ##3}};
+        \fi
+      }
+
+      \knob{P0}{\ifnum#1=0 1\else 0\fi}{BAJO}
+      \knob{P1}{\ifnum#1=1 1\else 0\fi}{1/4}
+      \knob{P2}{\ifnum#1=2 1\else 0\fi}{MEDIO}
+      \knob{P3}{\ifnum#1=3 1\else 0\fi}{3/4}
+      \knob{P4}{\ifnum#1=4 1\else 0\fi}{LLENO}
+
+    \end{tikzpicture}%
+  }%
+}
+
+% =========================
+% LÍQUIDOS: NIVEL DE ACEITE (UI - texto gris claro)
+% =========================
+% #1 = estado: 0=DEBAJO, 1=A NIVEL, 2=ARRIBA
+\newcommand{\oillevelbar}[1]{%
+  \begin{tikzpicture}
+
+    \pgfmathsetlengthmacro{\W}{0.97\linewidth}
+    \pgfmathsetlengthmacro{\H}{3.0mm}
+    \pgfmathsetlengthmacro{\R}{1.5mm}
+    \pgfmathsetlengthmacro{\DotR}{1.7mm}
+
+    \pgfmathsetlengthmacro{\yBar}{0mm}
+    \pgfmathsetlengthmacro{\yDot}{-4.0mm}
+    \pgfmathsetlengthmacro{\yLbl}{-6.2mm}
+
+    \useasboundingbox (0,\yLbl-3mm) rectangle (\W,\yBar+3mm);
+
+    \coordinate (L) at (0,0);
+    \coordinate (Rr) at (\W,0);
+
+    % margen interno SOLO para bolitas/labels
+    \pgfmathsetlengthmacro{\xPad}{3mm}
+    \coordinate (P0) at ($(L)+(\xPad,0)$);
+    \coordinate (P2) at ($(Rr)-(\xPad,0)$);
+    \coordinate (P1) at ($(P0)!0.50!(P2)$);
+
+    % Track (real, de L a R)
+    \path[draw=none, fill=oiltrack, rounded corners=\R]
+      ($(L)+(0,\yBar-\H/2)$) rectangle ($(Rr)+(0,\yBar+\H/2)$);
+
+    % --- PFfill = fin del relleno | PFdot = dónde va la bolita amarilla ---
+    \ifcase#1
+      \coordinate (PFfill) at (P0);
+      \coordinate (PFdot)  at (P0);
+    \or
+      \coordinate (PFfill) at (P1);
+      \coordinate (PFdot)  at (P1);
+    \or
+      \coordinate (PFfill) at (Rr); % barra hasta el borde
+      \coordinate (PFdot)  at (P2); % bolita se queda en el punto
+    \fi
+
+    % Fill amarillo (SIEMPRE desde L real)
+    \path[draw=none, fill=warningyellow, rounded corners=\R]
+      ($(L)+(0,\yBar-\H/2)$) rectangle ($(PFfill)+(0,\yBar+\H/2)$);
+
+    % 3 puntos grises + punto activo
+    \fill[oiltrack]      ($ (P0) + (0,\yDot) $) circle (\DotR);
+    \fill[oiltrack]      ($ (P1) + (0,\yDot) $) circle (\DotR);
+    \fill[oiltrack]      ($ (P2) + (0,\yDot) $) circle (\DotR);
+    \fill[warningyellow] ($ (PFdot) + (0,\yDot) $) circle (\DotR);
+
+    % Labels (negro si seleccionado, gris si no)
+    \ifnum#1=0
+      \node[anchor=north, text=black, align=center, xshift=10mm] at ($ (P0) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries DEBAJO DEL NIVEL};
+    \else
+      \node[anchor=north, text=gray!55, align=center, xshift=10mm] at ($ (P0) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries DEBAJO DEL NIVEL};
+    \fi
+
+    \ifnum#1=1
+      \node[anchor=north, text=black, align=center] at ($ (P1) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries A NIVEL};
+    \else
+      \node[anchor=north, text=gray!55, align=center] at ($ (P1) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries A NIVEL};
+    \fi
+
+    \ifnum#1=2
+      \node[anchor=north, text=black, align=center, xshift=-10mm] at ($ (P2) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries ARRIBA DEL NIVEL};
+    \else
+      \node[anchor=north, text=gray!55, align=center, xshift=-10mm] at ($ (P2) + (0,\yLbl) $)
+        {\fontsize{6.5}{8}\selectfont\bfseries ARRIBA DEL NIVEL};
+    \fi
+
+  \end{tikzpicture}%
+}
+
+% =========================
+% LÍQUIDOS: COLOR DE ACEITE (RESPONSIVO + ESTÉTICO)
+% =========================
+% #1 = 0 Limpio, 1 Medio, 2 Quemado
+\newcommand{\oilcolorselector}[1]{%
+  \begin{tikzpicture}
+    % Ancho disponible = ancho de la columna
+    \pgfmathsetlengthmacro{\W}{\linewidth}
+
+    % Gap proporcional (se ve bien en tamaños chicos y grandes)
+    \pgfmathsetlengthmacro{\Gap}{0.06*\W}
+
+    % Caja auto-escalada para que quepan 3 items + 2 gaps
+    \pgfmathsetlengthmacro{\Box}{(\W - 2*\Gap)/3}
+
+    % Radio del círculo proporcional a la caja
+    \pgfmathsetlengthmacro{\R}{0.30*\Box}
+
+    % Alturas (proporcionales)
+    \pgfmathsetlengthmacro{\yCircle}{0.62*\Box}
+    \pgfmathsetlengthmacro{\yLbl}{0.18*\Box}
+
+    % Fondo (para que TikZ reserve espacio correcto)
+    \useasboundingbox (0,-0.12*\Box) rectangle (\W,\Box);
+
+    \newcommand{\citem}[4]{%
+      % ##1 x, ##2 selected 0/1, ##3 fill, ##4 text
+
+      % Fondo seleccionado (suave)
+      \ifnum##2=1
+        \path[draw=none, fill=gray!15, rounded corners=2mm]
+          (##1,-0.12*\Box) rectangle (##1+\Box,\Box);
+      \fi
+
+      % Círculo
+      \fill[##3] (##1+0.5*\Box,\yCircle) circle (\R);
+
+      % Texto (negro si seleccionado, gris si no)
+      \ifnum##2=1
+        \node[anchor=north, text=black] at (##1+0.5*\Box,\yLbl)
+          {\fontsize{8.5}{10}\selectfont\bfseries ##4};
+      \else
+        \node[anchor=north, text=gray!55] at (##1+0.5*\Box,\yLbl)
+          {\fontsize{8.5}{10}\selectfont\bfseries ##4};
+      \fi
+    }
+
+    \citem{0}{\ifnum#1=0 1\else 0\fi}{warningyellow}{Limpio}
+    \citem{\Box+\Gap}{\ifnum#1=1 1\else 0\fi}{brown!70!black}{Medio}
+    \citem{2*\Box+2*\Gap}{\ifnum#1=2 1\else 0\fi}{black!80}{Quemado}
+  \end{tikzpicture}%
+}
+
+% =========================
+% SELECTOR 4 OPCIONES (compacto estilo referencia + bordes llenos)
+% =========================
+% #1 = seleccionado (0..3)
+% #2 = titulo
+\newcommand{\fluidselectorfour}[2]{%
+  \begin{minipage}{\linewidth}
+    {\fontsize{9}{11}\selectfont #2}
+    \vspace{1mm}
+
+    \begin{tikzpicture}
+      \pgfmathsetlengthmacro{\W}{\linewidth}
+      \pgfmathsetlengthmacro{\H}{16mm}
+      \pgfmathsetlengthmacro{\Box}{\W/4}
+
+      \pgfmathsetlengthmacro{\R}{2.9mm}
+      \pgfmathsetlengthmacro{\yCircle}{10.2mm}
+      \pgfmathsetlengthmacro{\LabelH}{6.8mm}
+      \pgfmathsetlengthmacro{\yLbl}{3.6mm}
+      \pgfmathsetlengthmacro{\CardRad}{2mm}
+
+      \begin{scope}
+        \clip[rounded corners=\CardRad] (0,0) rectangle (\W,\H);
+
+        \newcommand{\fitem}[5]{%
+          \ifnum##2=1
+            \path[draw=none, fill=gray!15] (##1,0) rectangle (##1+\Box,\H);
+          \fi
+
+          \fill[##3] (##1+0.5*\Box,\yCircle) circle (\R);
+
+          \ifnum##2=1
+            \node[
+              align=center,
+              text=black,
+              font=\fontsize{6.5}{7.5}\selectfont\bfseries,
+              text width=\Box,
+              minimum height=\LabelH,
+              anchor=center
+            ] at (##1+0.5*\Box,\yLbl) {##4\ifx##5\empty\else\\##5\fi};
+          \else
+            \node[
+              align=center,
+              text=gray!55,
+              font=\fontsize{6.5}{7.5}\selectfont\bfseries,
+              text width=\Box,
+              minimum height=\LabelH,
+              anchor=center
+            ] at (##1+0.5*\Box,\yLbl) {##4\ifx##5\empty\else\\##5\fi};
+          \fi
+        }
+
+        \pgfmathsetlengthmacro{\xA}{0*\Box}
+        \pgfmathsetlengthmacro{\xB}{1*\Box}
+        \pgfmathsetlengthmacro{\xC}{2*\Box}
+        \pgfmathsetlengthmacro{\xD}{3*\Box}
+
+        \fitem{\xA}{\ifnum#1=0 1\else 0\fi}{blue!45}{N/A}{}
+        \fitem{\xB}{\ifnum#1=1 1\else 0\fi}{green!60!black}{Arriba del}{Nivel}
+        \fitem{\xC}{\ifnum#1=2 1\else 0\fi}{warningyellow}{A Nivel}{}
+        \fitem{\xD}{\ifnum#1=3 1\else 0\fi}{red!85!black}{Debajo del}{Nivel}
+
+      \end{scope}
+
+      \path[draw=black!15, fill=none, rounded corners=\CardRad, line width=0.5pt]
+        (0,0) rectangle (\W,\H);
+    \end{tikzpicture}
+  \end{minipage}%
+}
+
+% =========================
+% SELECTOR SI/NO (tipo botón)
+% =========================
+% #1 = 0 -> SI seleccionado, 1 -> NO seleccionado
+\newcommand{\yesnoselector}[1]{%
+  \begin{tikzpicture}[baseline]
+    \newcommand{\btn}[3]{%
+      % ##1 text, ##2 selected 0/1, ##3 x
+      \ifnum##2=1
+        \path[draw=none, fill=warningyellow, rounded corners=1.4mm] (##3,0) rectangle ++(10mm,6mm);
+        \node[text=black] at (##3+5mm,3mm) {\fontsize{8.5}{10}\selectfont\bfseries ##1};
+      \else
+        \path[draw=black!25, fill=white, rounded corners=1.4mm, line width=0.5pt] (##3,0) rectangle ++(10mm,6mm);
+        \node[text=black] at (##3+5mm,3mm) {\fontsize{8.5}{10}\selectfont\bfseries ##1};
+      \fi
+    }
+    \btn{SI}{\ifnum#1=0 1\else 0\fi}{0mm}
+    \btn{NO}{\ifnum#1=1 1\else 0\fi}{11.5mm}
+  \end{tikzpicture}%
+}
+\input{tirepage_components}
+% =========================
+% DOCUMENTO
+% =========================
+\begin{document}
+\input{page1}
+\newpage
+\input{page2}
+\end{document}

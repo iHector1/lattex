@@ -1,0 +1,189 @@
+%% page1.tex
+%% (SOLO CONTENIDO — NO PONGAS \documentclass NI \usepackage AQUÍ)
+
+% ===== HEADER =====
+\noindent\includegraphics[width=\textwidth]{top.png}
+\vspace{0mm}
+
+% ===== TÍTULO =====
+{\centering
+  \fontsize{18}{22}\selectfont \bfseries
+  MULTI-PUNTOS DE INSPECCIÓN (PRE-SERVICIO)\par
+}
+
+% Ajusta este valor para la distancia con "Información General"
+\vspace{1.5mm}
+
+% ===== BLOQUE GRIS: INFORMACIÓN GENERAL =====
+\noindent\makebox[\textwidth][c]{%
+  \begin{tcolorbox}[
+    colback=gray!25,
+    colframe=gray!25,
+    width=\contentwidth,
+    arc=1mm,
+    boxrule=0pt,
+    left=\padlr,
+    right=\padlr,
+    top=1mm,
+    bottom=1mm
+  ]
+    \centering
+    {\fontsize{15}{18}\selectfont \bfseries Información General}
+  \end{tcolorbox}%
+}
+
+% ===== CONTENIDO =====
+\begin{center}
+  \begin{minipage}{\contentwidth}
+    \begin{minipage}{\innerwidth}
+
+      \vspace{1mm}
+
+      % Subtítulo (Kode Mono)
+      {\kodemono\fontseries{sb}\fontsize{12}{14}\selectfont Información General del Vehículo}
+      \vspace{2mm}
+
+      % --- FILA 1 ---
+      \begin{tabularx}{\textwidth}{X @{\hspace{6mm}} p{0.22\textwidth} @{\hspace{6mm}} p{0.18\textwidth}}
+        \fieldlabel{Modelo del vehículo} & \fieldlabel{Placas} & \fieldlabel{Kilometraje} \\
+        \begin{inputbox}\fontsize{10.5}{12}\selectfont VOLKSWAGEN TIGUAN 2026\end{inputbox} &
+        \begin{inputbox}\fontsize{10.5}{12}\selectfont JCZ-263-A\end{inputbox} &
+        \begin{inputbox}\fontsize{10.5}{12}\selectfont 85,000\end{inputbox} \\
+      \end{tabularx}
+
+      \vspace{2mm}
+
+      % --- FILA 2 ---
+      \begin{tabularx}{\textwidth}{p{0.30\textwidth} @{\hspace{6mm}} X}
+        \fieldlabel{Número de serie} & \fieldlabel{Razón de ingreso} \\
+        \begin{inputbox}\fontsize{10.5}{12}\selectfont 3N1BC13E38L592153\end{inputbox} &
+        \begin{inputbox}\fontsize{10.5}{12}\selectfont CAMBIO DE LLANTAS CON ALINEACIÓN Y BALANCEO\end{inputbox} \\
+      \end{tabularx}
+
+      % ===== NUEVA SECCIÓN: LUCES DE ADVERTENCIA =====
+      \vspace{3mm}
+      {\fontsize{10}{12}\selectfont Luces de advertencia encendidas}
+      \vspace{2mm}
+
+      % --- Chips ---
+      \chip{Batería}\hspace{2mm}
+      \chip{Cinturón}\hspace{2mm}
+      \chip{Puertas abiertas}
+
+      \vspace{4mm}
+
+      % --- Grid ---
+      \begin{tikzpicture}[x=1cm,y=1cm]
+        % FILA 1
+        \warniconij{0}{0}{engine.png}{1}
+        \warniconij{1}{0}{oil.png}{0}
+        \warniconij{2}{0}{battery.png}{1}
+        \warniconij{3}{0}{air.png}{0}
+        \warniconij{4}{0}{throttle.png}{0}
+        \warniconij{5}{0}{abs.png}{0}
+        \warniconij{6}{0}{tractionControl.png}{1}
+        \warniconij{7}{0}{doors.png}{1}
+        \warniconij{8}{0}{immobilizer.png}{0}
+        \warniconij{9}{0}{brake.png}{0}
+        \warniconij{10}{0}{tire.png}{0}
+        \warniconij{11}{0}{brakePark.png}{1}
+
+        % FILA 2
+        \warniconij{0}{1}{celsius.png}{0}
+        \warniconij{1}{1}{maintenance.png}{0}
+        \warniconij{2}{1}{lighbulb.png}{0}
+        \warniconij{3}{1}{steering-wheel.png}{0}
+        \warniconij{4}{1}{windshield-washer.png}{1}
+      \end{tikzpicture}
+
+      % ===== NUEVA SECCIÓN: NIVEL DE GASOLINA =====
+      \vspace{3mm}
+      {\fontsize{10}{12}\selectfont Nivel de gasolina}
+      \vspace{3mm}
+
+      \gasolinebar{4} % 0=BAJO, 1=1/4, 2=MEDIO, 3=3/4, 4=LLENO
+
+    \end{minipage}
+  \end{minipage}
+\end{center}
+
+% ===== BLOQUE GRIS: LÍQUIDOS =====
+\vspace{2mm}
+\noindent\makebox[\textwidth][c]{%
+  \begin{tcolorbox}[
+    colback=gray!25,
+    colframe=gray!25,
+    width=\contentwidth,
+    arc=1mm,
+    boxrule=0pt,
+    left=\padlr,
+    right=\padlr,
+    top=1mm,
+    bottom=1mm
+  ]
+    \centering
+    {\fontsize{15}{18}\selectfont \bfseries Líquidos}
+  \end{tcolorbox}%
+}
+
+% ===== CONTENIDO LÍQUIDOS =====
+\begin{center}
+  \begin{minipage}{\contentwidth}
+    \begin{minipage}{\innerwidth}
+
+      \vspace{1.5mm}
+      {\kodemono\fontseries{sb}\fontsize{12}{14}\selectfont Inspección de Líquidos}
+      \vspace{1.5mm}
+
+      \noindent
+      \begin{minipage}[t]{0.623\innerwidth}
+        {\fontsize{9}{11}\selectfont Nivel de aceite}
+        \vspace{0.8mm}
+
+        \noindent
+        \oillevelbar{2}
+      \end{minipage}%
+      \hspace{3mm}%
+      \begin{minipage}[t]{\dimexpr 0.377\innerwidth-3mm\relax}
+        {\fontsize{9}{11}\selectfont Color de aceite}
+        \vspace{0.8mm}
+
+        \noindent
+        \oilcolorselector{2}
+      \end{minipage}
+
+      \vspace{4mm}
+
+      \noindent
+      \begin{minipage}[t]{0.32\innerwidth}
+        \fluidselectorfour{1}{Anticongelante}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.32\innerwidth}
+        \fluidselectorfour{3}{Dirección Hidraulica}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.32\innerwidth}
+        \fluidselectorfour{0}{Líquido de frenos}
+      \end{minipage}
+
+      \vspace{4mm}
+
+      % --- Comentarios + Limpia parabrisas (como screenshot) ---
+      \noindent
+      \begin{minipage}[t]{0.70\innerwidth}
+        {\fontsize{9}{11}\selectfont Comentarios adicionales}
+        \vspace{1mm}
+
+        \begin{commentbox}
+        % (en blanco, listo para texto)
+        \end{commentbox}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.27\innerwidth}
+        {\fontsize{9}{11}\selectfont Líquido limpiaparabrisas}
+        \vspace{1mm}
+
+        \yesnoselector{0} % 0=SI, 1=NO
+      \end{minipage}
+
+    \end{minipage}
+  \end{minipage}
+\end{center}
