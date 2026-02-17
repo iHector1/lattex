@@ -1,0 +1,57 @@
+%% page2.tex
+%% Layout reorganizado de llantas y frenos
+
+% =========================
+% CONTROLES DE PÁGINA
+% =========================
+\newcommand{\TFPageTopGap}{1mm}
+\newcommand{\TFTitleBarH}{8.2mm}
+\newcommand{\TFTitleBarTextSize}{16}
+\newcommand{\TFBetweenTopAndGrid}{1.4mm}
+\newcommand{\TFBetweenCards}{1.2mm}
+\newcommand{\TFCenterImageOffsetTop}{0.2mm}
+\newcommand{\TFCenterImageW}{0.90\linewidth}
+\newcommand{\TFCenterImageH}{0.33\textheight}
+
+\vspace*{\TFPageTopGap}
+
+% Barra de título
+\noindent\makebox[\textwidth][c]{%
+  \tcbox[
+    enhanced,
+    colback=gray!25,colframe=gray!25,boxrule=0pt,arc=2mm,
+    width=0.94\textwidth,height=\TFTitleBarH,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]{{\fontsize{\TFTitleBarTextSize}{18}\selectfont\bfseries Llantas y Frenos}}%
+}
+
+\vspace{\TFBetweenTopAndGrid}
+
+% Grid principal: izquierda / carro / derecha
+% ANCHOS DE COLUMNAS (ajusta aqui): izquierda 0.41, centro 0.16, derecha 0.41
+\noindent
+\begin{minipage}[t]{0.41\textwidth}
+  \TFTitle{Delantero Derecha}
+  \TFTireCard{FR}
+
+  \vspace{\TFBetweenCards}
+
+  \TFTitle{Trasera Derecha}
+  \TFTireCard{RR}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.16\textwidth}
+  \vspace{\TFCenterImageOffsetTop}
+  \centering\includegraphics[width=\TFCenterImageW,height=\TFCenterImageH,keepaspectratio]{carro.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.41\textwidth}
+  \TFTitle{Delantera Izquierda}
+  \TFTireCard{FL}
+
+  \vspace{\TFBetweenCards}
+
+  \TFTitle{Trasera Izquierda}
+  \TFTireCard{RL}
+\end{minipage}
