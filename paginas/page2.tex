@@ -4,18 +4,12 @@
 % ============================================================
 % CONTROLES GENERALES DE ESTA PÁGINA
 % ============================================================
-\newcommand{\TFGlobalScale}{0.30}      % 70% menos (queda al 30%)
-\newcommand{\TFBaseCanvasW}{3.2\textwidth} % ancho base antes de escalar
-\newcommand{\TFPageTopGap}{2mm}
-\newcommand{\TFColumnsGapTop}{5mm}
+\newcommand{\TFPageTopGap}{1mm}
+\newcommand{\TFColumnsGapTop}{3mm}
 \newcommand{\TFCenterImageWidth}{0.98\linewidth}
-\newcommand{\TFMainBarHeight}{9mm}
+\newcommand{\TFMainBarHeight}{8mm}
 
 \vspace*{\TFPageTopGap}
-
-\noindent\makebox[\textwidth][c]{%
-\scalebox{\TFGlobalScale}{%
-\begin{minipage}{\TFBaseCanvasW}
 
 % Barra de título principal
 \noindent\makebox[\textwidth][c]{%
@@ -23,38 +17,34 @@
     colback=gray!25,colframe=gray!25,boxrule=0pt,arc=2mm,
     width=0.94\textwidth,height=\TFMainBarHeight,valign=center,halign=center,
     left=0mm,right=0mm,top=0mm,bottom=0mm
-  ]{{\fontsize{24}{26}\selectfont\bfseries Llantas y Frenos}}%
+  ]{{\fontsize{18}{20}\selectfont\bfseries Llantas y Frenos}}%
 }
 
 \vspace{\TFColumnsGapTop}
 
 % Bloque principal: izquierda / carro / derecha
 \noindent
-\begin{minipage}[t]{0.39\textwidth}
+\begin{minipage}[t]{0.38\textwidth}
   \TFTitle{Delantero Derecha}
   \TFTireCard{FR}
 
-  \vspace{4.6mm}
+  \vspace{3.2mm}
 
   \TFTitle{Trasera Derecha}
   \TFTireCard{RR}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.20\textwidth}
-  \vspace{8mm}
+\begin{minipage}[t]{0.22\textwidth}
+  \vspace{4mm}
   \centering\includegraphics[width=\TFCenterImageWidth]{carro.png}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.39\textwidth}
+\begin{minipage}[t]{0.38\textwidth}
   \TFTitle{Delantera Izquierda}
   \TFTireCard{FL}
 
-  \vspace{4.6mm}
+  \vspace{3.2mm}
 
   \TFTitle{Trasera Izquierda}
   \TFTireCard{RL}
 \end{minipage}
-
-\end{minipage}%
-}%
-}
