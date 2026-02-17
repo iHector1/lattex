@@ -1,38 +1,50 @@
 %% page2.tex
-%% (SOLO CONTENIDO — NO PONGAS \documentclass NI \usepackage AQUÍ)
+%% Layout completo de llantas y frenos (2x2 + carro al centro)
 
 % ============================================================
-% CONTROLES DEL CUADRO EXTERNO (AJUSTA AQUÍ)
+% CONTROLES GENERALES DE ESTA PÁGINA
 % ============================================================
-% ANCHO del cuadro gris (responsivo porque usa \textwidth)
-\newcommand{\TPOuterBoxWidth}{0.97\textwidth}
+\newcommand{\TFPageTopGap}{2mm}
+\newcommand{\TFColumnsGapTop}{5mm}
+\newcommand{\TFCenterImageWidth}{0.98\linewidth}
+\newcommand{\TFMainBarHeight}{9mm}
 
-% MARGEN/PADDING interno del cuadro gris
-% (lo dejamos en 0 para "quitar el espaciado")
-\newcommand{\TPOuterBoxPadX}{0mm}
-\newcommand{\TPOuterBoxPadY}{0mm}
+\vspace*{\TFPageTopGap}
 
-% Esquinas redondeadas del cuadro gris
-\newcommand{\TPOuterBoxArc}{3mm}
-
-% ============================================================
-% POSICIÓN VERTICAL (centrado a media hoja)
-% ============================================================
-% Estos dos \vspace*{\fill} dejan el bloque en la mitad vertical de la hoja.
-\vspace*{\fill}
+% Barra de título principal
 \noindent\makebox[\textwidth][c]{%
-  \begin{tcolorbox}[
-    colback=gray!15,
-    colframe=gray!15,
-    width=\TPOuterBoxWidth,
-    arc=\TPOuterBoxArc,
-    boxrule=0pt,
-    left=\TPOuterBoxPadX,
-    right=\TPOuterBoxPadX,
-    top=\TPOuterBoxPadY,
-    bottom=\TPOuterBoxPadY
-  ]
-    \TPCardHeader{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
-  \end{tcolorbox}%
+  \tcbox[
+    colback=gray!25,colframe=gray!25,boxrule=0pt,arc=2mm,
+    width=0.94\textwidth,height=\TFMainBarHeight,valign=center,halign=center,
+    left=0mm,right=0mm,top=0mm,bottom=0mm
+  ]{{\fontsize{24}{26}\selectfont\bfseries Llantas y Frenos}}%
 }
-\vspace*{\fill}
+
+\vspace{\TFColumnsGapTop}
+
+% Bloque principal: izquierda / carro / derecha
+\noindent
+\begin{minipage}[t]{0.39\textwidth}
+  \TFTitle{Delantero Derecha}
+  \TFTireCard{FR}
+
+  \vspace{4.6mm}
+
+  \TFTitle{Trasera Derecha}
+  \TFTireCard{RR}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.20\textwidth}
+  \vspace{8mm}
+  \centering\includegraphics[width=\TFCenterImageWidth]{carro.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\textwidth}
+  \TFTitle{Delantera Izquierda}
+  \TFTireCard{FL}
+
+  \vspace{4.6mm}
+
+  \TFTitle{Trasera Izquierda}
+  \TFTireCard{RL}
+\end{minipage}
