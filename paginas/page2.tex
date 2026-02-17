@@ -5,12 +5,13 @@
 % CONTROLES DE PÁGINA
 % =========================
 \newcommand{\TFPageTopGap}{1mm}
-\newcommand{\TFTitleBarH}{7.5mm}
+\newcommand{\TFTitleBarH}{8.2mm}
 \newcommand{\TFTitleBarTextSize}{16}
-\newcommand{\TFBetweenTopAndGrid}{2.0mm}
-\newcommand{\TFBetweenCards}{1.6mm}
-\newcommand{\TFCenterImageOffsetTop}{1.2mm}
-\newcommand{\TFCenterImageW}{0.72\linewidth}
+\newcommand{\TFBetweenTopAndGrid}{1.4mm}
+\newcommand{\TFBetweenCards}{1.2mm}
+\newcommand{\TFCenterImageOffsetTop}{0.2mm}
+\newcommand{\TFCenterImageW}{0.90\linewidth}
+\newcommand{\TFCenterImageH}{0.33\textheight}
 
 \vspace*{\TFPageTopGap}
 
@@ -29,7 +30,7 @@
 
 % Grid principal: izquierda / carro / derecha
 \noindent
-\begin{minipage}[t]{0.36\textwidth}
+\begin{minipage}[t]{0.42\textwidth}
   \TFTitle{Delantero Derecha}
   \TFTireCard{FR}
 
@@ -39,12 +40,12 @@
   \TFTireCard{RR}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.14\textwidth}
   \vspace{\TFCenterImageOffsetTop}
-  \centering\includegraphics[width=\TFCenterImageW]{carro.png}
+  \centering\includegraphics[width=\TFCenterImageW,height=\TFCenterImageH,keepaspectratio]{carro.png}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.36\textwidth}
+\begin{minipage}[t]{0.42\textwidth}
   \TFTitle{Delantera Izquierda}
   \TFTireCard{FL}
 

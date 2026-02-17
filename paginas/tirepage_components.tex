@@ -23,23 +23,23 @@
 % =========================
 % ESCALA / MEDIDAS
 % =========================
-\newcommand{\TFTitleSize}{17}
-\newcommand{\TFCardPad}{1.2mm}
+\newcommand{\TFTitleSize}{18}
+\newcommand{\TFCardPad}{1.0mm}
 \newcommand{\TFCardBorder}{0.6pt}
 \newcommand{\TFCardW}{\linewidth}
 
-\newcommand{\TFHeaderH}{8.2mm}
-\newcommand{\TFLabelH}{5.8mm}
-\newcommand{\TFValueH}{6.4mm}
-\newcommand{\TFSectionH}{6.0mm}
-\newcommand{\TFRowH}{5.9mm}
+\newcommand{\TFHeaderH}{8.8mm}
+\newcommand{\TFLabelH}{6.2mm}
+\newcommand{\TFValueH}{7.0mm}
+\newcommand{\TFSectionH}{6.6mm}
+\newcommand{\TFRowH}{6.5mm}
 
 % =========================
 % TÍTULO DE POSICIÓN
 % =========================
 \newcommand{\TFTitle}[1]{%
-  {\centering\kodemono\fontseries{sb}\fontsize{\TFTitleSize}{20}\selectfont #1\par}
-  \vspace{0.5mm}%
+  {\centering\kodemono\fontseries{sb}\fontsize{\TFTitleSize}{21}\selectfont #1\par}
+  \vspace{0.4mm}%
 }
 
 % =========================
@@ -63,7 +63,7 @@
       width=\linewidth,height=\TFHeaderH,
       left=1.5mm,right=1mm,top=0mm,bottom=0mm,
       valign=center,halign=left
-    ]{{\fontsize{7.6}{8.8}\selectfont\bfseries\color{TFText} #2}}%
+    ]{{\fontsize{8.4}{9.6}\selectfont\bfseries\color{TFText} #2}}%
   \end{minipage}%
 }
 
@@ -82,9 +82,9 @@
       width=\linewidth,height=\TFLabelH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{7.6}{8.4}\selectfont\bfseries #1}}%
+    ]{{\fontsize{8.2}{9.0}\selectfont\bfseries #1}}%
 
-    \vspace{0.5mm}%
+    \vspace{0.4mm}%
 
     \tcbox[
       enhanced,
@@ -92,7 +92,7 @@
       width=\linewidth,height=\TFValueH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{8.8}{9.8}\selectfont\bfseries #2}}%
+    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #2}}%
   \end{tcolorbox}%
 }
 
@@ -111,9 +111,9 @@
       width=\linewidth,height=\TFLabelH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{7.6}{8.4}\selectfont\bfseries PSI}}%
+    ]{{\fontsize{8.2}{9.0}\selectfont\bfseries PSI}}%
 
-    \vspace{0.5mm}%
+    \vspace{0.4mm}%
 
     \noindent
     \tcbox[
@@ -122,14 +122,14 @@
       width=0.50\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{{\fontsize{8.8}{9.8}\selectfont\bfseries #1}}%
+    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #1}}%
     \tcbox[
       on line,enhanced,
       colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
       width=0.50\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{{\fontsize{8.8}{9.8}\selectfont\bfseries #2}}%
+    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #2}}%
   \end{tcolorbox}%
 }
 
@@ -138,10 +138,10 @@
 % =========================
 \newcommand{\TFBrakeRow}[4]{%
   \noindent
-  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.35\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.0}{10.2}\selectfont #1}}%
-  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.27\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.0}{10.2}\selectfont\bfseries\color{TFGreenText} #2}}%
-  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.20\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.0}{10.2}\selectfont #3}}%
-  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.18\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.0}{10.2}\selectfont\bfseries\color{TFGreenText} #4}}%
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.35\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont #1}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.27\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont\bfseries\color{TFGreenText} #2}}%
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.20\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont #3}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.18\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont\bfseries\color{TFGreenText} #4}}%
 }
 
 % =========================
@@ -156,7 +156,7 @@
   ]
     \TFHeader{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
 
-    \vspace{0.5mm}%
+    \vspace{0.4mm}%
 
     \begin{tcbraster}[
       raster columns=5,
@@ -171,7 +171,7 @@
       \TFMetricCell{PROFUNDIDAD\\DE BANDA (MM)}{3 mm}
     \end{tcbraster}
 
-    \vspace{0.5mm}%
+    \vspace{0.4mm}%
 
     \tcbox[
       enhanced,
@@ -179,12 +179,12 @@
       width=\linewidth,height=\TFSectionH,
       left=0.8mm,right=0.8mm,top=0.4mm,bottom=0.4mm,
       valign=center,halign=center
-    ]{{\fontsize{9.8}{11.2}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}%
+    ]{{\fontsize{10.2}{11.6}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}%
 
-    \vspace{0.55mm}%
+    \vspace{0.45mm}%
     \TFBrakeRow{Balatas/Tambores}{BUENA (>9MM )}{Desgaste}{8 mm}
 
-    \vspace{0.5mm}%
+    \vspace{0.4mm}%
     \TFBrakeRow{Discos}{BUENA (>9MM )}{Desgaste}{9 mm}
   \end{tcolorbox}%
   \par
