@@ -21,25 +21,54 @@
 \providecolor{TFText}{HTML}{1D1D1D}
 
 % =========================
-% ESCALA / MEDIDAS
+% CONTROLES (AQUI EDITAS TAMAÑOS Y ESPACIADOS)
 % =========================
-\newcommand{\TFTitleSize}{18}
-\newcommand{\TFCardPad}{1.0mm}
-\newcommand{\TFCardBorder}{0.6pt}
-\newcommand{\TFCardW}{\linewidth}
+% ---- Tarjeta general ----
+\newcommand{\TFCardW}{\linewidth}     % ancho total de cada tarjeta
+\newcommand{\TFCardPad}{1.0mm}         % margen interno tarjeta (left/right/top/bottom)
+\newcommand{\TFCardBorder}{0.6pt}      % grosor del borde de tarjeta
 
-\newcommand{\TFHeaderH}{8.8mm}
-\newcommand{\TFLabelH}{6.2mm}
-\newcommand{\TFValueH}{7.0mm}
-\newcommand{\TFSectionH}{6.6mm}
-\newcommand{\TFRowH}{6.5mm}
+% ---- Titulo de posicion (Delantero/Trasera...) ----
+\newcommand{\TFTitleSize}{18}           % tamaño de letra del titulo superior de cada tarjeta
+\newcommand{\TFTitleGap}{0.4mm}         % separación debajo del titulo de posicion
+
+% ---- Header de tarjeta (logo + nombre llanta) ----
+\newcommand{\TFHeaderH}{8.8mm}          % alto del header azul+gris
+\newcommand{\TFHeaderLogoH}{4.0mm}      % alto del logo
+\newcommand{\TFHeaderFont}{8.4}         % tamaño letra nombre llanta
+\newcommand{\TFHeaderLead}{9.6}         % interlineado nombre llanta
+
+% ---- Celdas de metricas ----
+\newcommand{\TFLabelH}{6.2mm}           % alto fila amarilla (titulo de metrica)
+\newcommand{\TFValueH}{7.0mm}           % alto fila gris (valor)
+\newcommand{\TFMetricGap}{0.4mm}        % separación entre label y valor
+\newcommand{\TFMetricTitleFont}{8.2}
+\newcommand{\TFMetricTitleLead}{9.0}
+\newcommand{\TFMetricValueFont}{9.4}
+\newcommand{\TFMetricValueLead}{10.6}
+
+% ---- Barra de frenos (letrero) ----
+\newcommand{\TFSectionH}{6.6mm}         % alto de "FRENOS, DISCOS Y TAMBORES"
+\newcommand{\TFSectionFont}{10.2}
+\newcommand{\TFSectionLead}{11.6}
+
+% ---- Filas de frenos ----
+\newcommand{\TFRowH}{6.5mm}             % alto de cada celda en filas de frenos
+\newcommand{\TFBrakeFont}{9.6}
+\newcommand{\TFBrakeLead}{10.8}
+
+% ---- Separaciones verticales internas ----
+\newcommand{\TFGapAfterHeader}{0.4mm}
+\newcommand{\TFGapAfterMetrics}{0.4mm}
+\newcommand{\TFGapAfterSection}{0.45mm}
+\newcommand{\TFGapBetweenBrakeRows}{0.4mm}
 
 % =========================
 % TÍTULO DE POSICIÓN
 % =========================
 \newcommand{\TFTitle}[1]{%
-  {\centering\kodemono\fontseries{sb}\fontsize{\TFTitleSize}{21}\selectfont #1\par}
-  \vspace{0.4mm}%
+  {\centering\kodemono\fontseries{sb}\fontsize{\TFTitleSize}{20}\selectfont #1\par}
+  \vspace{\TFTitleGap}%
 }
 
 % =========================
@@ -54,7 +83,7 @@
       width=\linewidth,height=\TFHeaderH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{\includegraphics[height=4.0mm]{#1}}%
+    ]{\includegraphics[height=\TFHeaderLogoH]{#1}}%
   \end{minipage}%
   \begin{minipage}[c][\TFHeaderH][c]{0.65\linewidth}
     \tcbox[
@@ -63,7 +92,7 @@
       width=\linewidth,height=\TFHeaderH,
       left=1.5mm,right=1mm,top=0mm,bottom=0mm,
       valign=center,halign=left
-    ]{{\fontsize{8.4}{9.6}\selectfont\bfseries\color{TFText} #2}}%
+    ]{{\fontsize{\TFHeaderFont}{\TFHeaderLead}\selectfont\bfseries\color{TFText} #2}}%
   \end{minipage}%
 }
 
@@ -82,9 +111,9 @@
       width=\linewidth,height=\TFLabelH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{8.2}{9.0}\selectfont\bfseries\shortstack[c]{#1}}}%
+    ]{{\fontsize{\TFMetricTitleFont}{\TFMetricTitleLead}\selectfont\bfseries\shortstack[c]{#1}}}%
 
-    \vspace{0.4mm}%
+    \vspace{\TFMetricGap}%
 
     \tcbox[
       enhanced,
@@ -92,7 +121,7 @@
       width=\linewidth,height=\TFValueH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #2}}%
+    ]{{\fontsize{\TFMetricValueFont}{\TFMetricValueLead}\selectfont\bfseries #2}}%
   \end{tcolorbox}%
 }
 
@@ -111,9 +140,9 @@
       width=\linewidth,height=\TFLabelH,
       left=0.6mm,right=0.6mm,top=0.6mm,bottom=0.6mm,
       valign=center,halign=center
-    ]{{\fontsize{8.2}{9.0}\selectfont\bfseries PSI}}%
+    ]{{\fontsize{\TFMetricTitleFont}{\TFMetricTitleLead}\selectfont\bfseries PSI}}%
 
-    \vspace{0.4mm}%
+    \vspace{\TFMetricGap}%
 
     \noindent
     \tcbox[
@@ -122,14 +151,14 @@
       width=0.50\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #1}}%
+    ]{{\fontsize{\TFMetricValueFont}{\TFMetricValueLead}\selectfont\bfseries #1}}%
     \tcbox[
       on line,enhanced,
       colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
       width=0.50\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{{\fontsize{9.4}{10.6}\selectfont\bfseries #2}}%
+    ]{{\fontsize{\TFMetricValueFont}{\TFMetricValueLead}\selectfont\bfseries #2}}%
   \end{tcolorbox}%
 }
 
@@ -138,10 +167,10 @@
 % =========================
 \newcommand{\TFBrakeRow}[4]{%
   \noindent
-  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.35\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont #1}}%
-  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.27\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont\bfseries\color{TFGreenText} #2}}%
-  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.20\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont #3}}%
-  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.18\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{9.6}{10.8}\selectfont\bfseries\color{TFGreenText} #4}}%
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.35\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{\TFBrakeFont}{\TFBrakeLead}\selectfont #1}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.27\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{\TFBrakeFont}{\TFBrakeLead}\selectfont\bfseries\color{TFGreenText} #2}}%
+  \tcbox[on line,enhanced,colback=TFYellow,colframe=TFYellow,boxrule=0pt,arc=1.2mm,width=0.20\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{\TFBrakeFont}{\TFBrakeLead}\selectfont #3}}%
+  \tcbox[on line,enhanced,colback=TFGreenBG,colframe=TFGreenBG,boxrule=0pt,arc=1.2mm,width=0.18\linewidth,height=\TFRowH,left=0.8mm,right=0.8mm,top=0.5mm,bottom=0.5mm,valign=center,halign=center]{{\fontsize{\TFBrakeFont}{\TFBrakeLead}\selectfont\bfseries\color{TFGreenText} #4}}%
 }
 
 % =========================
@@ -156,7 +185,7 @@
   ]
     \TFHeader{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
 
-    \vspace{0.4mm}%
+    \vspace{\TFGapAfterHeader}%
 
     \begin{tcbraster}[
       raster columns=5,
@@ -171,20 +200,20 @@
       \TFMetricCell{PROFUNDIDAD\\DE BANDA (MM)}{3 mm}
     \end{tcbraster}
 
-    \vspace{0.4mm}%
+    \vspace{\TFGapAfterMetrics}%
 
     \tcbox[
       enhanced,
       colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=1.2mm,
       width=\linewidth,height=\TFSectionH,
-      left=0.8mm,right=0.8mm,top=0.4mm,bottom=0.4mm,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{{\fontsize{10.2}{11.6}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}%
+    ]{{\fontsize{\TFSectionFont}{\TFSectionLead}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}}%
 
-    \vspace{0.45mm}%
+    \vspace{\TFGapAfterSection}%
     \TFBrakeRow{Balatas/Tambores}{BUENA (>9MM )}{Desgaste}{8 mm}
 
-    \vspace{0.4mm}%
+    \vspace{\TFGapBetweenBrakeRows}%
     \TFBrakeRow{Discos}{BUENA (>9MM )}{Desgaste}{9 mm}
   \end{tcolorbox}%
   \par
