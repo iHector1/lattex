@@ -24,7 +24,7 @@
 % ============================================================
 % MEDIDAS BASE
 % ============================================================
-\newcommand{\TFCardW}{0.88\linewidth}
+\newcommand{\TFCardW}{\linewidth}
 \newcommand{\TFHeaderH}{8.4mm}
 \newcommand{\TFTagH}{6.0mm}
 \newcommand{\TFValH}{6.8mm}
@@ -108,7 +108,9 @@
 }
 
 \newcommand{\TFTireCard}[1]{%
+  \par\noindent%
   \begin{tcolorbox}[
+    enhanced,
     colback=white,colframe=gray!30,boxrule=0.7pt,arc=3mm,
     width=\TFCardW,left=1.6mm,right=1.6mm,top=1.6mm,bottom=1.6mm
   ]
@@ -130,6 +132,7 @@
     \vspace{1.0mm}
     \TFBrakeRow{Discos}{BUENA (>9MM )}{Desgaste}{9 mm}
   \end{tcolorbox}%
+  \par%
 }
 
 \endinput
