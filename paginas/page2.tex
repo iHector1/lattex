@@ -4,12 +4,18 @@
 % ============================================================
 % CONTROLES GENERALES DE ESTA PÁGINA
 % ============================================================
+\newcommand{\TFGlobalScale}{0.30}      % 70% menos (queda al 30%)
+\newcommand{\TFBaseCanvasW}{3.2\textwidth} % ancho base antes de escalar
 \newcommand{\TFPageTopGap}{2mm}
 \newcommand{\TFColumnsGapTop}{5mm}
 \newcommand{\TFCenterImageWidth}{0.98\linewidth}
 \newcommand{\TFMainBarHeight}{9mm}
 
 \vspace*{\TFPageTopGap}
+
+\noindent\makebox[\textwidth][c]{%
+\scalebox{\TFGlobalScale}{%
+\begin{minipage}{\TFBaseCanvasW}
 
 % Barra de título principal
 \noindent\makebox[\textwidth][c]{%
@@ -48,3 +54,7 @@
   \TFTitle{Trasera Izquierda}
   \TFTireCard{RL}
 \end{minipage}
+
+\end{minipage}%
+}%
+}
