@@ -25,7 +25,7 @@
 % =========================
 % ---- Tarjeta general ----
 \newcommand{\TFCardW}{\linewidth}     % ancho total de cada tarjeta
-\newcommand{\TFCardPad}{0.1mm}         % margen interno tarjeta (left/right/top/bottom)
+\newcommand{\TFCardPad}{0mm}           % margen interno tarjeta (left/right/top/bottom)
 \newcommand{\TFCardBorder}{1.6pt}      % grosor del borde de tarjeta
 
 % ---- Titulo de posicion (Delantero/Trasera...) ----
@@ -46,6 +46,12 @@
 \newcommand{\TFMetricTitleLead}{9.0}
 \newcommand{\TFMetricValueFont}{6.4}
 \newcommand{\TFMetricValueLead}{10.6}
+\newcommand{\TFMetricColGap}{0.8mm}
+\newcommand{\TFMetricColOneW}{0.205}
+\newcommand{\TFMetricColTwoW}{0.160}
+\newcommand{\TFMetricColThreeW}{0.160}
+\newcommand{\TFMetricColFourW}{0.160}
+\newcommand{\TFMetricColFiveW}{0.235}
 
 % ---- Barra de frenos (letrero) ----
 \newcommand{\TFSectionH}{6.6mm}         % alto de "FRENOS, DISCOS Y TAMBORES"
@@ -76,21 +82,21 @@
 % =========================
 \newcommand{\TFHeader}[2]{%
   \noindent
-  \begin{minipage}[c][\TFHeaderH][c]{0.35\linewidth}
+  \begin{minipage}[c][\TFHeaderH][c]{0.34\linewidth}
     \tcbox[
       enhanced,
       colback=TFBlue,colframe=TFBlue,boxrule=0pt,arc=0mm,
       width=\linewidth,height=\TFHeaderH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
-    ]{\includegraphics[height=\TFHeaderLogoH]{#1}}%
+    ]{\includegraphics[height=\TFHeaderLogoH,trim=6 3 6 3,clip]{#1}}%
   \end{minipage}%
-  \begin{minipage}[c][\TFHeaderH][c]{0.65\linewidth}
+  \begin{minipage}[c][\TFHeaderH][c]{0.66\linewidth}
     \tcbox[
       enhanced,
       colback=TFHeadGray,colframe=TFHeadGray,boxrule=0pt,arc=0mm,
       width=\linewidth,height=\TFHeaderH,
-      left=1.5mm,right=1mm,top=0mm,bottom=0mm,
+      left=0.6mm,right=0.6mm,top=0mm,bottom=0mm,
       valign=center,halign=left
     ]{{\fontsize{\TFHeaderFont}{\TFHeaderLead}\selectfont\bfseries\color{TFText} #2}}%
   \end{minipage}%
@@ -148,14 +154,15 @@
     \tcbox[
       on line,enhanced,
       colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
-      width=0.50\linewidth,height=\TFValueH,
+      width=0.485\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
     ]{{\fontsize{\TFMetricValueFont}{\TFMetricValueLead}\selectfont\bfseries #1}}%
+    \hfill
     \tcbox[
       on line,enhanced,
       colback=TFSoftGray,colframe=TFSoftGray,boxrule=0pt,arc=1.2mm,
-      width=0.50\linewidth,height=\TFValueH,
+      width=0.485\linewidth,height=\TFValueH,
       left=0mm,right=0mm,top=0mm,bottom=0mm,
       valign=center,halign=center
     ]{{\fontsize{\TFMetricValueFont}{\TFMetricValueLead}\selectfont\bfseries #2}}%
@@ -187,18 +194,22 @@
 
     \vspace{\TFGapAfterHeader}%
 
-    \begin{tcbraster}[
-      raster columns=5,
-      raster column skip=1.0mm,
-      raster left skip=0mm,
-      raster right skip=0mm
-    ]
+    \noindent
+    \begin{minipage}[t]{\TFMetricColOneW\linewidth}
       \TFMetricCell{MEDIDA}{315/35/R21}
+    \end{minipage}\hspace{\TFMetricColGap}%
+    \begin{minipage}[t]{\TFMetricColTwoW\linewidth}
       \TFMetricCell{ÍNDICE DE\\VELOCIDAD}{210}
+    \end{minipage}\hspace{\TFMetricColGap}%
+    \begin{minipage}[t]{\TFMetricColThreeW\linewidth}
       \TFMetricCell{ÍNDICE DE\\CARGA}{210}
+    \end{minipage}\hspace{\TFMetricColGap}%
+    \begin{minipage}[t]{\TFMetricColFourW\linewidth}
       \TFPSICell{35}{25}
+    \end{minipage}\hspace{\TFMetricColGap}%
+    \begin{minipage}[t]{\TFMetricColFiveW\linewidth}
       \TFMetricCell{PROFUNDIDAD\\DE BANDA (MM)}{3 mm}
-    \end{tcbraster}
+    \end{minipage}
 
     \vspace{\TFGapAfterMetrics}%
 
