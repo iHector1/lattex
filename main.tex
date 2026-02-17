@@ -14,6 +14,7 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{calc}
+\input{configuraciones/rutas}
 
 % =========================
 % COLORES
@@ -44,7 +45,7 @@
 
 % Kode Mono Variable (archivo local en la carpeta)
 \newfontfamily\kodemono[
-  Path=./,
+  Path=./configuraciones/,
   Extension=.ttf,
   UprightFont=*,
   FontFace={l}{n}{Font=*, RawFeature={+wght=300}},
@@ -448,12 +449,12 @@
     \btn{NO}{\ifnum#1=1 1\else 0\fi}{11.5mm}
   \end{tikzpicture}%
 }
-\input{tirepage_components}
+\input{paginas/tirepage_components}
 % =========================
 % DOCUMENTO
 % =========================
 \begin{document}
-\input{page1}
+\input{paginas/page1}
 \newpage
-\input{page2}
+\input{paginas/page2}
 \end{document}
