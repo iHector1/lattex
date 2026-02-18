@@ -33,14 +33,14 @@
 \newcommand{\WheelOuterBorderWidth}{0.8pt}
 \newcommand{\WheelOuterBorderRadius}{1.2mm}
 \newcommand{\WheelCellBorderColor}{black!35}
-\newcommand{\WheelCellBorderWidth}{0.55pt}
+\newcommand{\WheelCellBorderWidth}{0pt}
 \newcommand{\WheelCellBorderRadius}{1.0mm}
 
 \newcommand{\WheelHeaderBrandBG}{white}
 \newcommand{\WheelHeaderModelBG}{gray!20}
 \newcommand{\WheelHeaderBorderColor}{gray!55}
-\newcommand{\WheelHeaderBorderWidth}{0.45pt}
-\newcommand{\WheelHeaderHeight}{4.5mm}
+\newcommand{\WheelHeaderBorderWidth}{0pt}
+\newcommand{\WheelHeaderHeight}{4.2mm}
 
 % =====================================================================
 % -- Logo Goodyear
@@ -91,7 +91,7 @@
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
   ]
-    {\fontsize{8.4}{9.8}\selectfont\bfseries #1}
+    {\fontsize{8.4}{9.8}\selectfont #1}
   \end{tcolorbox}%
 }
 
@@ -133,7 +133,7 @@
     \begin{tabular}{@{}p{\WheelLogoColRatio\linewidth}p{\WheelModelColRatio\linewidth}@{}}
       % Celda logo: sin padding para que la imagen llene toda la celda
       \begin{tcolorbox}[enhanced,nobeforeafter,
-        width=\linewidth,
+        width=\linewidth,height=\WheelHeaderHeight,
         colback=\WheelHeaderBrandBG,colframe=\WheelHeaderBorderColor,
         boxrule=\WheelHeaderBorderWidth,arc=0mm,
         boxsep=0mm,left=0mm,right=0mm,top=0mm,bottom=0mm,
@@ -143,7 +143,7 @@
       \end{tcolorbox}
       &
       \begin{tcolorbox}[enhanced,nobeforeafter,
-        width=\linewidth,height=\WheelLogoMaxHeight,
+        width=\linewidth,height=\WheelHeaderHeight,
         colback=\WheelHeaderModelBG,colframe=\WheelHeaderBorderColor,
         boxrule=\WheelHeaderBorderWidth,arc=0mm,
         boxsep=0mm,left=1.0mm,right=1.0mm,top=0mm,bottom=0mm,
