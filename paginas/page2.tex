@@ -23,9 +23,30 @@
 
 \vspace{2mm}
 
+% -- Estilo visual limpio para la tabla --
+\newcommand{\StaticField}[1]{%
+  \tcbox[on line,enhanced,
+    colback=warningyellow,colframe=warningyellow,
+    boxrule=0pt,arc=1mm,
+    width=\linewidth,
+    left=1.2mm,right=1.2mm,top=0.9mm,bottom=0.9mm,
+    valign=center,halign=center
+  ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
+}
+
+\newcommand{\ValueField}[1]{%
+  \tcbox[on line,enhanced,
+    colback=gray!15,colframe=gray!15,
+    boxrule=0pt,arc=1mm,
+    width=\linewidth,
+    left=1.2mm,right=1.2mm,top=0.9mm,bottom=0.9mm,
+    valign=center,halign=left
+  ]{{\fontsize{8.4}{9.8}\selectfont\strut #1}}%
+}
+
 % -- Bloque simple editable por posición (sin contenedor) --
-% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Discos | #8 Balatas | #9 Observaciones
-\newcommand{\SimpleWheelBlock}[9]{%
+% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Desgaste discos | #8 Desgaste balatas
+\newcommand{\SimpleWheelBlock}[8]{%
   {\centering\bfseries\kodemono #1\par}
   \vspace{0.8mm}
 
@@ -42,17 +63,20 @@
 
   \vspace{0.8mm}
 
-  % Tabla sin borde/encerrado
-  \renewcommand{\arraystretch}{1.18}
-  \setlength{\tabcolsep}{2pt}
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} l l}
-    \textbf{Medida:} & #4 \\
-    \textbf{PSI:} & #5 \\
-    \textbf{Profundidad:} & #6 \\
-    \textbf{Discos:} & #7 \\
-    \textbf{Balatas:} & #8 \\
-    \textbf{Observaciones:} & #9 \\
-  \end{tabular*}
+  % Tabla limpia: etiquetas estáticas en amarillo, valores variables en gris
+  \setlength{\tabcolsep}{0pt}
+  \renewcommand{\arraystretch}{1.0}
+  \begin{tabular}{p{0.42\linewidth}p{0.58\linewidth}}
+    \StaticField{MEDIDA} & \ValueField{#4} \\
+    \multicolumn{2}{c}{\vspace{0.5mm}} \\
+    \StaticField{PSI} & \ValueField{#5} \\
+    \multicolumn{2}{c}{\vspace{0.5mm}} \\
+    \StaticField{PROFUNDIDAD} & \ValueField{#6} \\
+    \multicolumn{2}{c}{\vspace{0.5mm}} \\
+    \StaticField{DESGASTE DISCOS} & \ValueField{#7} \\
+    \multicolumn{2}{c}{\vspace{0.5mm}} \\
+    \StaticField{DESGASTE BALATAS} & \ValueField{#8} \\
+  \end{tabular}
 }
 
 % -- Distribución en 4 partes --
@@ -60,15 +84,15 @@
 \begin{minipage}{\contentwidth}
 
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
 
 \end{minipage}%
