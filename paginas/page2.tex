@@ -26,10 +26,18 @@
 % -- Estilo visual limpio para la tabla --
 \newcommand{\FieldH}{3.4ex}
 
+% -- Control de bordeado (ajusta estos valores) --
+\newcommand{\WheelOuterBorderColor}{gray!70}
+\newcommand{\WheelOuterBorderWidth}{0.8pt}
+\newcommand{\WheelOuterBorderRadius}{1.2mm}
+\newcommand{\WheelCellBorderColor}{black!35}
+\newcommand{\WheelCellBorderWidth}{0.55pt}
+\newcommand{\WheelCellBorderRadius}{1.0mm}
+
 \newcommand{\StaticFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
-    colback=#2,colframe=black!25,
-    boxrule=0.45pt,arc=1.0mm,
+    colback=#2,colframe=\WheelCellBorderColor,
+    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
     width=\linewidth,
     boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
@@ -41,8 +49,8 @@
 
 \newcommand{\ValueFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
-    colback=#2,colframe=black!25,
-    boxrule=0.45pt,arc=1.0mm,
+    colback=#2,colframe=\WheelCellBorderColor,
+    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
     width=\linewidth,
     boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
@@ -53,6 +61,7 @@
 }
 
 % -- Personalización rápida (marca y modelo de llanta) --
+% Cambia grosor/radio/color de bordes arriba en la sección "Control de bordeado"
 % Cambia este archivo para usar otro logo (ruta relativa o absoluta al proyecto)
 \newcommand{\WheelLogoFile}{Goodyear.png}
 % Cambia este texto para el nombre/modelo de la llanta
@@ -67,9 +76,9 @@
   \begin{tcolorbox}[enhanced,nobeforeafter,
     width=\linewidth,
     colback=white,
-    colframe=gray!60,
-    boxrule=0.5pt,
-    arc=0mm,
+    colframe=\WheelOuterBorderColor,
+    boxrule=\WheelOuterBorderWidth,
+    arc=\WheelOuterBorderRadius,
     boxsep=0mm,
     left=0mm,right=0mm,top=0mm,bottom=0mm
   ]
