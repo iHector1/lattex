@@ -1,79 +1,61 @@
 %% page2.tex
-%% Página de Llantas y Frenos — 4 secciones simples
+%% Página de Llantas y Frenos — 4 secciones simples (sin cuadros)
 
 \vspace*{1mm}
 
-% -- Título --
+% -- Título principal (sin Kode Mono) --
 \noindent\makebox[\textwidth][c]{%
-  \begin{tcolorbox}[
-    colback=gray!25,
-    colframe=gray!25,
-    width=\contentwidth,
-    arc=1mm,
-    boxrule=0pt,
-    left=\padlr,
-    right=\padlr,
-    top=1mm,
-    bottom=1mm
-  ]
-    \centering
-    {\fontsize{15}{18}\selectfont\bfseries\kodemono Llantas y Frenos}
-  \end{tcolorbox}%
+  {\fontsize{15}{18}\selectfont\bfseries Llantas y Frenos}
 }
 
 \vspace{2mm}
 
-% -- Bloque simple editable por posición --
-\newcommand{\SimpleWheelBlock}[7]{%
-  \begin{tcolorbox}[
-    colback=white,
-    colframe=gray!35,
-    width=\linewidth,
-    arc=1mm,
-    boxrule=0.5pt,
-    left=1.5mm,
-    right=1.5mm,
-    top=1mm,
-    bottom=1mm
-  ]
-    {\centering\bfseries\kodemono #1\par}
-    \vspace{1mm}
-    \renewcommand{\arraystretch}{1.2}
-    \setlength{\tabcolsep}{4pt}
-    \begin{tabular}{|p{0.42\linewidth}|p{0.50\linewidth}|}
-      \hline
-      \textbf{Medida} & #2 \\
-      \hline
-      \textbf{PSI} & #3 \\
-      \hline
-      \textbf{Profundidad} & #4 \\
-      \hline
-      \textbf{Discos} & #5 \\
-      \hline
-      \textbf{Balatas} & #6 \\
-      \hline
-      \textbf{Observaciones} & #7 \\
-      \hline
-    \end{tabular}
-  \end{tcolorbox}%
+% -- Bloque simple editable por posición (sin contenedor) --
+% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Discos | #8 Balatas | #9 Observaciones
+\newcommand{\SimpleWheelBlock}[9]{%
+  {\centering\bfseries\kodemono #1\par}
+  \vspace{0.8mm}
+
+  % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
+  \noindent
+  \begin{minipage}[c]{0.22\linewidth}
+    \centering
+    \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.75\linewidth}
+    {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
+  \end{minipage}
+
+  \vspace{0.8mm}
+
+  % Tabla sin borde/encerrado
+  \renewcommand{\arraystretch}{1.18}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} l l}
+    \textbf{Medida:} & #4 \\
+    \textbf{PSI:} & #5 \\
+    \textbf{Profundidad:} & #6 \\
+    \textbf{Discos:} & #7 \\
+    \textbf{Balatas:} & #8 \\
+    \textbf{Observaciones:} & #9 \\
+  \end{tabular*}
 }
 
-% -- Distribución en 4 partes (como antes):
-%    Izquierda: delantera/trasera izquierda
-%    Derecha: delantera/trasera derecha
+% -- Distribución en 4 partes --
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Izquierda}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
-    \vspace{1.5mm}
-    \SimpleWheelBlock{Trasera Izquierda}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \vspace{2.2mm}
+    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Derecha}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
-    \vspace{1.5mm}
-    \SimpleWheelBlock{Trasera Derecha}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \vspace{2.2mm}
+    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
   \end{minipage}
 
 \end{minipage}%
