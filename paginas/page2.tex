@@ -42,7 +42,7 @@
 \newcommand{\WheelLogoWidth}{0.88\linewidth}
 \newcommand{\WheelLogoHeight}{5.2mm}
 \newcommand{\WheelCarFile}{carro.png}
-\newcommand{\WheelCarWidth}{0.20\textwidth}
+\newcommand{\WheelCarWidth}{0.95\linewidth}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
 
@@ -134,27 +134,25 @@
   \end{tcolorbox}
 }
 
-% -- Distribución en 4 partes --
+% -- Distribución en 3 columnas (izquierda | carro | derecha) --
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
-  \begin{minipage}[t]{0.49\linewidth}
+  \begin{minipage}[t]{0.43\linewidth}
     \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
-
-  \vspace{\WheelCarTopSpace}
-  {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
-  \vspace{\WheelCarBottomSpace}
-
-  \begin{minipage}[t]{0.49\linewidth}
+    \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
   \hfill
-  \begin{minipage}[t]{0.49\linewidth}
+  \begin{minipage}[c]{0.12\linewidth}
+    \vspace{\WheelCarTopSpace}
+    {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
+    \vspace{\WheelCarBottomSpace}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.43\linewidth}
+    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
 
