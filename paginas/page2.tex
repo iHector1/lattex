@@ -42,11 +42,11 @@
 \newcommand{\WheelLogoWidth}{0.88\linewidth}
 \newcommand{\WheelLogoHeight}{5.2mm}
 \newcommand{\WheelCarFile}{carro.png}
-\newcommand{\WheelCarWidth}{0.95\linewidth}
+\newcommand{\WheelCarWidth}{1.12\linewidth}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
-\newcommand{\WheelSideLift}{-1.8mm}
-\newcommand{\WheelCarDrop}{7.0mm}
+\newcommand{\WheelSideLift}{-2.6mm}
+\newcommand{\WheelCarDrop}{10.5mm}
 
 \newcommand{\StaticFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
@@ -140,21 +140,21 @@
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
-  \begin{minipage}[t]{0.43\linewidth}
+  \begin{minipage}[t]{0.40\linewidth}
     \vspace*{\WheelSideLift}
     \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
   \hfill
-  \begin{minipage}[c]{0.12\linewidth}
+  \begin{minipage}[c]{0.18\linewidth}
     \vspace*{\WheelCarDrop}
     \vspace{\WheelCarTopSpace}
     {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
     \vspace{\WheelCarBottomSpace}
   \end{minipage}
   \hfill
-  \begin{minipage}[t]{0.43\linewidth}
+  \begin{minipage}[t]{0.40\linewidth}
     \vspace*{\WheelSideLift}
     \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
