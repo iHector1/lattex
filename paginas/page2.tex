@@ -45,14 +45,16 @@
 \newcommand{\WheelCarWidth}{1.08\linewidth}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
-\newcommand{\WheelSideLift}{-6.2mm}
-\newcommand{\WheelCarDrop}{9.0mm}
+\newcommand{\WheelSideLift}{-11mm}
+\newcommand{\WheelCarDrop}{2mm}
 
 % -- Control de layout horizontal (tarjetas y separación al carro) --
 \newcommand{\WheelSideColWidth}{0.39\linewidth}
 \newcommand{\WheelCarColWidth}{0.16\linewidth}
 \newcommand{\WheelGapLeftToCar}{0.03\linewidth}
 \newcommand{\WheelGapCarToRight}{0.03\linewidth}
+\newcommand{\WheelCardRaise}{\WheelSideLift}
+\newcommand{\WheelCarRaise}{\WheelCarDrop}
 
 \newcommand{\StaticFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
@@ -146,26 +148,29 @@
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
+  \raisebox{\WheelCardRaise}[0pt][0pt]{%
   \begin{minipage}[t]{\WheelSideColWidth}
-    \vspace*{\WheelSideLift}
     \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
+  \end{minipage}%
+  }
   \hspace*{\WheelGapLeftToCar}
+  \raisebox{\WheelCarRaise}[0pt][0pt]{%
   \begin{minipage}[c]{\WheelCarColWidth}
-    \vspace*{\WheelCarDrop}
     \vspace{\WheelCarTopSpace}
     {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
     \vspace{\WheelCarBottomSpace}
-  \end{minipage}
+  \end{minipage}%
+  }
   \hspace*{\WheelGapCarToRight}
+  \raisebox{\WheelCardRaise}[0pt][0pt]{%
   \begin{minipage}[t]{\WheelSideColWidth}
-    \vspace*{\WheelSideLift}
     \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
+  \end{minipage}%
+  }
 
 \end{minipage}%
 }
