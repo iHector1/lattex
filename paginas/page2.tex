@@ -8,8 +8,7 @@
 % ---- [I] Página ----
 \newcommand{\TFPageTopGap}      {0.5mm}  % espacio al inicio de la página
 \newcommand{\TFTitleBarH}       {8.0mm}  % alto barra de título
-\newcommand{\TFTitleBarTextSize}{14}     % pt — "Llantas y Frenos"
-\newcommand{\TFTitleBarW}       {0.96}   % ancho barra (fracción de \textwidth)
+\newcommand{\TFTitleBarTextSize}{15}     % pt — "Llantas y Frenos"
 
 % ---- [J] Grid ----
 \newcommand{\TFBetweenTopAndGrid}{1.2mm} % barra → grid
@@ -31,13 +30,20 @@
 
 % -- Barra de título centrada --
 \noindent\makebox[\textwidth][c]{%
-  \tcbox[
-    enhanced,
-    colback=gray!22,colframe=gray!22,boxrule=0pt,arc=2.0mm,
-    width=\TFTitleBarW\textwidth,height=\TFTitleBarH,
-    left=0mm,right=0mm,top=0mm,bottom=0mm,
-    valign=center,halign=center
-  ]{{\fontsize{\TFTitleBarTextSize}{16}\selectfont\bfseries Llantas y Frenos}}%
+  \begin{tcolorbox}[
+    colback=gray!25,
+    colframe=gray!25,
+    width=\contentwidth,
+    arc=1mm,
+    boxrule=0pt,
+    left=\padlr,
+    right=\padlr,
+    top=1mm,
+    bottom=1mm
+  ]
+    \centering
+    {\fontsize{\TFTitleBarTextSize}{18}\selectfont\bfseries Llantas y Frenos}
+  \end{tcolorbox}%
 }%
 
 \vspace{\TFBetweenTopAndGrid}%
