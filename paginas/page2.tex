@@ -34,6 +34,12 @@
 \newcommand{\WheelCellBorderWidth}{0.55pt}
 \newcommand{\WheelCellBorderRadius}{1.0mm}
 
+\newcommand{\WheelHeaderBrandBG}{blue!85!black}
+\newcommand{\WheelHeaderModelBG}{gray!20}
+\newcommand{\WheelHeaderBorderColor}{gray!55}
+\newcommand{\WheelHeaderBorderWidth}{0.45pt}
+\newcommand{\WheelHeaderHeight}{8.8mm}
+
 \newcommand{\StaticFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
     colback=#2,colframe=\WheelCellBorderColor,
@@ -82,16 +88,30 @@
     boxsep=0mm,
     left=0mm,right=0mm,top=0mm,bottom=0mm
   ]
-    % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
-    \noindent
-    \begin{minipage}[c]{0.22\linewidth}
-      \centering
-      \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[c]{0.75\linewidth}
-      {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
-    \end{minipage}
+    % Encabezado estilo barra: marca (izquierda) + modelo (derecha)
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabular}{@{}p{0.24\linewidth}p{0.76\linewidth}@{}}
+      \begin{tcolorbox}[enhanced,nobeforeafter,
+        width=\linewidth,height=\WheelHeaderHeight,
+        colback=\WheelHeaderBrandBG,colframe=\WheelHeaderBorderColor,
+        boxrule=\WheelHeaderBorderWidth,arc=0mm,
+        boxsep=0mm,left=0.6mm,right=0.6mm,top=0mm,bottom=0mm,
+        valign=center,halign=center
+      ]
+        \includegraphics[width=0.88\linewidth,height=5.2mm,keepaspectratio]{#2}
+      \end{tcolorbox}
+      &
+      \begin{tcolorbox}[enhanced,nobeforeafter,
+        width=\linewidth,height=\WheelHeaderHeight,
+        colback=\WheelHeaderModelBG,colframe=\WheelHeaderBorderColor,
+        boxrule=\WheelHeaderBorderWidth,arc=0mm,
+        boxsep=0mm,left=1.0mm,right=1.0mm,top=0mm,bottom=0mm,
+        valign=center,halign=flush left
+      ]
+        {\fontsize{6.6}{7.6}\selectfont\bfseries #3}
+      \end{tcolorbox}
+      \\
+    \end{tabular}
 
     \vspace{0.8mm}
 
