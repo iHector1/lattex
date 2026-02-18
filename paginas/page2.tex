@@ -26,72 +26,178 @@
 % -- Estilo visual limpio para la tabla --
 \newcommand{\FieldH}{3.4ex}
 
+% =====================================================================
+% -- Control de bordeado --
+% =====================================================================
+\newcommand{\WheelOuterBorderColor}{gray!70}
+\newcommand{\WheelOuterBorderWidth}{0.8pt}
+\newcommand{\WheelOuterBorderRadius}{1.2mm}
+\newcommand{\WheelCellBorderColor}{black!35}
+\newcommand{\WheelCellBorderWidth}{0pt}
+\newcommand{\WheelCellBorderRadius}{1.0mm}
+
+\newcommand{\WheelHeaderBrandBG}{white}
+\newcommand{\WheelHeaderModelBG}{gray!20}
+\newcommand{\WheelHeaderBorderColor}{gray!55}
+\newcommand{\WheelHeaderBorderWidth}{0pt}
+\newcommand{\WheelHeaderHeight}{4.2mm}
+
+% =====================================================================
+% -- Logo Goodyear
+%    Para hacerlo MÁS GRANDE: aumenta \WheelLogoColRatio (máx ~0.38)
+%    y reduce \WheelModelColRatio en la misma cantidad.
+%    Suma debe ser siempre = 1.00
+%
+%    Logo col : 0.32  (era 0.24 original — ahora más ancho)
+%    Modelo col: 0.68
+% =====================================================================
+\newcommand{\WheelLogoColRatio}{0.32}    % <-- AQUÍ controlas el tamaño del logo
+\newcommand{\WheelModelColRatio}{0.68}   % <-- complementario (1 - WheelLogoColRatio)
+
+\newcommand{\WheelLogoMaxWidth}{\linewidth}   % ocupa todo el ancho de su celda
+\newcommand{\WheelLogoMaxHeight}{\WheelHeaderHeight}  % ocupa todo el alto del encabezado
+
+% =====================================================================
+% -- Carro (valores originales) --
+% =====================================================================
+\newcommand{\WheelCarFile}{carro.png}
+\newcommand{\WheelCarWidth}{1.08\linewidth}
+\newcommand{\WheelCarTopSpace}{1.4mm}
+\newcommand{\WheelCarBottomSpace}{1.4mm}
+
+% =====================================================================
+% -- Posición vertical --
+% =====================================================================
+\newcommand{\WheelSideLift}{-3mm}
+\newcommand{\WheelCarDrop}{-10mm}
+
+% -- Layout horizontal (valores originales del carro) --
+\newcommand{\WheelSideColWidth}{0.39\linewidth}
+\newcommand{\WheelCarColWidth}{0.16\linewidth}
+\newcommand{\WheelGapLeftToCar}{0.03\linewidth}
+\newcommand{\WheelGapCarToRight}{0.03\linewidth}
+\newcommand{\WheelCardRaise}{\WheelSideLift}
+\newcommand{\WheelCarRaise}{\WheelCarDrop}
+
+% =====================================================================
+% -- Comandos de celda --
+% =====================================================================
 \newcommand{\StaticFieldColor}[2]{%
-  \tcbox[on line,enhanced,
-    colback=#2,colframe=black!25,
-    boxrule=0.45pt,arc=1.0mm,
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=#2,colframe=\WheelCellBorderColor,
+    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
     width=\linewidth,
+    boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
+  ]
+    {\fontsize{8.4}{9.8}\selectfont #1}
+  \end{tcolorbox}%
 }
 
 \newcommand{\ValueFieldColor}[2]{%
-  \tcbox[on line,enhanced,
-    colback=#2,colframe=black!25,
-    boxrule=0.45pt,arc=1.0mm,
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=#2,colframe=\WheelCellBorderColor,
+    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
     width=\linewidth,
+    boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont #1}}%
+  ]
+    {\fontsize{8.4}{9.8}\selectfont #1}
+  \end{tcolorbox}%
 }
 
-% -- Bloque simple editable por posición (sin contenedor) --
-% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Desgaste discos | #8 Desgaste balatas
+% -- Llanta y modelo --
+\newcommand{\WheelLogoFile}{Goodyear.png}
+\newcommand{\WheelModelName}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+% =====================================================================
+% -- Bloque de rueda
+% =====================================================================
 \newcommand{\SimpleWheelBlock}[8]{%
   {\centering\bfseries\kodemono #1\par}
   \vspace{0.8mm}
 
-  % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
-  \noindent
-  \begin{minipage}[c]{0.22\linewidth}
-    \centering
-    \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[c]{0.75\linewidth}
-    {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
-  \end{minipage}
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    width=\linewidth,
+    colback=white,
+    colframe=\WheelOuterBorderColor,
+    boxrule=\WheelOuterBorderWidth,
+    arc=\WheelOuterBorderRadius,
+    boxsep=0mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm
+  ]
+    % -- Encabezado: logo | modelo --
+    \setlength{\tabcolsep}{0pt}
+    \begin{tabular}{@{}p{\WheelLogoColRatio\linewidth}p{\WheelModelColRatio\linewidth}@{}}
+      % Celda logo: sin padding para que la imagen llene toda la celda
+      \begin{tcolorbox}[enhanced,nobeforeafter,
+        width=\linewidth,height=\WheelHeaderHeight,
+        colback=\WheelHeaderBrandBG,colframe=\WheelHeaderBorderColor,
+        boxrule=\WheelHeaderBorderWidth,arc=0mm,
+        boxsep=0mm,left=0mm,right=0mm,top=0mm,bottom=0mm,
+        valign=center,halign=center
+      ]
+        \includegraphics[width=\WheelLogoMaxWidth,height=\WheelLogoMaxHeight,keepaspectratio]{#2}
+      \end{tcolorbox}
+      &
+      \begin{tcolorbox}[enhanced,nobeforeafter,
+        width=\linewidth,height=\WheelHeaderHeight,
+        colback=\WheelHeaderModelBG,colframe=\WheelHeaderBorderColor,
+        boxrule=\WheelHeaderBorderWidth,arc=0mm,
+        boxsep=0mm,left=1.0mm,right=1.0mm,top=0mm,bottom=0mm,
+        valign=center,halign=flush left
+      ]
+        {\fontsize{4.8}{5.8}\selectfont #3}
+      \end{tcolorbox}
+      \\
+    \end{tabular}
 
-  \vspace{0.8mm}
+    \vspace{0.8mm}
 
-  % Tabla limpia: cada fila con color propio (sin bordes de color)
-  \setlength{\tabcolsep}{0pt}
-  \renewcommand{\arraystretch}{1.0}
-  \begin{tabular}{p{0.50\linewidth}p{0.50\linewidth}}
-    \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
-    \StaticFieldColor{PSI}{orange!55} & \ValueFieldColor{#5}{gray!15} \\
-    \StaticFieldColor{PROFUNDIDAD}{yellow!75!orange} & \ValueFieldColor{#6}{gray!15} \\
-    \StaticFieldColor{DESGASTE DISCOS}{orange!65!yellow} & \ValueFieldColor{#7}{gray!15} \\
-    \StaticFieldColor{DESGASTE BALATAS}{yellow!85!orange} & \ValueFieldColor{#8}{gray!15} \\
-  \end{tabular}
+    % -- Datos de la llanta --
+    \setlength{\tabcolsep}{0pt}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
+      \StaticFieldColor{MEDIDA}{warningyellow}          & \ValueFieldColor{#4}{gray!15} \\
+      \StaticFieldColor{PSI}{warningyellow}              & \ValueFieldColor{#5}{gray!15} \\
+      \StaticFieldColor{PROFUNDIDAD}{warningyellow}      & \ValueFieldColor{#6}{gray!15} \\
+      \StaticFieldColor{DESGASTE DISCOS}{warningyellow}  & \ValueFieldColor{#7}{gray!15} \\
+      \StaticFieldColor{DESGASTE BALATAS}{warningyellow} & \ValueFieldColor{#8}{gray!15} \\
+    \end{tabular}
+  \end{tcolorbox}
 }
 
-% -- Distribución en 4 partes --
+% =====================================================================
+% -- Layout 3 columnas: tarjetas | carro | tarjetas
+% =====================================================================
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
-  \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+  \raisebox{\WheelCardRaise}[0pt][0pt]{%
+  \begin{minipage}[t]{\WheelSideColWidth}
+    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+  \end{minipage}%
+  }%
+  \hspace*{\WheelGapLeftToCar}%
+  \raisebox{\WheelCarRaise}[0pt][0pt]{%
+  \begin{minipage}[t]{\WheelCarColWidth}
+    \vspace{\WheelCarTopSpace}
+    {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
+    \vspace{\WheelCarBottomSpace}
+  \end{minipage}%
+  }%
+  \hspace*{\WheelGapCarToRight}%
+  \raisebox{\WheelCardRaise}[0pt][0pt]{%
+  \begin{minipage}[t]{\WheelSideColWidth}
+    \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
-  \end{minipage}
+    \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+  \end{minipage}%
+  }
 
 \end{minipage}%
 }
