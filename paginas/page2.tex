@@ -34,19 +34,19 @@
 \newcommand{\WheelCellBorderWidth}{0.55pt}
 \newcommand{\WheelCellBorderRadius}{1.0mm}
 
-\newcommand{\WheelHeaderBrandBG}{blue!85!black}
+\newcommand{\WheelHeaderBrandBG}{white}
 \newcommand{\WheelHeaderModelBG}{gray!20}
 \newcommand{\WheelHeaderBorderColor}{gray!55}
 \newcommand{\WheelHeaderBorderWidth}{0.45pt}
 \newcommand{\WheelHeaderHeight}{8.8mm}
-\newcommand{\WheelLogoWidth}{0.88\linewidth}
-\newcommand{\WheelLogoHeight}{5.2mm}
+\newcommand{\WheelLogoMaxWidth}{0.92\linewidth}
+\newcommand{\WheelLogoMaxHeight}{5.8mm} % limites maximos del logo (mantiene proporcion)
 \newcommand{\WheelCarFile}{carro.png}
 \newcommand{\WheelCarWidth}{1.08\linewidth}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
 \newcommand{\WheelSideLift}{-11mm}
-\newcommand{\WheelCarDrop}{2mm}
+\newcommand{\WheelCarDrop}{-4mm} % mas negativo = carro mas abajo
 
 % -- Control de layout horizontal (tarjetas y separación al carro) --
 \newcommand{\WheelSideColWidth}{0.39\linewidth}
@@ -114,7 +114,7 @@
         boxsep=0mm,left=0.6mm,right=0.6mm,top=0mm,bottom=0mm,
         valign=center,halign=flush left
       ]
-        \includegraphics[width=\WheelLogoWidth,height=\WheelLogoHeight,keepaspectratio]{#2}
+        \includegraphics[width=\WheelLogoMaxWidth,height=\WheelLogoMaxHeight,keepaspectratio]{#2}
       \end{tcolorbox}
       &
       \begin{tcolorbox}[enhanced,nobeforeafter,
