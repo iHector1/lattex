@@ -31,6 +31,7 @@
     colback=#2,colframe=black!25,
     boxrule=0.45pt,arc=1.0mm,
     width=\linewidth,
+    boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
   ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
@@ -41,6 +42,7 @@
     colback=#2,colframe=black!25,
     boxrule=0.45pt,arc=1.0mm,
     width=\linewidth,
+    boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
   ]{{\fontsize{8.4}{9.8}\selectfont #1}}%
@@ -68,7 +70,7 @@
   % Tabla limpia: cada fila con color propio (sin bordes de color)
   \setlength{\tabcolsep}{0pt}
   \renewcommand{\arraystretch}{1.0}
-  \begin{tabular}{p{0.50\linewidth}p{0.50\linewidth}}
+  \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
     \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
     \StaticFieldColor{PSI}{orange!55} & \ValueFieldColor{#5}{gray!15} \\
     \StaticFieldColor{PROFUNDIDAD}{yellow!75!orange} & \ValueFieldColor{#6}{gray!15} \\
