@@ -52,35 +52,51 @@
   \end{tcolorbox}%
 }
 
+% -- Personalización rápida (marca y modelo de llanta) --
+% Cambia este archivo para usar otro logo (ruta relativa o absoluta al proyecto)
+\newcommand{\WheelLogoFile}{Goodyear.png}
+% Cambia este texto para el nombre/modelo de la llanta
+\newcommand{\WheelModelName}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
 % -- Bloque simple editable por posición (sin contenedor) --
 % #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Desgaste discos | #8 Desgaste balatas
 \newcommand{\SimpleWheelBlock}[8]{%
-  {\centering\bfseries\kodemono #1\par}
-  \vspace{0.8mm}
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    width=\linewidth,
+    colback=white,
+    colframe=gray!60,
+    boxrule=0.5pt,
+    arc=0mm,
+    boxsep=0mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm
+  ]
+    {\centering\bfseries\kodemono #1\par}
+    \vspace{0.8mm}
 
-  % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
-  \noindent
-  \begin{minipage}[c]{0.22\linewidth}
-    \centering
-    \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[c]{0.75\linewidth}
-    {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
-  \end{minipage}
+    % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
+    \noindent
+    \begin{minipage}[c]{0.22\linewidth}
+      \centering
+      \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.75\linewidth}
+      {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
+    \end{minipage}
 
-  \vspace{0.8mm}
+    \vspace{0.8mm}
 
-  % Tabla limpia: cada fila con color propio (sin bordes de color)
-  \setlength{\tabcolsep}{0pt}
-  \renewcommand{\arraystretch}{1.0}
-  \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
-    \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
-    \StaticFieldColor{PSI}{warningyellow} & \ValueFieldColor{#5}{gray!15} \\
-    \StaticFieldColor{PROFUNDIDAD}{warningyellow} & \ValueFieldColor{#6}{gray!15} \\
-    \StaticFieldColor{DESGASTE DISCOS}{warningyellow} & \ValueFieldColor{#7}{gray!15} \\
-    \StaticFieldColor{DESGASTE BALATAS}{warningyellow} & \ValueFieldColor{#8}{gray!15} \\
-  \end{tabular}
+    % Tabla limpia: cada fila con color propio (sin bordes de color)
+    \setlength{\tabcolsep}{0pt}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
+      \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
+      \StaticFieldColor{PSI}{warningyellow} & \ValueFieldColor{#5}{gray!15} \\
+      \StaticFieldColor{PROFUNDIDAD}{warningyellow} & \ValueFieldColor{#6}{gray!15} \\
+      \StaticFieldColor{DESGASTE DISCOS}{warningyellow} & \ValueFieldColor{#7}{gray!15} \\
+      \StaticFieldColor{DESGASTE BALATAS}{warningyellow} & \ValueFieldColor{#8}{gray!15} \\
+    \end{tabular}
+  \end{tcolorbox}
 }
 
 % -- Distribución en 4 partes --
@@ -88,15 +104,15 @@
 \begin{minipage}{\contentwidth}
 
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
   \hfill
   \begin{minipage}[t]{0.49\linewidth}
-    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}
 
 \end{minipage}%
