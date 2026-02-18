@@ -24,9 +24,9 @@
 \vspace{2mm}
 
 % -- Estilo visual limpio para la tabla --
-\newcommand{\StaticField}[1]{%
+\newcommand{\StaticFieldColor}[2]{%
   \tcbox[on line,enhanced,
-    colback=warningyellow,colframe=warningyellow,
+    colback=#2,colframe=#2,
     boxrule=0pt,arc=0mm,
     width=\linewidth,
     left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
@@ -34,9 +34,9 @@
   ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
 }
 
-\newcommand{\ValueField}[1]{%
+\newcommand{\ValueFieldColor}[2]{%
   \tcbox[on line,enhanced,
-    colback=gray!15,colframe=gray!15,
+    colback=#2,colframe=#2,
     boxrule=0pt,arc=0mm,
     width=\linewidth,
     left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
@@ -63,15 +63,15 @@
 
   \vspace{0.8mm}
 
-  % Tabla limpia: etiquetas estáticas en amarillo, valores variables en gris
+  % Tabla limpia: cada fila con color propio (sin bordes de color)
   \setlength{\tabcolsep}{0pt}
   \renewcommand{\arraystretch}{1.0}
   \begin{tabular}{p{0.50\linewidth}p{0.50\linewidth}}
-    \StaticField{MEDIDA} & \ValueField{#4} \\
-    \StaticField{PSI} & \ValueField{#5} \\
-    \StaticField{PROFUNDIDAD} & \ValueField{#6} \\
-    \StaticField{DESGASTE DISCOS} & \ValueField{#7} \\
-    \StaticField{DESGASTE BALATAS} & \ValueField{#8} \\
+    \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
+    \StaticFieldColor{PSI}{orange!55} & \ValueFieldColor{#5}{gray!15} \\
+    \StaticFieldColor{PROFUNDIDAD}{yellow!75!orange} & \ValueFieldColor{#6}{gray!15} \\
+    \StaticFieldColor{DESGASTE DISCOS}{orange!65!yellow} & \ValueFieldColor{#7}{gray!15} \\
+    \StaticFieldColor{DESGASTE BALATAS}{yellow!85!orange} & \ValueFieldColor{#8}{gray!15} \\
   \end{tabular}
 }
 
