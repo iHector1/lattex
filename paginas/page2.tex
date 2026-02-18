@@ -27,25 +27,29 @@
 \newcommand{\FieldH}{3.4ex}
 
 \newcommand{\StaticFieldColor}[2]{%
-  \tcbox[enhanced,nobeforeafter,
+  \begin{tcolorbox}[enhanced,nobeforeafter,
     colback=#2,colframe=black!25,
     boxrule=0.45pt,arc=1.0mm,
     width=\linewidth,
     boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
+  ]
+    {\fontsize{8.4}{9.8}\selectfont\bfseries #1}
+  \end{tcolorbox}%
 }
 
 \newcommand{\ValueFieldColor}[2]{%
-  \tcbox[enhanced,nobeforeafter,
+  \begin{tcolorbox}[enhanced,nobeforeafter,
     colback=#2,colframe=black!25,
     boxrule=0.45pt,arc=1.0mm,
     width=\linewidth,
     boxsep=0mm,
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont #1}}%
+  ]
+    {\fontsize{8.4}{9.8}\selectfont #1}
+  \end{tcolorbox}%
 }
 
 % -- Bloque simple editable por posición (sin contenedor) --
