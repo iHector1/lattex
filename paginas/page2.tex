@@ -29,7 +29,7 @@
     colback=warningyellow,colframe=warningyellow,
     boxrule=0pt,arc=1mm,
     width=\linewidth,
-    left=1.2mm,right=1.2mm,top=0.9mm,bottom=0.9mm,
+    left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
     valign=center,halign=center
   ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
 }
@@ -39,7 +39,7 @@
     colback=gray!15,colframe=gray!15,
     boxrule=0pt,arc=1mm,
     width=\linewidth,
-    left=1.2mm,right=1.2mm,top=0.9mm,bottom=0.9mm,
+    left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
     valign=center,halign=left
   ]{{\fontsize{8.4}{9.8}\selectfont\strut #1}}%
 }
@@ -68,13 +68,9 @@
   \renewcommand{\arraystretch}{1.0}
   \begin{tabular}{p{0.42\linewidth}p{0.58\linewidth}}
     \StaticField{MEDIDA} & \ValueField{#4} \\
-    \multicolumn{2}{c}{\vspace{0.5mm}} \\
     \StaticField{PSI} & \ValueField{#5} \\
-    \multicolumn{2}{c}{\vspace{0.5mm}} \\
     \StaticField{PROFUNDIDAD} & \ValueField{#6} \\
-    \multicolumn{2}{c}{\vspace{0.5mm}} \\
     \StaticField{DESGASTE DISCOS} & \ValueField{#7} \\
-    \multicolumn{2}{c}{\vspace{0.5mm}} \\
     \StaticField{DESGASTE BALATAS} & \ValueField{#8} \\
   \end{tabular}
 }
