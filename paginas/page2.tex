@@ -49,38 +49,42 @@
 \vspace{\TFBetweenTopAndGrid}%
 
 % -- Grid: [col izquierda] [col central - carro] [col derecha] --
-\noindent
-% ---- Columna izquierda ----
-\begin{minipage}[t]{\TFLeftColW\textwidth}%
-  \TFTitle{Delantera Derecha}%
-  \TFTireCard{FR}%
-  \vspace{\TFBetweenCards}%
-  \TFTitle{Trasera Derecha}%
-  \TFTireCard{RR}%
+%    Alineado al mismo margen que la barra de título (\contentwidth)
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}[t]{\contentwidth}%
+  % ---- Columna izquierda ----
+  \begin{minipage}[t]{\TFLeftColW\linewidth}%
+    \TFTitle{Delantera Derecha}%
+    \TFTireCard{FR}%
+    \vspace{\TFBetweenCards}%
+    \TFTitle{Trasera Derecha}%
+    \TFTireCard{RR}%
+  \end{minipage}%
+  \hfill
+  % ---- Columna central: imagen del carro ----
+  \begin{minipage}[t]{%
+    \dimexpr\linewidth
+      - \TFLeftColW\linewidth
+      - \TFRightColW\linewidth
+      - 2pt% margen de seguridad para evitar desbordamiento
+    \relax
+  }%
+    \vspace{\TFCenterImageOffsetTop}%
+    \centering
+    \includegraphics[
+      width=\TFCenterImageW,
+      height=\TFCenterImageH,
+      keepaspectratio
+    ]{carro.png}%
+  \end{minipage}%
+  \hfill
+  % ---- Columna derecha ----
+  \begin{minipage}[t]{\TFRightColW\linewidth}%
+    \TFTitle{Delantera Izquierda}%
+    \TFTireCard{FL}%
+    \vspace{\TFBetweenCards}%
+    \TFTitle{Trasera Izquierda}%
+    \TFTireCard{RL}%
+  \end{minipage}%
 \end{minipage}%
-\hfill
-% ---- Columna central: imagen del carro ----
-\begin{minipage}[t]{%
-  \dimexpr\textwidth
-    - \TFLeftColW\textwidth
-    - \TFRightColW\textwidth
-    - 2pt% margen de seguridad para evitar desbordamiento
-  \relax
 }%
-  \vspace{\TFCenterImageOffsetTop}%
-  \centering
-  \includegraphics[
-    width=\TFCenterImageW,
-    height=\TFCenterImageH,
-    keepaspectratio
-  ]{carro.png}%
-\end{minipage}%
-\hfill
-% ---- Columna derecha ----
-\begin{minipage}[t]{\TFRightColW\textwidth}%
-  \TFTitle{Delantera Izquierda}%
-  \TFTireCard{FL}%
-  \vspace{\TFBetweenCards}%
-  \TFTitle{Trasera Izquierda}%
-  \TFTireCard{RL}%
-\end{minipage}%
