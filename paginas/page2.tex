@@ -41,6 +41,8 @@
 \newcommand{\WheelHeaderBorderColor}{gray!55}
 \newcommand{\WheelHeaderBorderWidth}{0pt}
 \newcommand{\WheelHeaderHeight}{4.2mm}
+\newcommand{\WheelInfoFontSize}{4.8}
+\newcommand{\WheelInfoFontLead}{5.8}
 
 % =====================================================================
 % -- Logo Goodyear
@@ -91,7 +93,7 @@
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
   ]
-    {\fontsize{8.4}{9.8}\selectfont #1}
+    {\kodemono\fontsize{\WheelInfoFontSize}{\WheelInfoFontLead}\selectfont #1}
   \end{tcolorbox}%
 }
 
@@ -104,7 +106,7 @@
     left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
     valign=center,halign=center
   ]
-    {\fontsize{8.4}{9.8}\selectfont #1}
+    {\kodemono\fontsize{\WheelInfoFontSize}{\WheelInfoFontLead}\selectfont #1}
   \end{tcolorbox}%
 }
 
@@ -149,7 +151,7 @@
         boxsep=0mm,left=1.0mm,right=1.0mm,top=0mm,bottom=0mm,
         valign=center,halign=flush left
       ]
-        {\fontsize{4.8}{5.8}\selectfont #3}
+        {\kodemono\fontsize{\WheelInfoFontSize}{\WheelInfoFontLead}\selectfont #3}
       \end{tcolorbox}
       \\
     \end{tabular}
