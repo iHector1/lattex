@@ -1,5 +1,5 @@
 %% page2.tex
-%% Página de Llantas y Frenos — tabla simple
+%% Página de Llantas y Frenos — 4 secciones simples
 
 \vspace*{1mm}
 
@@ -23,23 +23,58 @@
 
 \vspace{2mm}
 
-% -- Tabla simple editable --
+% -- Bloque simple editable por posición --
+\newcommand{\SimpleWheelBlock}[7]{%
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=gray!35,
+    width=\linewidth,
+    arc=1mm,
+    boxrule=0.5pt,
+    left=1.5mm,
+    right=1.5mm,
+    top=1mm,
+    bottom=1mm
+  ]
+    {\centering\bfseries\kodemono #1\par}
+    \vspace{1mm}
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{|p{0.42\linewidth}|p{0.50\linewidth}|}
+      \hline
+      \textbf{Medida} & #2 \\
+      \hline
+      \textbf{PSI} & #3 \\
+      \hline
+      \textbf{Profundidad} & #4 \\
+      \hline
+      \textbf{Discos} & #5 \\
+      \hline
+      \textbf{Balatas} & #6 \\
+      \hline
+      \textbf{Observaciones} & #7 \\
+      \hline
+    \end{tabular}
+  \end{tcolorbox}%
+}
+
+% -- Distribución en 4 partes (como antes):
+%    Izquierda: delantera/trasera izquierda
+%    Derecha: delantera/trasera derecha
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
-\renewcommand{\arraystretch}{1.35}
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{|p{0.17\linewidth}|p{0.16\linewidth}|p{0.13\linewidth}|p{0.14\linewidth}|p{0.12\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
-\hline
-\centering\textbf{Posición} & \centering\textbf{Medida} & \centering\textbf{PSI} & \centering\textbf{Profundidad} & \centering\textbf{Discos} & \centering\textbf{Balatas} & \centering\arraybackslash\textbf{Observaciones} \\
-\hline
-Delantera Derecha & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
-\hline
-Delantera Izquierda & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
-\hline
-Trasera Derecha & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
-\hline
-Trasera Izquierda & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
-\hline
-\end{tabular}
+
+  \begin{minipage}[t]{0.49\linewidth}
+    \SimpleWheelBlock{Delantera Izquierda}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \vspace{1.5mm}
+    \SimpleWheelBlock{Trasera Izquierda}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.49\linewidth}
+    \SimpleWheelBlock{Delantera Derecha}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+    \vspace{1.5mm}
+    \SimpleWheelBlock{Trasera Derecha}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}{BUENA}
+  \end{minipage}
+
 \end{minipage}%
 }
