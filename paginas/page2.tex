@@ -26,7 +26,9 @@
 % -- Estilo visual limpio para la tabla --
 \newcommand{\FieldH}{3.4ex}
 
-% -- Control de bordeado (ajusta estos valores) --
+% =====================================================================
+% -- Control de bordeado --
+% =====================================================================
 \newcommand{\WheelOuterBorderColor}{gray!70}
 \newcommand{\WheelOuterBorderWidth}{0.8pt}
 \newcommand{\WheelOuterBorderRadius}{1.2mm}
@@ -38,17 +40,38 @@
 \newcommand{\WheelHeaderModelBG}{gray!20}
 \newcommand{\WheelHeaderBorderColor}{gray!55}
 \newcommand{\WheelHeaderBorderWidth}{0.45pt}
-\newcommand{\WheelHeaderHeight}{8.8mm}
-\newcommand{\WheelLogoMaxWidth}{0.92\linewidth}
-\newcommand{\WheelLogoMaxHeight}{5.8mm} % limites maximos del logo (mantiene proporcion)
+\newcommand{\WheelHeaderHeight}{4.5mm}
+
+% =====================================================================
+% -- Logo Goodyear
+%    Para hacerlo MÁS GRANDE: aumenta \WheelLogoColRatio (máx ~0.38)
+%    y reduce \WheelModelColRatio en la misma cantidad.
+%    Suma debe ser siempre = 1.00
+%
+%    Logo col : 0.32  (era 0.24 original — ahora más ancho)
+%    Modelo col: 0.68
+% =====================================================================
+\newcommand{\WheelLogoColRatio}{0.32}    % <-- AQUÍ controlas el tamaño del logo
+\newcommand{\WheelModelColRatio}{0.68}   % <-- complementario (1 - WheelLogoColRatio)
+
+\newcommand{\WheelLogoMaxWidth}{\linewidth}   % ocupa todo el ancho de su celda
+\newcommand{\WheelLogoMaxHeight}{\WheelHeaderHeight}  % ocupa todo el alto del encabezado
+
+% =====================================================================
+% -- Carro (valores originales) --
+% =====================================================================
 \newcommand{\WheelCarFile}{carro.png}
 \newcommand{\WheelCarWidth}{1.08\linewidth}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
-\newcommand{\WheelSideLift}{-11mm}
-\newcommand{\WheelCarDrop}{-4mm} % mas negativo = carro mas abajo
 
-% -- Control de layout horizontal (tarjetas y separación al carro) --
+% =====================================================================
+% -- Posición vertical --
+% =====================================================================
+\newcommand{\WheelSideLift}{-3mm}
+\newcommand{\WheelCarDrop}{-10mm}
+
+% -- Layout horizontal (valores originales del carro) --
 \newcommand{\WheelSideColWidth}{0.39\linewidth}
 \newcommand{\WheelCarColWidth}{0.16\linewidth}
 \newcommand{\WheelGapLeftToCar}{0.03\linewidth}
@@ -56,6 +79,9 @@
 \newcommand{\WheelCardRaise}{\WheelSideLift}
 \newcommand{\WheelCarRaise}{\WheelCarDrop}
 
+% =====================================================================
+% -- Comandos de celda --
+% =====================================================================
 \newcommand{\StaticFieldColor}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
     colback=#2,colframe=\WheelCellBorderColor,
@@ -82,15 +108,13 @@
   \end{tcolorbox}%
 }
 
-% -- Personalización rápida (marca y modelo de llanta) --
-% Cambia grosor/radio/color de bordes arriba en la sección "Control de bordeado"
-% Cambia este archivo para usar otro logo (ruta relativa o absoluta al proyecto)
+% -- Llanta y modelo --
 \newcommand{\WheelLogoFile}{Goodyear.png}
-% Cambia este texto para el nombre/modelo de la llanta
 \newcommand{\WheelModelName}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
 
-% -- Bloque simple editable por posición (sin contenedor) --
-% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Desgaste discos | #8 Desgaste balatas
+% =====================================================================
+% -- Bloque de rueda
+% =====================================================================
 \newcommand{\SimpleWheelBlock}[8]{%
   {\centering\bfseries\kodemono #1\par}
   \vspace{0.8mm}
@@ -104,47 +128,50 @@
     boxsep=0mm,
     left=0mm,right=0mm,top=0mm,bottom=0mm
   ]
-    % Encabezado estilo barra: marca (izquierda) + modelo (derecha)
+    % -- Encabezado: logo | modelo --
     \setlength{\tabcolsep}{0pt}
-    \begin{tabular}{@{}p{0.24\linewidth}p{0.76\linewidth}@{}}
+    \begin{tabular}{@{}p{\WheelLogoColRatio\linewidth}p{\WheelModelColRatio\linewidth}@{}}
+      % Celda logo: sin padding para que la imagen llene toda la celda
       \begin{tcolorbox}[enhanced,nobeforeafter,
-        width=\linewidth,height=\WheelHeaderHeight,
+        width=\linewidth,
         colback=\WheelHeaderBrandBG,colframe=\WheelHeaderBorderColor,
         boxrule=\WheelHeaderBorderWidth,arc=0mm,
-        boxsep=0mm,left=0.6mm,right=0.6mm,top=0mm,bottom=0mm,
-        valign=center,halign=flush left
+        boxsep=0mm,left=0mm,right=0mm,top=0mm,bottom=0mm,
+        valign=center,halign=center
       ]
         \includegraphics[width=\WheelLogoMaxWidth,height=\WheelLogoMaxHeight,keepaspectratio]{#2}
       \end{tcolorbox}
       &
       \begin{tcolorbox}[enhanced,nobeforeafter,
-        width=\linewidth,height=\WheelHeaderHeight,
+        width=\linewidth,height=\WheelLogoMaxHeight,
         colback=\WheelHeaderModelBG,colframe=\WheelHeaderBorderColor,
         boxrule=\WheelHeaderBorderWidth,arc=0mm,
         boxsep=0mm,left=1.0mm,right=1.0mm,top=0mm,bottom=0mm,
         valign=center,halign=flush left
       ]
-        {\fontsize{6.6}{7.6}\selectfont\bfseries #3}
+        {\fontsize{4.8}{5.8}\selectfont #3}
       \end{tcolorbox}
       \\
     \end{tabular}
 
     \vspace{0.8mm}
 
-    % Tabla limpia: cada fila con color propio (sin bordes de color)
+    % -- Datos de la llanta --
     \setlength{\tabcolsep}{0pt}
     \renewcommand{\arraystretch}{1.0}
     \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
-      \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
-      \StaticFieldColor{PSI}{warningyellow} & \ValueFieldColor{#5}{gray!15} \\
-      \StaticFieldColor{PROFUNDIDAD}{warningyellow} & \ValueFieldColor{#6}{gray!15} \\
-      \StaticFieldColor{DESGASTE DISCOS}{warningyellow} & \ValueFieldColor{#7}{gray!15} \\
+      \StaticFieldColor{MEDIDA}{warningyellow}          & \ValueFieldColor{#4}{gray!15} \\
+      \StaticFieldColor{PSI}{warningyellow}              & \ValueFieldColor{#5}{gray!15} \\
+      \StaticFieldColor{PROFUNDIDAD}{warningyellow}      & \ValueFieldColor{#6}{gray!15} \\
+      \StaticFieldColor{DESGASTE DISCOS}{warningyellow}  & \ValueFieldColor{#7}{gray!15} \\
       \StaticFieldColor{DESGASTE BALATAS}{warningyellow} & \ValueFieldColor{#8}{gray!15} \\
     \end{tabular}
   \end{tcolorbox}
 }
 
-% -- Distribución en 3 columnas (izquierda | carro | derecha) --
+% =====================================================================
+% -- Layout 3 columnas: tarjetas | carro | tarjetas
+% =====================================================================
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
 
@@ -154,16 +181,16 @@
     \vspace{2.2mm}
     \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}%
-  }
-  \hspace*{\WheelGapLeftToCar}
+  }%
+  \hspace*{\WheelGapLeftToCar}%
   \raisebox{\WheelCarRaise}[0pt][0pt]{%
-  \begin{minipage}[c]{\WheelCarColWidth}
+  \begin{minipage}[t]{\WheelCarColWidth}
     \vspace{\WheelCarTopSpace}
     {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
     \vspace{\WheelCarBottomSpace}
   \end{minipage}%
-  }
-  \hspace*{\WheelGapCarToRight}
+  }%
+  \hspace*{\WheelGapCarToRight}%
   \raisebox{\WheelCardRaise}[0pt][0pt]{%
   \begin{minipage}[t]{\WheelSideColWidth}
     \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
