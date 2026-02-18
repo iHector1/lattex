@@ -24,24 +24,22 @@
 \vspace{2mm}
 
 % -- Estilo visual limpio para la tabla --
+\newcommand{\FieldH}{3.3ex}
+
 \newcommand{\StaticFieldColor}[2]{%
-  \tcbox[on line,enhanced,
-    colback=#2,colframe=#2,
-    boxrule=0pt,arc=0mm,
-    width=\linewidth,
-    left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
-    valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
+  \colorbox{#2}{%
+    \parbox[c][\FieldH][c]{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\fontsize{8.4}{9.8}\selectfont\bfseries #1%
+    }%
+  }%
 }
 
 \newcommand{\ValueFieldColor}[2]{%
-  \tcbox[on line,enhanced,
-    colback=#2,colframe=#2,
-    boxrule=0pt,arc=0mm,
-    width=\linewidth,
-    left=0mm,right=0mm,top=1.1mm,bottom=1.1mm,
-    valign=center,halign=center
-  ]{{\fontsize{8.4}{9.8}\selectfont\strut #1}}%
+  \colorbox{#2}{%
+    \parbox[c][\FieldH][c]{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\fontsize{8.4}{9.8}\selectfont #1%
+    }%
+  }%
 }
 
 % -- Bloque simple editable por posición (sin contenedor) --
