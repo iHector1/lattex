@@ -1,34 +1,9 @@
 %% page2.tex
-%% Página de Llantas y Frenos — reescrita desde cero
+%% Página de Llantas y Frenos — 4 secciones simples (sin cuadros)
 
-% =============================================================
-% VALORES AJUSTABLES
-% =============================================================
+\vspace*{1mm}
 
-% ---- [I] Página ----
-\newcommand{\TFPageTopGap}      {0.5mm}  % espacio al inicio de la página
-\newcommand{\TFTitleBarH}       {8.0mm}  % alto barra de título
-\newcommand{\TFTitleBarTextSize}{15}     % pt — "Llantas y Frenos"
-
-% ---- [J] Grid ----
-\newcommand{\TFBetweenTopAndGrid}{1.2mm} % barra → grid
-\newcommand{\TFBetweenCards}    {1.0mm}  % espacio vertical entre tarjeta sup e inf
-\newcommand{\TFLeftColW}        {0.405}  % fracción \textwidth columna izquierda
-\newcommand{\TFRightColW}       {0.405}  % fracción \textwidth columna derecha
-%   columna central = lo que quede
-
-% ---- [K] Imagen del carro ----
-\newcommand{\TFCenterImageOffsetTop}{0mm}       % empuje vertical de la imagen
-\newcommand{\TFCenterImageW}{0.96\linewidth}    % ancho máximo imagen
-\newcommand{\TFCenterImageH}{0.36\textheight}   % alto máximo imagen
-
-% =============================================================
-% LAYOUT
-% =============================================================
-
-\vspace*{\TFPageTopGap}
-
-% -- Barra de título centrada --
+% -- Título principal (mismo estilo que "Líquidos") --
 \noindent\makebox[\textwidth][c]{%
   \begin{tcolorbox}[
     colback=gray!25,
@@ -42,45 +17,81 @@
     bottom=1mm
   ]
     \centering
-    {\fontsize{\TFTitleBarTextSize}{18}\selectfont\bfseries Llantas y Frenos}
+    {\fontsize{15}{18}\selectfont \bfseries Llantas y Frenos}
   \end{tcolorbox}%
-}%
+}
 
-\vspace{\TFBetweenTopAndGrid}%
+\vspace{2mm}
 
-% -- Grid: [col izquierda] [col central - carro] [col derecha] --
-\noindent
-% ---- Columna izquierda ----
-\begin{minipage}[t]{\TFLeftColW\textwidth}%
-  \TFTitle{Delantera Derecha}%
-  \TFTireCard{FR}%
-  \vspace{\TFBetweenCards}%
-  \TFTitle{Trasera Derecha}%
-  \TFTireCard{RR}%
+% -- Estilo visual limpio para la tabla --
+\newcommand{\FieldH}{3.4ex}
+
+\newcommand{\StaticFieldColor}[2]{%
+  \tcbox[on line,enhanced,
+    colback=#2,colframe=black!25,
+    boxrule=0.45pt,arc=1.0mm,
+    width=\linewidth,
+    left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
+    valign=center,halign=center
+  ]{{\fontsize{8.4}{9.8}\selectfont\bfseries #1}}%
+}
+
+\newcommand{\ValueFieldColor}[2]{%
+  \tcbox[on line,enhanced,
+    colback=#2,colframe=black!25,
+    boxrule=0.45pt,arc=1.0mm,
+    width=\linewidth,
+    left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
+    valign=center,halign=center
+  ]{{\fontsize{8.4}{9.8}\selectfont #1}}%
+}
+
+% -- Bloque simple editable por posición (sin contenedor) --
+% #1 Posición | #2 Logo | #3 Nombre llanta | #4 Medida | #5 PSI | #6 Profundidad | #7 Desgaste discos | #8 Desgaste balatas
+\newcommand{\SimpleWheelBlock}[8]{%
+  {\centering\bfseries\kodemono #1\par}
+  \vspace{0.8mm}
+
+  % Fila superior: logo izquierda + nombre derecha (envuelve texto largo)
+  \noindent
+  \begin{minipage}[c]{0.22\linewidth}
+    \centering
+    \includegraphics[width=0.85\linewidth,height=8mm,keepaspectratio]{#2}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.75\linewidth}
+    {\raggedright\fontsize{8.2}{9.4}\selectfont\bfseries #3\par}
+  \end{minipage}
+
+  \vspace{0.8mm}
+
+  % Tabla limpia: cada fila con color propio (sin bordes de color)
+  \setlength{\tabcolsep}{0pt}
+  \renewcommand{\arraystretch}{1.0}
+  \begin{tabular}{p{0.50\linewidth}p{0.50\linewidth}}
+    \StaticFieldColor{MEDIDA}{warningyellow} & \ValueFieldColor{#4}{gray!15} \\
+    \StaticFieldColor{PSI}{orange!55} & \ValueFieldColor{#5}{gray!15} \\
+    \StaticFieldColor{PROFUNDIDAD}{yellow!75!orange} & \ValueFieldColor{#6}{gray!15} \\
+    \StaticFieldColor{DESGASTE DISCOS}{orange!65!yellow} & \ValueFieldColor{#7}{gray!15} \\
+    \StaticFieldColor{DESGASTE BALATAS}{yellow!85!orange} & \ValueFieldColor{#8}{gray!15} \\
+  \end{tabular}
+}
+
+% -- Distribución en 4 partes --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+
+  \begin{minipage}[t]{0.49\linewidth}
+    \SimpleWheelBlock{Delantera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \vspace{2.2mm}
+    \SimpleWheelBlock{Trasera Izquierda}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.49\linewidth}
+    \SimpleWheelBlock{Delantera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \vspace{2.2mm}
+    \SimpleWheelBlock{Trasera Derecha}{Goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+  \end{minipage}
+
 \end{minipage}%
-\hfill
-% ---- Columna central: imagen del carro ----
-\begin{minipage}[t]{%
-  \dimexpr\textwidth
-    - \TFLeftColW\textwidth
-    - \TFRightColW\textwidth
-    - 2pt% margen de seguridad para evitar desbordamiento
-  \relax
-}%
-  \vspace{\TFCenterImageOffsetTop}%
-  \centering
-  \includegraphics[
-    width=\TFCenterImageW,
-    height=\TFCenterImageH,
-    keepaspectratio
-  ]{carro.png}%
-\end{minipage}%
-\hfill
-% ---- Columna derecha ----
-\begin{minipage}[t]{\TFRightColW\textwidth}%
-  \TFTitle{Delantera Izquierda}%
-  \TFTireCard{FL}%
-  \vspace{\TFBetweenCards}%
-  \TFTitle{Trasera Izquierda}%
-  \TFTireCard{RL}%
-\end{minipage}%
+}
