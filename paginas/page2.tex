@@ -1,34 +1,9 @@
 %% page2.tex
-%% Página de Llantas y Frenos — reescrita desde cero
+%% Página de Llantas y Frenos — tabla simple
 
-% =============================================================
-% VALORES AJUSTABLES
-% =============================================================
+\vspace*{1mm}
 
-% ---- [I] Página ----
-\newcommand{\TFPageTopGap}      {0.5mm}  % espacio al inicio de la página
-\newcommand{\TFTitleBarH}       {8.0mm}  % alto barra de título
-\newcommand{\TFTitleBarTextSize}{15}     % pt — "Llantas y Frenos"
-
-% ---- [J] Grid ----
-\newcommand{\TFBetweenTopAndGrid}{1.2mm} % barra → grid
-\newcommand{\TFBetweenCards}    {1.0mm}  % espacio vertical entre tarjeta sup e inf
-\newcommand{\TFLeftColW}        {0.405}  % fracción \textwidth columna izquierda
-\newcommand{\TFRightColW}       {0.405}  % fracción \textwidth columna derecha
-%   columna central = lo que quede
-
-% ---- [K] Imagen del carro ----
-\newcommand{\TFCenterImageOffsetTop}{0mm}       % empuje vertical de la imagen
-\newcommand{\TFCenterImageW}{0.96\linewidth}    % ancho máximo imagen
-\newcommand{\TFCenterImageH}{0.36\textheight}   % alto máximo imagen
-
-% =============================================================
-% LAYOUT
-% =============================================================
-
-\vspace*{\TFPageTopGap}
-
-% -- Barra de título centrada --
+% -- Título --
 \noindent\makebox[\textwidth][c]{%
   \begin{tcolorbox}[
     colback=gray!25,
@@ -42,49 +17,29 @@
     bottom=1mm
   ]
     \centering
-    {\fontsize{\TFTitleBarTextSize}{18}\selectfont\bfseries Llantas y Frenos}
+    {\fontsize{15}{18}\selectfont\bfseries\kodemono Llantas y Frenos}
   \end{tcolorbox}%
-}%
+}
 
-\vspace{\TFBetweenTopAndGrid}%
+\vspace{2mm}
 
-% -- Grid: [col izquierda] [col central - carro] [col derecha] --
-%    Alineado al mismo margen que la barra de título (\contentwidth)
+% -- Tabla simple editable --
 \noindent\makebox[\textwidth][c]{%
-\begin{minipage}[t]{\contentwidth}%
-  % ---- Columna izquierda ----
-  \begin{minipage}[t]{\TFLeftColW\linewidth}%
-    \TFTitle{Delantera Derecha}%
-    \TFTireCard{FR}%
-    \vspace{\TFBetweenCards}%
-    \TFTitle{Trasera Derecha}%
-    \TFTireCard{RR}%
-  \end{minipage}%
-  \hfill
-  % ---- Columna central: imagen del carro ----
-  \begin{minipage}[t]{%
-    \dimexpr\linewidth
-      - \TFLeftColW\linewidth
-      - \TFRightColW\linewidth
-      - 2pt% margen de seguridad para evitar desbordamiento
-    \relax
-  }%
-    \vspace{\TFCenterImageOffsetTop}%
-    \centering
-    \includegraphics[
-      width=\TFCenterImageW,
-      height=\TFCenterImageH,
-      keepaspectratio
-    ]{carro.png}%
-  \end{minipage}%
-  \hfill
-  % ---- Columna derecha ----
-  \begin{minipage}[t]{\TFRightColW\linewidth}%
-    \TFTitle{Delantera Izquierda}%
-    \TFTireCard{FL}%
-    \vspace{\TFBetweenCards}%
-    \TFTitle{Trasera Izquierda}%
-    \TFTireCard{RL}%
-  \end{minipage}%
+\begin{minipage}{\contentwidth}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|p{0.17\linewidth}|p{0.16\linewidth}|p{0.13\linewidth}|p{0.14\linewidth}|p{0.12\linewidth}|p{0.14\linewidth}|p{0.14\linewidth}|}
+\hline
+\centering\textbf{Posición} & \centering\textbf{Medida} & \centering\textbf{PSI} & \centering\textbf{Profundidad} & \centering\textbf{Discos} & \centering\textbf{Balatas} & \centering\arraybackslash\textbf{Observaciones} \\
+\hline
+Delantera Derecha & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
+\hline
+Delantera Izquierda & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
+\hline
+Trasera Derecha & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
+\hline
+Trasera Izquierda & 315/35/R21 & 25 & 3 mm & 9 mm & 8 mm & BUENA \\
+\hline
+\end{tabular}
 \end{minipage}%
-}%
+}
