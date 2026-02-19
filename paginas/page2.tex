@@ -544,3 +544,99 @@
   \end{minipage}
 \end{minipage}%
 }
+
+\vspace{2.2mm}
+
+% =========================
+% Sección: Batería
+% =========================
+\newcommand{\BatteryEstado}{2} % 0=N/A, 1=Buena, 2=Regular, 3=Mala
+\newcommand{\BatteryVoltajeTexto}{Voltaje (v)}
+\newcommand{\BatteryComentariosTexto}{}
+
+% Reutiliza el selector visual de 4 estados para mantener homogeneidad
+\newcommand{\BatteryStatusSelector}[1]{%
+  \SuspensionStatusSelector{#1}%
+}
+
+% -- Título: Batería --
+\noindent\makebox[\textwidth][c]{%
+  \begin{tcolorbox}[
+    colback=gray!25,
+    colframe=gray!25,
+    width=\contentwidth,
+    arc=1mm,
+    boxrule=0pt,
+    left=\padlr,
+    right=\padlr,
+    top=1mm,
+    bottom=1mm
+  ]
+    \centering
+    {\fontsize{15}{18}\selectfont \bfseries Batería}
+  \end{tcolorbox}%
+}
+
+\vspace{1.6mm}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  {\fontsize{13}{14}\selectfont Inspección de Batería}
+\end{minipage}%
+}
+
+\vspace{0.9mm}
+
+% -- Fila: condición general + voltaje + comentarios --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  \begin{minipage}[t]{0.31\linewidth}
+    {\fontsize{7.2}{11}\selectfont Condición general}
+    \vspace{0.8mm}
+
+    \BatteryStatusSelector{\BatteryEstado}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.14\linewidth}
+    \vspace{3.8mm}
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=8.6mm,
+      colback=warningyellow,
+      colframe=warningyellow,
+      boxrule=0pt,
+      arc=1.2mm,
+      left=1mm,
+      right=1mm,
+      top=1.1mm,
+      bottom=1.1mm,
+      valign=center
+    ]
+      {\centering\fontsize{7}{8.2}\selectfont\bfseries \BatteryVoltajeTexto}
+    \end{tcolorbox}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.50\linewidth}
+    {\fontsize{7.2}{11}\selectfont Comentarios adicionales}
+    \vspace{0.8mm}
+
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=8.6mm,
+      colback=gray!15,
+      colframe=gray!15,
+      boxrule=0pt,
+      arc=1.8mm,
+      left=1.8mm,
+      right=1.8mm,
+      top=1.2mm,
+      bottom=1.2mm,
+      valign=center
+    ]
+      {\fontsize{7.2}{8.5}\selectfont \BatteryComentariosTexto}
+    \end{tcolorbox}
+  \end{minipage}
+\end{minipage}%
+}
