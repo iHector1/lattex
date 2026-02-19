@@ -279,7 +279,45 @@
 \end{minipage}%
 }
 
-\vspace{2.2mm}
+% Texto opcional dentro de observaciones (vacío por defecto)
+\newcommand{\WheelObservacionesTexto}{}
+\newcommand{\WheelObservacionesPlaceholder}{\color{gray!55}Escribe aquí observaciones del servicio.}
+
+\vspace{-4.04mm}
+
+% -- Observaciones (alineado al mismo margen izquierdo/derecho del contenido) --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  {\fontsize{8}{12}\selectfont Observaciones}
+  \vspace{1mm}
+
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=18mm,
+    colback=gray!15,
+    colframe=gray!15,
+    boxrule=0pt,
+    arc=2.5mm,
+    left=3.2mm,
+    right=3.2mm,
+    top=2.3mm,
+    bottom=2.3mm,
+    valign=top
+  ]
+    {\fontsize{7}{11}\selectfont
+      \ifx\WheelObservacionesTexto\empty
+        \WheelObservacionesPlaceholder
+      \else
+        \WheelObservacionesTexto
+      \fi
+    }
+  \end{tcolorbox}
+\end{minipage}%
+}
+
+\vspace{5.2mm}
 
 % -- Título: Sistema de suspensión --
 \noindent\makebox[\textwidth][c]{%
@@ -307,7 +345,7 @@
 % #3 = observación
 \newcommand{\SuspensionSelector}[3]{%
   \begin{minipage}{\linewidth}
-    {\fontsize{9}{11}\selectfont #2}
+    {\fontsize{7}{11}\selectfont #2}
     \vspace{0.9mm}
 
     \begin{tikzpicture}
@@ -368,7 +406,7 @@
     \end{tikzpicture}
 
     \vspace{1mm}
-    {\fontsize{9}{11}\selectfont Observaciones}
+    {\fontsize{7.2}{11}\selectfont Observaciones}
     \vspace{0.8mm}
 
     \begin{tcolorbox}[
@@ -386,7 +424,7 @@
       bottom=1.2mm,
       valign=center
     ]
-      {\fontsize{7.2}{8.5}\selectfont \bfseries #3}
+      {\fontsize{7.2}{8.5}\selectfont #3}
     \end{tcolorbox}
   \end{minipage}%
 }
@@ -403,44 +441,5 @@
   \begin{minipage}[t]{0.31\linewidth}
     \SuspensionSelector{3}{Horquillas, Rótulas o articulaciones}{CAMBIO SUPERIOR E INFERIOR}
   \end{minipage}
-\end{minipage}%
-}
-
-
-% Texto opcional dentro de observaciones (vacío por defecto)
-\newcommand{\WheelObservacionesTexto}{}
-\newcommand{\WheelObservacionesPlaceholder}{\color{gray!55}Escribe aquí observaciones del servicio.}
-
-\vspace{0.04mm}
-
-% -- Observaciones (alineado al mismo margen izquierdo/derecho del contenido) --
-\noindent\makebox[\textwidth][c]{%
-\begin{minipage}{\contentwidth}
-  {\fontsize{8}{12}\selectfont Observaciones}
-  \vspace{1mm}
-
-  \begin{tcolorbox}[
-    enhanced,
-    nobeforeafter,
-    width=\linewidth,
-    height=18mm,
-    colback=gray!15,
-    colframe=gray!15,
-    boxrule=0pt,
-    arc=2.5mm,
-    left=3.2mm,
-    right=3.2mm,
-    top=2.3mm,
-    bottom=2.3mm,
-    valign=top
-  ]
-    {\fontsize{7}{11}\selectfont
-      \ifx\WheelObservacionesTexto\empty
-        \WheelObservacionesPlaceholder
-      \else
-        \WheelObservacionesTexto
-      \fi
-    }
-  \end{tcolorbox}
 \end{minipage}%
 }
