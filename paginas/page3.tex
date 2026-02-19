@@ -123,17 +123,19 @@
   \end{tcolorbox}%
 }
 
-% #1 = estado (0..3): 0=sin seleccionar, 1=buena, 2=regular, 3=mala
-\newcommand{\ShockStateTriplet}[1]{%
-  \ifnum#1=1
-    \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell%
-  \else\ifnum#1=2
-    \ShockBlankCell & \ShockDotCell{warningyellow} & \ShockBlankCell%
-  \else\ifnum#1=3
-    \ShockBlankCell & \ShockBlankCell & \ShockDotCell{red!85!black}%
+% #1 = estado (0..3), #2 = columna (1=buena, 2=regular, 3=mala)
+\newcommand{\ShockStateCellBySlot}[2]{%
+  \ifnum#1=#2
+    \ifnum#2=1
+      \ShockDotCell{green!65!black}%
+    \else\ifnum#2=2
+      \ShockDotCell{warningyellow}%
+    \else
+      \ShockDotCell{red!85!black}%
+    \fi\fi
   \else
-    \ShockBlankCell & \ShockBlankCell & \ShockBlankCell%
-  \fi\fi\fi
+    \ShockBlankCell%
+  \fi
 }
 
 \ShockTitleBar{Amortiguadores y Bases}
@@ -156,10 +158,10 @@
     & \multicolumn{3}{c@{\hspace{3mm}}}{\ShockGroupHeader{0.385\linewidth}{AMORTIGUADORES}} & \multicolumn{3}{c}{\ShockGroupHeader{0.385\linewidth}{BASES}} \\
     & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} \\
 
-    \ShockRowLabel{DELANTERA D.} & \ShockStateTriplet{\ShockAmortDelDerEstado} & \ShockStateTriplet{\ShockBaseDelDerEstado} \\
-    \ShockRowLabel{DELANTERA I.} & \ShockStateTriplet{\ShockAmortDelIzqEstado} & \ShockStateTriplet{\ShockBaseDelIzqEstado} \\
-    \ShockRowLabel{TRASERA D.} & \ShockStateTriplet{\ShockAmortTraDerEstado} & \ShockStateTriplet{\ShockBaseTraDerEstado} \\
-    \ShockRowLabel{TRASERA I.} & \ShockStateTriplet{\ShockAmortTraIzqEstado} & \ShockStateTriplet{\ShockBaseTraIzqEstado} \\
+    \ShockRowLabel{DELANTERA D.} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{1} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{2} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{3} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{1} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{2} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{3} \\
+    \ShockRowLabel{DELANTERA I.} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{1} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{2} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{3} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{1} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{2} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{3} \\
+    \ShockRowLabel{TRASERA D.} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{1} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{2} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{3} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{1} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{2} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{3} \\
+    \ShockRowLabel{TRASERA I.} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{1} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{2} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{3} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{1} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{2} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{3} \\
   \end{tabular}
 \end{minipage}%
 }
