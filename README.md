@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="LaTTeX Logo" width="280"/>
+  <img src="imagenes/logo.png" alt="LaTTeX Logo" width="280"/>
 </p>
 
 <h1 align="center">🏎️ LaTTeX — Inspección Vehicular Profesional</h1>
@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="carro.png" alt="Preview del formulario" width="600"/>
+  <img src="imagenes/carro.png" alt="Preview del formulario" width="600"/>
 </p>
 
 ---
