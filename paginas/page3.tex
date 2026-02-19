@@ -1,23 +1,118 @@
 %% page3.tex
 %% (SOLO CONTENIDO — NO PONGAS \documentclass NI \usepackage AQUÍ)
 
-% -- Título: Amortiguadores y Bases --
-\noindent\makebox[\textwidth][c]{%
+% =========================
+% Página 3: Amortiguadores y Bases
+% =========================
+
+\newcommand{\ShockTitleBar}[1]{%
+  \noindent\makebox[\textwidth][c]{%
+    \begin{tcolorbox}[
+      colback=gray!25,
+      colframe=gray!25,
+      width=\contentwidth,
+      arc=1mm,
+      boxrule=0pt,
+      left=\padlr,
+      right=\padlr,
+      top=1mm,
+      bottom=1mm
+    ]
+      \centering
+      {\fontsize{15}{18}\selectfont \bfseries #1}
+    \end{tcolorbox}%
+  }%
+}
+
+\newcommand{\ShockGroupHeader}[1]{%
   \begin{tcolorbox}[
-    colback=gray!25,
-    colframe=gray!25,
-    width=\contentwidth,
-    arc=1mm,
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7mm,
+    colback=warningyellow,
+    colframe=warningyellow,
     boxrule=0pt,
-    left=\padlr,
-    right=\padlr,
-    top=1mm,
-    bottom=1mm
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
   ]
-    \centering
-    {\fontsize{15}{18}\selectfont \bfseries Amortiguadores y Bases}
+    {\fontsize{10.8}{11}\selectfont\bfseries #1}
   \end{tcolorbox}%
 }
+
+\newcommand{\ShockStateHeaderCell}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=4.3mm,
+    colback=#1,
+    colframe=#1,
+    boxrule=0pt,
+    arc=0mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    {\color{white}\fontsize{7}{7.6}\selectfont\bfseries #2}
+  \end{tcolorbox}%
+}
+
+\newcommand{\ShockRowLabel}[1]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=warningyellow,
+    colframe=warningyellow,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    {\fontsize{9.8}{10}\selectfont\bfseries #1}
+  \end{tcolorbox}%
+}
+
+\newcommand{\ShockBlankCell}{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=gray!12,
+    colframe=gray!12,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]\end{tcolorbox}%
+}
+
+\newcommand{\ShockDotCell}[1]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=gray!12,
+    colframe=gray!12,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    \tikz\fill[#1] (0,0) circle (2.15mm);
+  \end{tcolorbox}%
+}
+
+\ShockTitleBar{Amortiguadores y Bases}
 
 \vspace{1.6mm}
 
@@ -27,73 +122,20 @@
 \end{minipage}%
 }
 
-\vspace{2.5mm}
+\vspace{2.4mm}
 
 \noindent\makebox[\textwidth][c]{%
 \begin{minipage}{\contentwidth}
-\centering
-\begin{tikzpicture}[x=1mm,y=1mm]
-  % Dimensiones
-  \def\LabelW{26}
-  \def\CellW{20}
-  \def\GapCol{3}
-  \def\Rows{4}
-  \def\RowH{7.5}
-  \def\ColGroupGap{10}
-  \def\GroupW{66}
-  \def\HeadH{7}
-  \def\BandH{4}
+  \setlength{\tabcolsep}{0pt}
+  \renewcommand{\arraystretch}{1.05}
+  \begin{tabular}{@{}p{0.18\linewidth}@{\hspace{2.2mm}}p{0.125\linewidth}@{\hspace{2.2mm}}p{0.125\linewidth}@{\hspace{2.2mm}}p{0.125\linewidth}@{\hspace{5mm}}p{0.125\linewidth}@{\hspace{2.2mm}}p{0.125\linewidth}@{\hspace{2.2mm}}p{0.125\linewidth}@{}}
+    & \multicolumn{3}{c@{\hspace{5mm}}}{\ShockGroupHeader{AMORTIGUADORES}} & \multicolumn{3}{c}{\ShockGroupHeader{BASES}} \\
+    & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} \\
 
-  % Posiciones X
-  \pgfmathsetmacro{\xLabel}{0}
-  \pgfmathsetmacro{\xA}{\LabelW + 4}
-  \pgfmathsetmacro{\xB}{\xA + \GroupW + \ColGroupGap}
-
-  % Y base
-  \pgfmathsetmacro{\yTop}{0}
-
-  % Encabezados grupos
-  \fill[warningyellow] (\xA,\yTop) rectangle ++(\GroupW,\HeadH);
-  \fill[warningyellow] (\xB,\yTop) rectangle ++(\GroupW,\HeadH);
-  \node[font=\bfseries\fontsize{10.5}{11}\selectfont] at (\xA+\GroupW/2,\yTop+\HeadH/2) {AMORTIGUADORES};
-  \node[font=\bfseries\fontsize{10.5}{11}\selectfont] at (\xB+\GroupW/2,\yTop+\HeadH/2) {BASES};
-
-  % Sub-bandas de estado (buena/regular/mala)
-  \foreach \x in {\xA,\xB} {
-    \fill[green!65!black] (\x,\yTop-\BandH) rectangle ++(\CellW,\BandH);
-    \fill[warningyellow] (\x+\CellW+\GapCol,\yTop-\BandH) rectangle ++(\CellW,\BandH);
-    \fill[red!85!black] (\x+2*\CellW+2*\GapCol,\yTop-\BandH) rectangle ++(\CellW,\BandH);
-
-    \node[font=\bfseries\fontsize{6.8}{7}\selectfont,text=white] at (\x+\CellW/2,\yTop-\BandH/2) {BUENA};
-    \node[font=\bfseries\fontsize{6.8}{7}\selectfont,text=white] at (\x+\CellW+\GapCol+\CellW/2,\yTop-\BandH/2) {REGULAR};
-    \node[font=\bfseries\fontsize{6.8}{7}\selectfont,text=white] at (\x+2*\CellW+2*\GapCol+\CellW/2,\yTop-\BandH/2) {MALA};
-  }
-
-  % Filas
-  \foreach \i/\rowname in {0/DELANTERA D.,1/DELANTERA I.,2/TRASERA D.,3/TRASERA I.} {
-    \pgfmathsetmacro{\yRow}{\yTop-\HeadH-\BandH-2 - \i*\RowH}
-
-    % Etiquetas izquierdas
-    \fill[warningyellow] (\xLabel,\yRow-5.8) rectangle ++(\LabelW,5.8);
-    \node[anchor=west,font=\bfseries\fontsize{9.3}{10}\selectfont] at (1.2,\yRow-2.9) {\rowname};
-
-    % Celdas Amortiguadores
-    \foreach \j in {0,1,2} {
-      \fill[gray!15,rounded corners=1.2mm] (\xA+\j*(\CellW+\GapCol),\yRow-5.8) rectangle ++(\CellW,5.8);
-      \fill[gray!15,rounded corners=1.2mm] (\xB+\j*(\CellW+\GapCol),\yRow-5.8) rectangle ++(\CellW,5.8);
-    }
-  }
-
-  % Puntos de ejemplo en AMORTIGUADORES (como referencia)
-  % fila 1 buena
-  \fill[green!65!black] (\xA+\CellW/2,\yTop-\HeadH-\BandH-2-2.9) circle (2.1);
-  % fila 2 regular
-  \fill[warningyellow] (\xA+\CellW+\GapCol+\CellW/2,\yTop-\HeadH-\BandH-2-\RowH-2.9) circle (2.1);
-  % fila 3 mala
-  \fill[red!85!black] (\xA+2*\CellW+2*\GapCol+\CellW/2,\yTop-\HeadH-\BandH-2-2*\RowH-2.9) circle (2.1);
-  % fila 4 buena
-  \fill[green!65!black] (\xA+\CellW/2,\yTop-\HeadH-\BandH-2-3*\RowH-2.9) circle (2.1);
-
-\end{tikzpicture}
+    \ShockRowLabel{DELANTERA D.} & \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
+    \ShockRowLabel{DELANTERA I.} & \ShockBlankCell & \ShockDotCell{warningyellow} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
+    \ShockRowLabel{TRASERA D.} & \ShockBlankCell & \ShockBlankCell & \ShockDotCell{red!85!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
+    \ShockRowLabel{TRASERA I.} & \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
+  \end{tabular}
 \end{minipage}%
 }
