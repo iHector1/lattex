@@ -60,6 +60,7 @@
 \newcommand{\WheelBrakeFontSize}{6.0}
 \newcommand{\WheelBrakeFontLead}{7.0}
 \newcommand{\WheelBrakeGap}{0.8mm}
+\newcommand{\WheelBrakeRowWidth}{0.96\linewidth}
 \newcommand{\WheelBrakeColA}{0.31}
 \newcommand{\WheelBrakeColB}{0.28}
 \newcommand{\WheelBrakeColC}{0.20}
@@ -136,7 +137,7 @@
   \noindent\tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColA\linewidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColA\WheelBrakeRowWidth,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #1}}%
@@ -144,7 +145,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColB\linewidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColB\WheelBrakeRowWidth,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #2}}%
@@ -152,7 +153,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColC\linewidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColC\WheelBrakeRowWidth,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #3}}%
@@ -160,7 +161,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColD\linewidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColD\WheelBrakeRowWidth,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #4}}%
@@ -236,11 +237,11 @@
 
     \vspace{\WheelMetricRowGap}
 
-    \WheelBrakeRow{Balatas/Tambores}{BUENA (>9MM)}{Desgaste}{#8}%
+    \noindent\makebox[\linewidth][c]{\WheelBrakeRow{Balatas/Tambores}{BUENA (>9MM)}{Desgaste}{#8}}%
 
     \vspace{\WheelMetricRowGap}
 
-    \WheelBrakeRow{Discos}{BUENA (>9MM)}{Desgaste}{#7}%
+    \noindent\makebox[\linewidth][c]{\WheelBrakeRow{Discos}{BUENA (>9MM)}{Desgaste}{#7}}%
   \end{tcolorbox}
 }
 
