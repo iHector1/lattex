@@ -70,12 +70,12 @@
   }
 
   % Filas
-  \foreach \i/\label in {0/DELANTERA D.,1/DELANTERA I.,2/TRASERA D.,3/TRASERA I.} {
+  \foreach \i/\rowname in {0/DELANTERA D.,1/DELANTERA I.,2/TRASERA D.,3/TRASERA I.} {
     \pgfmathsetmacro{\yRow}{\yTop-\HeadH-\BandH-2 - \i*\RowH}
 
     % Etiquetas izquierdas
     \fill[warningyellow] (\xLabel,\yRow-5.8) rectangle ++(\LabelW,5.8);
-    \node[anchor=west,font=\bfseries\fontsize{9.3}{10}\selectfont] at (1.2,\yRow-2.9) {\label};
+    \node[anchor=west,font=\bfseries\fontsize{9.3}{10}\selectfont] at (1.2,\yRow-2.9) {\rowname};
 
     % Celdas Amortiguadores
     \foreach \j in {0,1,2} {
