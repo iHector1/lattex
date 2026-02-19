@@ -132,38 +132,34 @@
   \end{tcolorbox}%
 }
 
+\newcommand{\WheelBrakeCellYellow}[1]{%
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
+    boxrule=0pt,arc=1.1mm,
+    width=\linewidth,height=\WheelBrakeRowH,
+    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #1}}\end{tcolorbox}%
+}
+
+\newcommand{\WheelBrakeCellGrayGreen}[1]{%
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
+    boxrule=0pt,arc=1.1mm,
+    width=\linewidth,height=\WheelBrakeRowH,
+    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #1}}\end{tcolorbox}%
+}
+
 \newcommand{\WheelBrakeRow}[4]{%
-  \noindent\tcbox[on line,enhanced,nobeforeafter,
-    colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
-    boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColA,height=\WheelBrakeRowH,
-    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
-    valign=center,halign=center
-  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #1}}%
-  \hspace{\WheelBrakeGap}%
-  \tcbox[on line,enhanced,nobeforeafter,
-    colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
-    boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColB,height=\WheelBrakeRowH,
-    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
-    valign=center,halign=center
-  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #2}}%
-  \hspace{\WheelBrakeGap}%
-  \tcbox[on line,enhanced,nobeforeafter,
-    colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
-    boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColC,height=\WheelBrakeRowH,
-    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
-    valign=center,halign=center
-  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #3}}%
-  \hspace{\WheelBrakeGap}%
-  \tcbox[on line,enhanced,nobeforeafter,
-    colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
-    boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColD,height=\WheelBrakeRowH,
-    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
-    valign=center,halign=center
-  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #4}}%
+  \setlength{\tabcolsep}{0pt}%
+  \begin{tabular}{@{}p{\WheelBrakeColA}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColB}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColC}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColD}@{}}
+    \WheelBrakeCellYellow{#1} &
+    \WheelBrakeCellGrayGreen{#2} &
+    \WheelBrakeCellYellow{#3} &
+    \WheelBrakeCellGrayGreen{#4} \\
+  \end{tabular}%
 }
 
 % -- Llanta y modelo --
