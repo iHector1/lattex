@@ -60,11 +60,10 @@
 \newcommand{\WheelBrakeFontSize}{6.0}
 \newcommand{\WheelBrakeFontLead}{7.0}
 \newcommand{\WheelBrakeGap}{0.8mm}
-\newcommand{\WheelBrakeRowWidth}{0.96\linewidth}
-\newcommand{\WheelBrakeColA}{0.31}
-\newcommand{\WheelBrakeColB}{0.28}
-\newcommand{\WheelBrakeColC}{0.20}
-\newcommand{\WheelBrakeColD}{0.14}
+\newcommand{\WheelBrakeColA}{0.30\linewidth}
+\newcommand{\WheelBrakeColB}{0.29\linewidth}
+\newcommand{\WheelBrakeColC}{0.20\linewidth}
+\newcommand{\WheelBrakeColD}{0.14\linewidth}
 \newcommand{\WheelBrakeYellowBG}{warningyellow}
 \newcommand{\WheelBrakeGrayBG}{gray!15}
 \newcommand{\WheelBrakeGreenText}{green!55!black}
@@ -137,7 +136,7 @@
   \noindent\tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColA\WheelBrakeRowWidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColA,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #1}}%
@@ -145,7 +144,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColB\WheelBrakeRowWidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColB,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #2}}%
@@ -153,7 +152,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColC\WheelBrakeRowWidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColC,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #3}}%
@@ -161,7 +160,7 @@
   \tcbox[on line,enhanced,nobeforeafter,
     colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
     boxrule=0pt,arc=1.1mm,
-    width=\WheelBrakeColD\WheelBrakeRowWidth,height=\WheelBrakeRowH,
+    width=\WheelBrakeColD,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #4}}%
