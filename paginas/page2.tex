@@ -279,6 +279,133 @@
 \end{minipage}%
 }
 
+\vspace{2.2mm}
+
+% -- Título: Sistema de suspensión --
+\noindent\makebox[\textwidth][c]{%
+  \begin{tcolorbox}[
+    colback=gray!25,
+    colframe=gray!25,
+    width=\contentwidth,
+    arc=1mm,
+    boxrule=0pt,
+    left=\padlr,
+    right=\padlr,
+    top=1mm,
+    bottom=1mm
+  ]
+    \centering
+    {\fontsize{15}{18}\selectfont \bfseries Sistema de suspensión}
+  \end{tcolorbox}%
+}
+
+\vspace{1.8mm}
+
+% -- Selector 4 estados para suspensión (estilo similar a Anticongelante) --
+% #1 = estado seleccionado (0..3)
+% #2 = título del bloque
+% #3 = observación
+\newcommand{\SuspensionSelector}[3]{%
+  \begin{minipage}{\linewidth}
+    {\fontsize{9}{11}\selectfont #2}
+    \vspace{0.9mm}
+
+    \begin{tikzpicture}
+      \pgfmathsetlengthmacro{\W}{\linewidth}
+      \pgfmathsetlengthmacro{\H}{16mm}
+      \pgfmathsetlengthmacro{\Box}{\W/4}
+
+      \pgfmathsetlengthmacro{\R}{2.9mm}
+      \pgfmathsetlengthmacro{\yCircle}{10.2mm}
+      \pgfmathsetlengthmacro{\LabelH}{6.8mm}
+      \pgfmathsetlengthmacro{\yLbl}{3.6mm}
+      \pgfmathsetlengthmacro{\CardRad}{2mm}
+
+      \begin{scope}
+        \clip[rounded corners=\CardRad] (0,0) rectangle (\W,\H);
+
+        \newcommand{\sitem}[4]{%
+          \ifnum##2=1
+            \path[draw=none, fill=gray!15] (##1,0) rectangle (##1+\Box,\H);
+          \fi
+
+          \fill[##3] (##1+0.5*\Box,\yCircle) circle (\R);
+
+          \ifnum##2=1
+            \node[
+              align=center,
+              text=black,
+              font=\fontsize{7.6}{8.8}\selectfont,
+              text width=\Box,
+              minimum height=\LabelH,
+              anchor=center
+            ] at (##1+0.5*\Box,\yLbl) {##4};
+          \else
+            \node[
+              align=center,
+              text=gray!55,
+              font=\fontsize{7.6}{8.8}\selectfont,
+              text width=\Box,
+              minimum height=\LabelH,
+              anchor=center
+            ] at (##1+0.5*\Box,\yLbl) {##4};
+          \fi
+        }
+
+        \pgfmathsetlengthmacro{\xA}{0*\Box}
+        \pgfmathsetlengthmacro{\xB}{1*\Box}
+        \pgfmathsetlengthmacro{\xC}{2*\Box}
+        \pgfmathsetlengthmacro{\xD}{3*\Box}
+
+        \sitem{\xA}{\ifnum#1=0 1\else 0\fi}{blue!45}{N/A}
+        \sitem{\xB}{\ifnum#1=1 1\else 0\fi}{green!60!black}{Buena}
+        \sitem{\xC}{\ifnum#1=2 1\else 0\fi}{warningyellow}{Regular}
+        \sitem{\xD}{\ifnum#1=3 1\else 0\fi}{red!85!black}{Mala}
+      \end{scope}
+
+      \path[draw=black!15, fill=none, rounded corners=\CardRad, line width=0.5pt]
+        (0,0) rectangle (\W,\H);
+    \end{tikzpicture}
+
+    \vspace{1mm}
+    {\fontsize{9}{11}\selectfont Observaciones}
+    \vspace{0.8mm}
+
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=8.8mm,
+      colback=gray!15,
+      colframe=gray!15,
+      boxrule=0pt,
+      arc=1.8mm,
+      left=1.8mm,
+      right=1.8mm,
+      top=1.2mm,
+      bottom=1.2mm,
+      valign=center
+    ]
+      {\fontsize{7.2}{8.5}\selectfont \bfseries #3}
+    \end{tcolorbox}
+  \end{minipage}%
+}
+
+% -- Grid de suspensión (3 columnas, alineado al ancho del título) --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  \begin{minipage}[t]{0.31\linewidth}
+    \SuspensionSelector{0}{Baleros de rueda / Delanteros y Traseros}{CON MASA}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.31\linewidth}
+    \SuspensionSelector{3}{Cremallera / Caja de Dirección}{FUGA DE ACEITE}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.31\linewidth}
+    \SuspensionSelector{3}{Horquillas, Rótulas o articulaciones}{CAMBIO SUPERIOR E INFERIOR}
+  \end{minipage}
+\end{minipage}%
+}
+
 
 % Texto opcional dentro de observaciones (vacío por defecto)
 \newcommand{\WheelObservacionesTexto}{}
