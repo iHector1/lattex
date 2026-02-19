@@ -560,7 +560,7 @@
   \SuspensionStatusSelector{#1}%
 }
 
-% Tarjeta de voltaje con encabezado amarillo y valor en cuerpo gris
+% Tarjeta de voltaje estilo compacto (encabezado amarillo + valor gris)
 \newcommand{\BatteryVoltageCard}[2]{%
   \begin{tcolorbox}[
     enhanced,
@@ -568,9 +568,9 @@
     width=\linewidth,
     height=16mm,
     colback=gray!15,
-    colframe=black!18,
+    colframe=gray!35,
     boxrule=0.5pt,
-    arc=1.8mm,
+    arc=2mm,
     left=0.8mm,
     right=0.8mm,
     top=0.8mm,
@@ -581,21 +581,37 @@
       enhanced,
       nobeforeafter,
       width=\linewidth,
-      height=4.9mm,
+      height=6mm,
       colback=warningyellow,
       colframe=warningyellow,
       boxrule=0pt,
-      arc=0.9mm,
-      left=0mm,
-      right=0mm,
-      top=0.6mm,
-      bottom=0.5mm,
+      arc=1.4mm,
+      left=0.5mm,
+      right=0.5mm,
+      top=1mm,
+      bottom=0.8mm,
       valign=center
     ]
-      {\centering\fontsize{9}{10}\selectfont\bfseries #1}
+      {\centering\fontsize{7.8}{8.6}\selectfont\bfseries #1}
     \end{tcolorbox}
-    \vspace{1.8mm}
-    {\centering\fontsize{15}{16}\selectfont #2\par}
+    \vspace{1.2mm}
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=6.2mm,
+      colback=gray!20,
+      colframe=gray!20,
+      boxrule=0pt,
+      arc=0.9mm,
+      left=0.5mm,
+      right=0.5mm,
+      top=0.9mm,
+      bottom=0.7mm,
+      valign=center
+    ]
+      {\centering\fontsize{8}{9}\selectfont #2}
+    \end{tcolorbox}
   \end{tcolorbox}%
 }
 
