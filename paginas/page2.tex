@@ -91,6 +91,7 @@
 % =====================================================================
 \newcommand{\WheelCarFile}{carro.png}
 \newcommand{\WheelCarWidth}{.96\linewidth}
+\newcommand{\WheelCarShiftX}{-2.2mm}
 \newcommand{\WheelCarTopSpace}{1.4mm}
 \newcommand{\WheelCarBottomSpace}{1.4mm}
 
@@ -262,7 +263,7 @@
   \raisebox{\WheelCarRaise}[0pt][0pt]{%
   \begin{minipage}[t]{\WheelCarColWidth}
     \vspace{\WheelCarTopSpace}
-    {\centering\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}\par}
+    {\noindent\makebox[\linewidth][c]{\hspace*{\WheelCarShiftX}\includegraphics[width=\WheelCarWidth,keepaspectratio]{\WheelCarFile}}\par}
     \vspace{\WheelCarBottomSpace}
   \end{minipage}%
   }%
