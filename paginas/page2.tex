@@ -52,7 +52,8 @@
 \newcommand{\WheelMetricGap}{0.5mm}
 \newcommand{\WheelMetricRowGap}{0.9mm}
 \newcommand{\WheelMetricColGap}{0.9mm}
-\newcommand{\WheelMetricFiveColW}{0.18\linewidth}
+\newcommand{\WheelMetricFiveColW}{0.172\linewidth}
+\newcommand{\WheelMetricDepthColW}{0.212\linewidth}
 \newcommand{\WheelBrakeHeaderBG}{gray!25}
 \newcommand{\WheelBrakeHeaderTextSize}{\WheelInfoFontSize}
 \newcommand{\WheelBrakeHeaderTextLead}{\WheelInfoFontLead}
@@ -213,7 +214,7 @@
 
     % -- Datos de la llanta (estilo tarjeta con título/valor) --
     \setlength{\tabcolsep}{0pt}
-    \begin{tabular}{@{}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{}}
+    \begin{tabular}{@{}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricDepthColW}@{}}
       \WheelMetricCard{MEDIDA}{#4} &
       \WheelMetricCard{PSI}{#5} &
       \WheelMetricCard{\shortstack[c]{ÍNDICE DE\\VELOCIDAD}}{210} &
