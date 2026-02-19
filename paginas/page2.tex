@@ -43,6 +43,33 @@
 \newcommand{\WheelHeaderHeight}{4.2mm}
 \newcommand{\WheelInfoFontSize}{4.8}
 \newcommand{\WheelInfoFontLead}{5.8}
+\newcommand{\WheelMetricTitleSize}{\WheelInfoFontSize}
+\newcommand{\WheelMetricTitleLead}{\WheelInfoFontLead}
+\newcommand{\WheelMetricValueSize}{\WheelInfoFontSize}
+\newcommand{\WheelMetricValueLead}{\WheelInfoFontLead}
+\newcommand{\WheelMetricTitleH}{6.1mm}
+\newcommand{\WheelMetricValueH}{5.8mm}
+\newcommand{\WheelMetricGap}{0.5mm}
+\newcommand{\WheelMetricRowGap}{0.9mm}
+\newcommand{\WheelMetricColGap}{0.9mm}
+\newcommand{\WheelMetricFiveColW}{0.172\linewidth}
+\newcommand{\WheelMetricDepthColW}{0.212\linewidth}
+\newcommand{\WheelMetricSidePad}{1.0mm}
+\newcommand{\WheelBrakeHeaderBG}{gray!25}
+\newcommand{\WheelBrakeHeaderTextSize}{\WheelInfoFontSize}
+\newcommand{\WheelBrakeHeaderTextLead}{\WheelInfoFontLead}
+\newcommand{\WheelBrakeHeaderH}{5.1mm}
+\newcommand{\WheelBrakeRowH}{5.8mm}
+\newcommand{\WheelBrakeFontSize}{\WheelInfoFontSize}
+\newcommand{\WheelBrakeFontLead}{\WheelInfoFontLead}
+\newcommand{\WheelBrakeGap}{0.8mm}
+\newcommand{\WheelBrakeColA}{0.30\linewidth}
+\newcommand{\WheelBrakeColB}{0.29\linewidth}
+\newcommand{\WheelBrakeColC}{0.20\linewidth}
+\newcommand{\WheelBrakeColD}{0.14\linewidth}
+\newcommand{\WheelBrakeYellowBG}{warningyellow}
+\newcommand{\WheelBrakeGrayBG}{gray!15}
+\newcommand{\WheelBrakeGreenText}{green!55!black}
 
 % =====================================================================
 % -- Logo Goodyear
@@ -84,30 +111,58 @@
 % =====================================================================
 % -- Comandos de celda --
 % =====================================================================
-\newcommand{\StaticFieldColor}[2]{%
+\newcommand{\WheelMetricCard}[2]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
-    colback=#2,colframe=\WheelCellBorderColor,
-    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
-    width=\linewidth,
+    colback=warningyellow,colframe=warningyellow,
+    boxrule=0pt,arc=1.2mm,
+    width=\linewidth,height=\WheelMetricTitleH,
     boxsep=0mm,
-    left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
+    left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]
-    {\fontsize{\WheelInfoFontSize}{\WheelInfoFontLead}\selectfont #1}
+    {\fontsize{\WheelMetricTitleSize}{\WheelMetricTitleLead}\selectfont\bfseries\centering #1}
+  \end{tcolorbox}%
+  \vspace{\WheelMetricGap}
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=gray!15,colframe=gray!15,
+    boxrule=0pt,arc=1.2mm,
+    width=\linewidth,height=\WheelMetricValueH,
+    boxsep=0mm,
+    left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]
+    {\fontsize{\WheelMetricValueSize}{\WheelMetricValueLead}\selectfont\centering #2}
   \end{tcolorbox}%
 }
 
-\newcommand{\ValueFieldColor}[2]{%
+\newcommand{\WheelBrakeCellYellow}[1]{%
   \begin{tcolorbox}[enhanced,nobeforeafter,
-    colback=#2,colframe=\WheelCellBorderColor,
-    boxrule=\WheelCellBorderWidth,arc=\WheelCellBorderRadius,
-    width=\linewidth,
-    boxsep=0mm,
-    left=0mm,right=0mm,top=1.0mm,bottom=1.0mm,
+    colback=\WheelBrakeYellowBG,colframe=\WheelBrakeYellowBG,
+    boxrule=0pt,arc=1.1mm,
+    width=\linewidth,height=\WheelBrakeRowH,
+    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
-  ]
-    {\fontsize{\WheelInfoFontSize}{\WheelInfoFontLead}\selectfont #1}
-  \end{tcolorbox}%
+  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries #1}}\end{tcolorbox}%
+}
+
+\newcommand{\WheelBrakeCellGrayGreen}[1]{%
+  \begin{tcolorbox}[enhanced,nobeforeafter,
+    colback=\WheelBrakeGrayBG,colframe=\WheelBrakeGrayBG,
+    boxrule=0pt,arc=1.1mm,
+    width=\linewidth,height=\WheelBrakeRowH,
+    boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
+    valign=center,halign=center
+  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\color{\WheelBrakeGreenText} #1}}\end{tcolorbox}%
+}
+
+\newcommand{\WheelBrakeRow}[4]{%
+  \setlength{\tabcolsep}{0pt}%
+  \begin{tabular}{@{}p{\WheelBrakeColA}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColB}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColC}@{\hspace{\WheelBrakeGap}}p{\WheelBrakeColD}@{}}
+    \WheelBrakeCellYellow{#1} &
+    \WheelBrakeCellGrayGreen{#2} &
+    \WheelBrakeCellYellow{#3} &
+    \WheelBrakeCellGrayGreen{#4} \\
+  \end{tabular}%
 }
 
 % -- Llanta y modelo --
@@ -158,16 +213,35 @@
 
     \vspace{0.8mm}
 
-    % -- Datos de la llanta --
+    % -- Datos de la llanta (estilo tarjeta con título/valor) --
     \setlength{\tabcolsep}{0pt}
-    \renewcommand{\arraystretch}{1.0}
-    \begin{tabular}{@{}p{0.50\linewidth}p{0.50\linewidth}@{}}
-      \StaticFieldColor{MEDIDA}{warningyellow}          & \ValueFieldColor{#4}{gray!15} \\
-      \StaticFieldColor{PSI}{warningyellow}              & \ValueFieldColor{#5}{gray!15} \\
-      \StaticFieldColor{PROFUNDIDAD}{warningyellow}      & \ValueFieldColor{#6}{gray!15} \\
-      \StaticFieldColor{DESGASTE DISCOS}{warningyellow}  & \ValueFieldColor{#7}{gray!15} \\
-      \StaticFieldColor{DESGASTE BALATAS}{warningyellow} & \ValueFieldColor{#8}{gray!15} \\
+    \begin{tabular}{@{\hspace{\WheelMetricSidePad}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricFiveColW}@{\hspace{\WheelMetricColGap}}p{\WheelMetricDepthColW}@{\hspace{\WheelMetricSidePad}}}
+      \WheelMetricCard{MEDIDA}{#4} &
+      \WheelMetricCard{PSI}{#5} &
+      \WheelMetricCard{\shortstack[c]{ÍNDICE DE\\VELOCIDAD}}{210} &
+      \WheelMetricCard{\shortstack[c]{ÍNDICE DE\\CARGA}}{210} &
+      \WheelMetricCard{PROFUNDIDAD}{#6} \\
     \end{tabular}
+
+    \vspace{\WheelMetricRowGap}
+
+    \begin{tcolorbox}[enhanced,nobeforeafter,
+      colback=\WheelBrakeHeaderBG,colframe=\WheelBrakeHeaderBG,
+      boxrule=0pt,arc=0mm,
+      width=\linewidth,height=\WheelBrakeHeaderH,
+      boxsep=0mm,left=0mm,right=0mm,top=0mm,bottom=0mm,
+      valign=center,halign=center
+    ]
+      {\fontsize{\WheelBrakeHeaderTextSize}{\WheelBrakeHeaderTextLead}\selectfont\bfseries FRENOS, DISCOS Y TAMBORES}
+    \end{tcolorbox}
+
+    \vspace{\WheelMetricRowGap}
+
+    \noindent\makebox[\linewidth][c]{\WheelBrakeRow{Balatas/Tambores}{BUENA (>9MM)}{Desgaste}{#8}}%
+
+    \vspace{\WheelMetricRowGap}
+
+    \noindent\makebox[\linewidth][c]{\WheelBrakeRow{Discos}{BUENA (>9MM)}{Desgaste}{#7}}%
   \end{tcolorbox}
 }
 
