@@ -278,3 +278,42 @@
 
 \end{minipage}%
 }
+
+
+% Texto opcional dentro de observaciones (vacío por defecto)
+\newcommand{\WheelObservacionesTexto}{}
+\newcommand{\WheelObservacionesPlaceholder}{\color{gray!55}Escribe aquí observaciones del servicio.}
+
+\vspace{2.8mm}
+
+% -- Observaciones (alineado al mismo margen izquierdo/derecho del contenido) --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  {\fontsize{10}{12}\selectfont Observaciones}
+  \vspace{1mm}
+
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=14mm,
+    colback=gray!15,
+    colframe=gray!15,
+    boxrule=0pt,
+    arc=2.5mm,
+    left=3.2mm,
+    right=3.2mm,
+    top=2.3mm,
+    bottom=2.3mm,
+    valign=top
+  ]
+    {\fontsize{9}{11}\selectfont
+      \ifx\WheelObservacionesTexto\empty
+        \WheelObservacionesPlaceholder
+      \else
+        \WheelObservacionesTexto
+      \fi
+    }
+  \end{tcolorbox}
+\end{minipage}%
+}
