@@ -43,10 +43,10 @@
 \newcommand{\WheelHeaderHeight}{4.2mm}
 \newcommand{\WheelInfoFontSize}{4.8}
 \newcommand{\WheelInfoFontLead}{5.8}
-\newcommand{\WheelMetricTitleSize}{5.6}
-\newcommand{\WheelMetricTitleLead}{6.4}
-\newcommand{\WheelMetricValueSize}{6.2}
-\newcommand{\WheelMetricValueLead}{7.2}
+\newcommand{\WheelMetricTitleSize}{\WheelInfoFontSize}
+\newcommand{\WheelMetricTitleLead}{\WheelInfoFontLead}
+\newcommand{\WheelMetricValueSize}{\WheelInfoFontSize}
+\newcommand{\WheelMetricValueLead}{\WheelInfoFontLead}
 \newcommand{\WheelMetricTitleH}{6.1mm}
 \newcommand{\WheelMetricValueH}{5.8mm}
 \newcommand{\WheelMetricGap}{0.5mm}
@@ -58,8 +58,8 @@
 \newcommand{\WheelBrakeHeaderTextLead}{9.2}
 \newcommand{\WheelBrakeHeaderH}{5.1mm}
 \newcommand{\WheelBrakeRowH}{5.8mm}
-\newcommand{\WheelBrakeFontSize}{6.0}
-\newcommand{\WheelBrakeFontLead}{7.0}
+\newcommand{\WheelBrakeFontSize}{\WheelInfoFontSize}
+\newcommand{\WheelBrakeFontLead}{\WheelInfoFontLead}
 \newcommand{\WheelBrakeGap}{0.8mm}
 \newcommand{\WheelBrakeColA}{0.30\linewidth}
 \newcommand{\WheelBrakeColB}{0.29\linewidth}
@@ -129,7 +129,7 @@
     left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
   ]
-    {\fontsize{\WheelMetricValueSize}{\WheelMetricValueLead}\selectfont\bfseries\centering #2}
+    {\fontsize{\WheelMetricValueSize}{\WheelMetricValueLead}\selectfont\centering #2}
   \end{tcolorbox}%
 }
 
@@ -150,7 +150,7 @@
     width=\linewidth,height=\WheelBrakeRowH,
     boxsep=0mm,left=0.8mm,right=0.8mm,top=0mm,bottom=0mm,
     valign=center,halign=center
-  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\bfseries\color{\WheelBrakeGreenText} #1}}\end{tcolorbox}%
+  ]{{\fontsize{\WheelBrakeFontSize}{\WheelBrakeFontLead}\selectfont\color{\WheelBrakeGreenText} #1}}\end{tcolorbox}%
 }
 
 \newcommand{\WheelBrakeRow}[4]{%
