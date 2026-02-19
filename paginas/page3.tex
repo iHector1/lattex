@@ -1,0 +1,169 @@
+%% page3.tex
+%% (SOLO CONTENIDO — NO PONGAS \documentclass NI \usepackage AQUÍ)
+
+% =========================
+% Página 3: Amortiguadores y Bases
+% =========================
+
+\vspace*{1mm}
+
+% Estados por fila (0=sin seleccionar, 1=buena, 2=regular, 3=mala)
+\newcommand{\ShockAmortDelDerEstado}{1}
+\newcommand{\ShockAmortDelIzqEstado}{2}
+\newcommand{\ShockAmortTraDerEstado}{3}
+\newcommand{\ShockAmortTraIzqEstado}{1}
+
+\newcommand{\ShockBaseDelDerEstado}{0}
+\newcommand{\ShockBaseDelIzqEstado}{0}
+\newcommand{\ShockBaseTraDerEstado}{0}
+\newcommand{\ShockBaseTraIzqEstado}{0}
+
+\newcommand{\ShockTitleBar}[1]{%
+  \noindent\makebox[\textwidth][c]{%
+    \begin{tcolorbox}[
+      colback=gray!25,
+      colframe=gray!25,
+      width=\contentwidth,
+      arc=1mm,
+      boxrule=0pt,
+      left=\padlr,
+      right=\padlr,
+      top=1mm,
+      bottom=1mm
+    ]
+      \centering
+      {\fontsize{15}{18}\selectfont \bfseries #1}
+    \end{tcolorbox}%
+  }%
+}
+
+\newcommand{\ShockGroupHeader}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=#1,
+    height=7mm,
+    colback=warningyellow,
+    colframe=warningyellow,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    {\fontsize{10}{10.4}\selectfont\bfseries #2}
+  \end{tcolorbox}%
+}
+
+\newcommand{\ShockStateHeaderCell}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=4.3mm,
+    colback=#1,
+    colframe=#1,
+    boxrule=0pt,
+    arc=0mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    {\color{white}\fontsize{7}{7.6}\selectfont\bfseries #2}
+  \end{tcolorbox}%
+}
+
+\newcommand{\ShockRowLabel}[1]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=warningyellow,
+    colframe=warningyellow,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    {\fontsize{9.8}{10}\selectfont\bfseries #1}
+  \end{tcolorbox}%
+}
+
+\newcommand{\ShockBlankCell}{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=gray!12,
+    colframe=gray!12,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]\end{tcolorbox}%
+}
+
+\newcommand{\ShockDotCell}[1]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=7.2mm,
+    colback=gray!12,
+    colframe=gray!12,
+    boxrule=0pt,
+    arc=1.3mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm,
+    valign=center,halign=center
+  ]
+    \tikz\fill[#1] (0,0) circle (2.15mm);
+  \end{tcolorbox}%
+}
+
+% #1 = estado (0..3), #2 = columna (1=buena, 2=regular, 3=mala)
+\newcommand{\ShockStateCellBySlot}[2]{%
+  \ifnum#1=#2
+    \ifnum#2=1
+      \ShockDotCell{green!65!black}%
+    \else\ifnum#2=2
+      \ShockDotCell{warningyellow}%
+    \else
+      \ShockDotCell{red!85!black}%
+    \fi\fi
+  \else
+    \ShockBlankCell%
+  \fi
+}
+
+\ShockTitleBar{Amortiguadores y Bases}
+
+\vspace{2.6mm}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  {\kodemono\fontseries{sb}\fontsize{11}{14}\selectfont Inspección de Amortiguadores y Bases Delanteras}
+\end{minipage}%
+}
+
+\vspace{3.4mm}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  \setlength{\tabcolsep}{0pt}
+  \renewcommand{\arraystretch}{1.05}
+  \begin{tabular}{@{}p{0.18\linewidth}@{\hspace{1mm}}p{0.125\linewidth}@{\hspace{1mm}}p{0.125\linewidth}@{\hspace{1mm}}p{0.125\linewidth}@{\hspace{3mm}}p{0.125\linewidth}@{\hspace{1mm}}p{0.125\linewidth}@{\hspace{1mm}}p{0.125\linewidth}@{}}
+    & \multicolumn{3}{c@{\hspace{3mm}}}{\ShockGroupHeader{0.385\linewidth}{AMORTIGUADORES}} & \multicolumn{3}{c}{\ShockGroupHeader{0.385\linewidth}{BASES}} \\
+    & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} \\
+
+    \ShockRowLabel{DELANTERA D.} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{1} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{2} & \ShockStateCellBySlot{\ShockAmortDelDerEstado}{3} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{1} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{2} & \ShockStateCellBySlot{\ShockBaseDelDerEstado}{3} \\
+    \ShockRowLabel{DELANTERA I.} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{1} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{2} & \ShockStateCellBySlot{\ShockAmortDelIzqEstado}{3} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{1} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{2} & \ShockStateCellBySlot{\ShockBaseDelIzqEstado}{3} \\
+    \ShockRowLabel{TRASERA D.} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{1} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{2} & \ShockStateCellBySlot{\ShockAmortTraDerEstado}{3} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{1} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{2} & \ShockStateCellBySlot{\ShockBaseTraDerEstado}{3} \\
+    \ShockRowLabel{TRASERA I.} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{1} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{2} & \ShockStateCellBySlot{\ShockAmortTraIzqEstado}{3} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{1} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{2} & \ShockStateCellBySlot{\ShockBaseTraIzqEstado}{3} \\
+  \end{tabular}
+\end{minipage}%
+}
