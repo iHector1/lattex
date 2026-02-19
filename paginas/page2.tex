@@ -552,11 +552,35 @@
 % =========================
 \newcommand{\BatteryEstado}{2} % 0=N/A, 1=Buena, 2=Regular, 3=Mala
 \newcommand{\BatteryVoltajeTexto}{Voltaje (v)}
+\newcommand{\BatteryVoltajeValor}{12}
 \newcommand{\BatteryComentariosTexto}{}
 
 % Reutiliza el selector visual de 4 estados para mantener homogeneidad
 \newcommand{\BatteryStatusSelector}[1]{%
   \SuspensionStatusSelector{#1}%
+}
+
+% Tarjeta de voltaje con encabezado amarillo y valor en cuerpo gris
+\newcommand{\BatteryVoltageCard}[2]{%
+  \begin{tikzpicture}
+    \pgfmathsetlengthmacro{\VW}{\linewidth}
+    \pgfmathsetlengthmacro{\VH}{16mm}
+    \pgfmathsetlengthmacro{\HH}{5.2mm}
+    \pgfmathsetlengthmacro{\VR}{1.8mm}
+
+    \path[draw=black!15, fill=gray!15, rounded corners=\VR, line width=0.5pt]
+      (0,0) rectangle (\VW,\VH);
+
+    \begin{scope}
+      \clip[rounded corners=\VR] (0,0) rectangle (\VW,\VH);
+      \path[draw=none, fill=warningyellow] (0,\VH-\HH) rectangle (\VW,\VH);
+    \end{scope}
+
+    \node[anchor=center, text=black, font=\fontsize{7}{8.2}\selectfont\bfseries]
+      at (0.5*\VW,\VH-0.5*\HH) {#1};
+    \node[anchor=center, text=black, font=\fontsize{10.5}{11.5}\selectfont]
+      at (0.5*\VW,0.5*(\VH-\HH)) {#2};
+  \end{tikzpicture}%
 }
 
 % -- Título: Batería --
@@ -597,24 +621,8 @@
     \BatteryStatusSelector{\BatteryEstado}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.14\linewidth}
-    \vspace{3.8mm}
-    \begin{tcolorbox}[
-      enhanced,
-      nobeforeafter,
-      width=\linewidth,
-      height=8.6mm,
-      colback=warningyellow,
-      colframe=warningyellow,
-      boxrule=0pt,
-      arc=1.2mm,
-      left=1mm,
-      right=1mm,
-      top=1.1mm,
-      bottom=1.1mm,
-      valign=center
-    ]
-      {\centering\fontsize{7}{8.2}\selectfont\bfseries \BatteryVoltajeTexto}
-    \end{tcolorbox}
+    \vspace{0.8mm}
+    \BatteryVoltageCard{\BatteryVoltajeTexto}{\BatteryVoltajeValor}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.50\linewidth}
     {\fontsize{7.2}{11}\selectfont Comentarios adicionales}
