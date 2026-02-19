@@ -443,3 +443,34 @@
   \end{minipage}
 \end{minipage}%
 }
+
+% Texto opcional para observaciones generales de suspensión
+\newcommand{\SuspensionObservacionesTexto}{CON MASA, FUGA DE ACEITE, CAMBIO SUPERIOR E INFERIOR.}
+
+\vspace{1.6mm}
+
+% -- Observaciones generales (alineado al ancho del grid de suspensión) --
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  {\fontsize{7.2}{11}\selectfont Observaciones}
+  \vspace{0.8mm}
+
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=8.8mm,
+    colback=gray!15,
+    colframe=gray!15,
+    boxrule=0pt,
+    arc=1.8mm,
+    left=1.8mm,
+    right=1.8mm,
+    top=1.2mm,
+    bottom=1.2mm,
+    valign=center
+  ]
+    {\fontsize{7.2}{8.5}\selectfont \SuspensionObservacionesTexto}
+  \end{tcolorbox}
+\end{minipage}%
+}
