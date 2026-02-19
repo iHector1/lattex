@@ -5,6 +5,17 @@
 % Página 3: Amortiguadores y Bases
 % =========================
 
+% Estados por fila (0=sin seleccionar, 1=buena, 2=regular, 3=mala)
+\newcommand{\ShockAmortDelDerEstado}{1}
+\newcommand{\ShockAmortDelIzqEstado}{2}
+\newcommand{\ShockAmortTraDerEstado}{3}
+\newcommand{\ShockAmortTraIzqEstado}{1}
+
+\newcommand{\ShockBaseDelDerEstado}{0}
+\newcommand{\ShockBaseDelIzqEstado}{0}
+\newcommand{\ShockBaseTraDerEstado}{0}
+\newcommand{\ShockBaseTraIzqEstado}{0}
+
 \newcommand{\ShockTitleBar}[1]{%
   \noindent\makebox[\textwidth][c]{%
     \begin{tcolorbox}[
@@ -112,6 +123,19 @@
   \end{tcolorbox}%
 }
 
+% #1 = estado (0..3): 0=sin seleccionar, 1=buena, 2=regular, 3=mala
+\newcommand{\ShockStateTriplet}[1]{%
+  \ifnum#1=1
+    \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell%
+  \else\ifnum#1=2
+    \ShockBlankCell & \ShockDotCell{warningyellow} & \ShockBlankCell%
+  \else\ifnum#1=3
+    \ShockBlankCell & \ShockBlankCell & \ShockDotCell{red!85!black}%
+  \else
+    \ShockBlankCell & \ShockBlankCell & \ShockBlankCell%
+  \fi\fi\fi
+}
+
 \ShockTitleBar{Amortiguadores y Bases}
 
 \vspace{1.6mm}
@@ -132,10 +156,10 @@
     & \multicolumn{3}{c@{\hspace{3mm}}}{\ShockGroupHeader{0.385\linewidth}{AMORTIGUADORES}} & \multicolumn{3}{c}{\ShockGroupHeader{0.385\linewidth}{BASES}} \\
     & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} & \ShockStateHeaderCell{green!65!black}{BUENA} & \ShockStateHeaderCell{warningyellow}{REGULAR} & \ShockStateHeaderCell{red!85!black}{MALA} \\
 
-    \ShockRowLabel{DELANTERA D.} & \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
-    \ShockRowLabel{DELANTERA I.} & \ShockBlankCell & \ShockDotCell{warningyellow} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
-    \ShockRowLabel{TRASERA D.} & \ShockBlankCell & \ShockBlankCell & \ShockDotCell{red!85!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
-    \ShockRowLabel{TRASERA I.} & \ShockDotCell{green!65!black} & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell & \ShockBlankCell \\
+    \ShockRowLabel{DELANTERA D.} & \ShockStateTriplet{\ShockAmortDelDerEstado} & \ShockStateTriplet{\ShockBaseDelDerEstado} \\
+    \ShockRowLabel{DELANTERA I.} & \ShockStateTriplet{\ShockAmortDelIzqEstado} & \ShockStateTriplet{\ShockBaseDelIzqEstado} \\
+    \ShockRowLabel{TRASERA D.} & \ShockStateTriplet{\ShockAmortTraDerEstado} & \ShockStateTriplet{\ShockBaseTraDerEstado} \\
+    \ShockRowLabel{TRASERA I.} & \ShockStateTriplet{\ShockAmortTraIzqEstado} & \ShockStateTriplet{\ShockBaseTraIzqEstado} \\
   \end{tabular}
 \end{minipage}%
 }
