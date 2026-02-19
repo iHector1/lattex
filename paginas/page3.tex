@@ -169,9 +169,21 @@
     ]
       {\fontsize{12}{12.4}\selectfont #1}
     \end{tcolorbox}
-    \vfill
-    \centering{\fontsize{17}{18}\selectfont\bfseries #2}\par
-    \vfill
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=12mm,
+      colback=white,
+      colframe=white,
+      boxrule=0pt,
+      arc=0mm,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
+      boxsep=0mm,
+      valign=center,halign=center
+    ]
+      {\fontsize{15}{16}\selectfont\bfseries #2}
+    \end{tcolorbox}
   \end{tcolorbox}%
 }
 
