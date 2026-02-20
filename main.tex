@@ -48,10 +48,11 @@
   Path=./configuraciones/,
   Extension=.ttf,
   UprightFont=*,
-  FontFace={l}{n}{Font=*, RawFeature={+wght=300}},
-  FontFace={m}{n}{Font=*, RawFeature={+wght=400}},
-  FontFace={sb}{n}{Font=*, RawFeature={+wght=600}},
-  FontFace={b}{n}{Font=*, RawFeature={+wght=700}}
+  UprightFeatures={RawFeature={+wght=500}, FakeBold=1.2},
+  FontFace={l}{n}{Font=*, RawFeature={+wght=450}, FakeBold=0.9},
+  FontFace={m}{n}{Font=*, RawFeature={+wght=550}, FakeBold=1.2},
+  FontFace={sb}{n}{Font=*, RawFeature={+wght=700}, FakeBold=1.5},
+  FontFace={b}{n}{Font=*, RawFeature={+wght=800}, FakeBold=1.8}
 ]{KodeMono-VariableFont_wght}
 
 % =========================
@@ -449,7 +450,6 @@
     \btn{NO}{\ifnum#1=1 1\else 0\fi}{11.5mm}
   \end{tikzpicture}%
 }
-\input{paginas/tirepage_components}
 % =========================
 % DOCUMENTO
 % =========================
