@@ -15,10 +15,6 @@
   <img src="https://img.shields.io/badge/Licencia-Uso_Libre-green?style=for-the-badge" alt="Licencia"/>
 </p>
 
-<p align="center">
-  <img src="imagenes/carro.png" alt="Preview del formulario" width="600"/>
-</p>
-
 ---
 
 ## 📋 ¿Qué es LaTTeX?
@@ -53,7 +49,6 @@ lattex/
 ├── KodeMono-VariableFont_wght.ttf  # 🔤 Tipografía Kode Mono (variable)
 ├── top.png                     # 🖼️ Banner superior del formulario
 ├── logo.png                    # 🖼️ Logo del taller
-├── carro.png                   # 🖼️ Imagen del vehículo
 ├── Goodyear.png                # 🖼️ Logo de marca de llanta
 └── *.png                       # 🖼️ Iconos de advertencia del tablero
 ```
