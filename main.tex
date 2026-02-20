@@ -41,7 +41,45 @@
 % =========================
 % FUENTES
 % =========================
-\setmainfont{Montserrat}
+% Nota:
+% En algunos Ubuntu/Debian, FontConfig puede resolver "Montserrat" a .woff2
+% (por ejemplo /usr/share/fonts/woff/...), y XeLaTeX no puede incrustar ese
+% formato. Para evitarlo, priorizamos archivos TTF/OTF explícitos.
+\IfFileExists{./configuraciones/Montserrat-Regular.ttf}{%
+  \setmainfont[
+    Path=./configuraciones/,
+    Extension=.ttf,
+    UprightFont=Montserrat-Regular,
+    BoldFont=Montserrat-Bold,
+    ItalicFont=Montserrat-Italic,
+    BoldItalicFont=Montserrat-BoldItalic
+  ]{Montserrat}
+}{%
+  \IfFileExists{/usr/share/fonts/truetype/montserrat/Montserrat-Regular.ttf}{%
+    \setmainfont[
+      Path=/usr/share/fonts/truetype/montserrat/,
+      Extension=.ttf,
+      UprightFont=Montserrat-Regular,
+      BoldFont=Montserrat-Bold,
+      ItalicFont=Montserrat-Italic,
+      BoldItalicFont=Montserrat-BoldItalic
+    ]{Montserrat}
+  }{%
+    \IfFileExists{/usr/share/fonts/opentype/montserrat/Montserrat-Regular.otf}{%
+      \setmainfont[
+        Path=/usr/share/fonts/opentype/montserrat/,
+        Extension=.otf,
+        UprightFont=Montserrat-Regular,
+        BoldFont=Montserrat-Bold,
+        ItalicFont=Montserrat-Italic,
+        BoldItalicFont=Montserrat-BoldItalic
+      ]{Montserrat}
+    }{%
+      \setmainfont{TeX Gyre Heros}
+      \typeout{[LaTTeX] Aviso: Montserrat no encontrada en TTF/OTF. Usando TeX Gyre Heros como fallback.}
+    }%
+  }%
+}
 
 % Kode Mono Variable (archivo local en la carpeta)
 \newfontfamily\kodemono[
