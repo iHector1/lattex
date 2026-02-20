@@ -127,6 +127,9 @@
 }
 
 % ===== CONTENIDO LÍQUIDOS =====
+% Nota de layout:
+% Se separa la sección en 2 bloques para permitir salto de página únicamente
+% antes de "Comentarios adicionales" + "Líquido limpiaparabrisas".
 \begin{center}
   \begin{minipage}{\contentwidth}
     \begin{minipage}{\innerwidth}
@@ -165,9 +168,15 @@
         \fluidselectorfour{0}{Líquido de frenos}
       \end{minipage}
 
-      \vspace{4mm}
+    \end{minipage}
+  \end{minipage}
+\end{center}
 
-      % --- Comentarios + Limpia parabrisas (como screenshot) ---
+% Bloque separable: si no cabe al final de página, baja completo a la siguiente.
+\vspace{4mm}
+\begin{center}
+  \begin{minipage}{\contentwidth}
+    \begin{minipage}{\innerwidth}
       \noindent
       \begin{minipage}[t]{0.70\innerwidth}
         {\fontsize{9}{11}\selectfont Comentarios adicionales}
@@ -183,7 +192,6 @@
 
         \yesnoselector{0} % 0=SI, 1=NO
       \end{minipage}
-
     \end{minipage}
   \end{minipage}
 \end{center}
