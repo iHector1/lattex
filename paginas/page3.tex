@@ -182,57 +182,12 @@
       boxsep=0mm,
       valign=center,halign=center
     ]
-      {\fontsize{15}{16}\selectfont\bfseries #2}
+      {\fontsize{14.2}{15}\selectfont\bfseries #2}
     \end{tcolorbox}
   \end{tcolorbox}%
 }
 
-\newcommand{\ShockClosureCardReviewer}[3]{%
-  \begin{tcolorbox}[
-    enhanced,
-    nobeforeafter,
-    width=\linewidth,
-    height=23.8mm,
-    colback=white,
-    colframe=black!15,
-    boxrule=0.45pt,
-    arc=1.1mm,
-    left=0mm,right=0mm,top=0mm,bottom=0mm,
-    boxsep=0mm
-  ]
-    \begin{tcolorbox}[
-      enhanced,
-      nobeforeafter,
-      width=\linewidth,
-      height=6.8mm,
-      colback=warningyellow,
-      colframe=warningyellow,
-      boxrule=0pt,
-      arc=1.1mm,
-      left=0mm,right=0mm,top=0mm,bottom=0mm,
-      boxsep=0mm,
-      valign=center,halign=center
-    ]
-      {\fontsize{12}{12.4}\selectfont #1}
-    \end{tcolorbox}
-    \begin{tcolorbox}[
-      enhanced,
-      nobeforeafter,
-      width=\linewidth,
-      height=17mm,
-      colback=white,
-      colframe=white,
-      boxrule=0pt,
-      arc=0mm,
-      left=0mm,right=0mm,top=0mm,bottom=0mm,
-      boxsep=0mm,
-      valign=center,halign=center
-    ]
-      {\fontsize{14.2}{15}\selectfont\bfseries #2}\\[-0.2mm]
-      {\fontsize{10.8}{11.5}\selectfont\color{black!65} #3}
-    \end{tcolorbox}
-  \end{tcolorbox}%
-}
+
 
 \ShockTitleBar{Amortiguadores y Bases}
 
@@ -275,10 +230,18 @@
   \setlength{\tabcolsep}{0pt}
   \renewcommand{\arraystretch}{1}
   \begin{tabular}{@{}p{0.485\linewidth}@{\hspace{3mm}}p{0.485\linewidth}@{}}
-    \ShockClosureCardReviewer{REVISADOR POR}{Señor mecánico juanito}{Vie, 20 febrero 2026}
+    \ShockClosureCard{REVISADOR POR}{Señor mecánico juanito}
     &
     \ShockClosureCard{SUCURSAL}{Matriz lázaro cárdenas}\\
   \end{tabular}
+\end{minipage}%
+}
+
+\vspace{1.6mm}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  \centering{\fontsize{11}{12}\selectfont\color{black!62} Fecha de registro: \textbf{Vie, 20 febrero 2026}}
 \end{minipage}%
 }
 \vfill
