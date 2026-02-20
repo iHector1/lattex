@@ -166,9 +166,18 @@
   \end{tabular}%
 }
 
-% -- Llanta y modelo --
-\newcommand{\WheelLogoFile}{Goodyear.png}
-\newcommand{\WheelModelName}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+% -- Llanta y modelo por posición (cada bloque es independiente) --
+\newcommand{\WheelLogoFileFrontRight}{Goodyear.png}
+\newcommand{\WheelModelNameFrontRight}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileRearRight}{Goodyear.png}
+\newcommand{\WheelModelNameRearRight}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileFrontLeft}{Goodyear.png}
+\newcommand{\WheelModelNameFrontLeft}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileRearLeft}{Goodyear.png}
+\newcommand{\WheelModelNameRearLeft}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
 
 % =====================================================================
 % -- Bloque de rueda
@@ -254,9 +263,9 @@
 
   \raisebox{\WheelCardRaise}{%
   \begin{minipage}[t]{\WheelSideColWidth}
-    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Delantera Derecha}{\WheelLogoFileFrontRight}{\WheelModelNameFrontRight}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Trasera Derecha}{\WheelLogoFileRearRight}{\WheelModelNameRearRight}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}%
   }%
   \hspace*{\WheelGapLeftToCar}%
@@ -270,9 +279,9 @@
   \hspace*{\WheelGapCarToRight}%
   \raisebox{\WheelCardRaise}{%
   \begin{minipage}[t]{\WheelSideColWidth}
-    \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Delantera Izquierda}{\WheelLogoFileFrontLeft}{\WheelModelNameFrontLeft}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
     \vspace{2.2mm}
-    \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFile}{\WheelModelName}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
+    \SimpleWheelBlock{Trasera Izquierda}{\WheelLogoFileRearLeft}{\WheelModelNameRearLeft}{315/35/R21}{25}{3 mm}{9 mm}{8 mm}
   \end{minipage}%
   }
 
