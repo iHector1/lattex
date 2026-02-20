@@ -140,6 +140,53 @@
   \fi
 }
 
+
+\newcommand{\ShockClosureCard}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    nobeforeafter,
+    width=\linewidth,
+    height=18.8mm,
+    colback=white,
+    colframe=black!15,
+    boxrule=0.45pt,
+    arc=1.1mm,
+    left=0mm,right=0mm,top=0mm,bottom=0mm,
+    boxsep=0mm
+  ]
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=6.8mm,
+      colback=warningyellow,
+      colframe=warningyellow,
+      boxrule=0pt,
+      arc=1.1mm,
+      left=0mm,right=0mm,top=0mm,bottom=0mm,
+      boxsep=0mm,
+      valign=center,halign=center
+    ]
+      {\fontsize{12}{12.4}\selectfont #1}
+    \end{tcolorbox}
+    \begin{tcolorbox}[
+      enhanced,
+      nobeforeafter,
+      width=\linewidth,
+      height=11mm,
+      colback=white,
+      colframe=white,
+      boxrule=0pt,
+      arc=0mm,
+      left=0mm,right=0mm,top=0mm,bottom=1mm,
+      boxsep=0mm,
+      valign=center,halign=center
+    ]
+      {\fontsize{15}{16}\selectfont\bfseries #2}
+    \end{tcolorbox}
+  \end{tcolorbox}%
+}
+
 \ShockTitleBar{Amortiguadores y Bases}
 
 \vspace{2.6mm}
@@ -149,6 +196,8 @@
   {\kodemono\fontseries{sb}\fontsize{11}{14}\selectfont Inspección de Amortiguadores y Bases Delanteras}
 \end{minipage}%
 }
+
+
 
 \vspace{3.4mm}
 
@@ -167,3 +216,22 @@
   \end{tabular}
 \end{minipage}%
 }
+
+\vspace{5.2mm}
+
+\ShockTitleBar{Cierre de Inspección}
+
+\vspace{4mm}
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{\contentwidth}
+  \setlength{\tabcolsep}{0pt}
+  \renewcommand{\arraystretch}{1}
+  \begin{tabular}{@{}p{0.485\linewidth}@{\hspace{3mm}}p{0.485\linewidth}@{}}
+    \ShockClosureCard{REVISADOR POR}{Señor mecánico juanito}
+    &
+    \ShockClosureCard{SUCURSAL}{Matriz lázaro cárdenas}\\
+  \end{tabular}
+\end{minipage}%
+}
+
