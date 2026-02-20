@@ -72,6 +72,23 @@ xelatex main.tex
 
 > ⚡ **Nota:** Es necesario usar `xelatex` (no `pdflatex`) ya que el proyecto utiliza `fontspec` para manejar las tipografías del sistema.
 
+### 🐧 Nota para Ubuntu/Debian (error con `.woff2`)
+
+Si ves un error como:
+
+```text
+xdvipdfmx:fatal: Cannot proceed without the font: .../Montserrat-*.woff2
+```
+
+significa que FontConfig resolvió Montserrat a una fuente WOFF2 del sistema, formato que XeLaTeX no incrusta de forma confiable. El proyecto ya prioriza TTF/OTF en este orden:
+
+1. `./configuraciones/Montserrat-*.ttf` (local al repo)
+2. `/usr/share/fonts/truetype/montserrat/`
+3. `/usr/share/fonts/opentype/montserrat/`
+4. Fallback: `TeX Gyre Heros`
+
+Para mantener el look original, instala/copía Montserrat TTF en uno de esos paths.
+
 ---
 
 ## ✏️ Componentes Editables
