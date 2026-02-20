@@ -35,6 +35,10 @@
 | 🛢️ **Inspección de Líquidos** | Nivel y color de aceite, anticongelante, dirección hidráulica, líquido de frenos |
 | 🔧 **Tarjetas de Neumáticos** | Marca, modelo, medida, PSI (recomendado vs actual), profundidad de huella |
 | 🛞 **Frenos y Discos** | Estado de balatas, tambores y discos con indicadores de desgaste |
+| 🔩 **Suspensión** | Estado de baleros, cremallera, horquillas y barra estabilizadora |
+| 🔋 **Batería** | Condición general, voltaje y comentarios adicionales |
+| 🛑 **Amortiguadores y Bases** | Estado delantero/trasero de amortiguadores y bases |
+| 📋 **Cierre de Inspección** | Nombre del técnico, sucursal y fecha de registro |
 
 ---
 
@@ -42,15 +46,20 @@
 
 ```
 lattex/
-├── main.tex                    # 📄 Documento principal — estilos, colores, macros y configuración
-├── page1.tex                   # 📝 Página 1 — Info general, luces de advertencia, gasolina y líquidos
-├── page2.tex                   # 📝 Página 2 — Inspección de neumáticos (layout)
-├── tirepage_components.tex     # 🧩 Componentes — TireCard, métricas PSI, barras de frenos
-├── KodeMono-VariableFont_wght.ttf  # 🔤 Tipografía Kode Mono (variable)
-├── top.png                     # 🖼️ Banner superior del formulario
-├── logo.png                    # 🖼️ Logo del taller
-├── Goodyear.png                # 🖼️ Logo de marca de llanta
-└── *.png                       # 🖼️ Iconos de advertencia del tablero
+├── main.tex                        # 📄 Documento principal — estilos, colores, macros y configuración
+├── README.md                       # 📖 Documentación del proyecto
+├── configuraciones/
+│   ├── rutas.tex                   # 🔗 Rutas centralizadas (\graphicspath)
+│   └── KodeMono-VariableFont_wght.ttf  # 🔤 Tipografía Kode Mono (variable)
+├── imagenes/
+│   ├── top.png                     # 🖼️ Banner superior del formulario
+│   ├── logo.png                    # 🖼️ Logo del taller
+│   ├── Goodyear.png                # 🖼️ Logo de marca de llanta
+│   └── *.png                       # 🖼️ Iconos de advertencia del tablero
+└── paginas/
+    ├── page1.tex                   # 📝 Página 1 — Info general, luces de advertencia, gasolina y líquidos
+    ├── page2.tex                   # 📝 Página 2 — Llantas, frenos, suspensión y batería
+    └── page3.tex                   # 📝 Página 3 — Amortiguadores, bases y cierre de inspección
 ```
 
 ---
@@ -283,19 +292,17 @@ Los colores principales están definidos en `main.tex` y se pueden ajustar fáci
 
 ## 🛞 Componentes UI
 
-### Tarjeta de Neumáticos (TireCard — `tirepage_components.tex`)
+### Bloque de Neumáticos (SimpleWheelBlock — `paginas/page2.tex`)
 
-Cada neumático se documenta con una tarjeta completa:
+Cada neumático se documenta con un bloque que incluye métricas y frenos:
 
 ```latex
-\TireCard{goodyear.png}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
-  {315/35R21}       % Medida
-  {210}              % Índice de velocidad
-  {210}              % Índice de carga
-  {{35}{25}}         % PSI {recomendado}{actual}
-  {3 mm}             % Profundidad
-  {{BUENA (>9MM)}{8 mm}}   % Balatas {estado}{desgaste}
-  {{BUENA (>9MM)}{9 mm}}   % Discos  {estado}{desgaste}
+\SimpleWheelBlock{Delantera Derecha}{\WheelLogoFileFrontRight}{\WheelModelNameFrontRight}
+  {315/35/R21}  % Medida
+  {25}           % PSI actual
+  {3 mm}         % Profundidad de banda
+  {9 mm}         % Desgaste de discos
+  {8 mm}         % Desgaste de balatas/tambores
 ```
 
 ---
