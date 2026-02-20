@@ -74,63 +74,58 @@ xelatex main.tex
 
 ---
 
-## 🎨 Personalización
+## ✏️ Componentes Editables
 
-### Colores
+A continuación se listan **todos** los campos que se pueden personalizar, organizados por archivo.
 
-Los colores principales están definidos en `main.tex` y se pueden ajustar fácilmente:
+---
 
-```latex
-\definecolor{warningyellow}{HTML}{FCC01A}  % Amarillo de advertencia
-\definecolor{trackgray}{HTML}{E6E6E6}      % Gris de las barras
-\definecolor{oiltrack}{HTML}{E6E6E6}       % Gris para la barra de aceite
-```
+### `main.tex` — Colores globales
 
-### Datos del Vehículo
-
-Los datos se editan directamente en `page1.tex`:
+Los colores principales del formulario se definen aquí:
 
 ```latex
-% Modelo del vehículo
-VOLKSWAGEN TIGUAN 2026
-
-% Placas
-JCZ-263-A
-
-% Kilometraje
-85,000
-```
-
-### Indicadores de Advertencia
-
-Cada luz del tablero se activa o desactiva con `1` o `0`:
-
-```latex
-\warniconij{0}{0}{engine.png}{1}    % ✅ Encendida
-\warniconij{1}{0}{oil.png}{0}       % ❌ Apagada
-```
-
-### Nivel de Gasolina
-
-```latex
-\gasolinebar{4}  % 0=BAJO, 1=1/4, 2=MEDIO, 3=3/4, 4=LLENO
-```
-
-### Líquidos
-
-```latex
-\oillevelbar{2}        % 0=DEBAJO, 1=A NIVEL, 2=ARRIBA
-\oilcolorselector{0}   % 0=Limpio, 1=Medio, 2=Quemado
-\fluidselectorfour{1}{Anticongelante}  % 0=N/A, 1=Arriba, 2=A Nivel, 3=Debajo
+\definecolor{warningyellow}{HTML}{FCC01A}  % Amarillo de advertencia y elementos activos
+\definecolor{trackgray}{HTML}{E6E6E6}      % Gris de las barras de progreso
+\definecolor{oiltrack}{HTML}{E6E6E6}       % Gris para la barra de nivel de aceite
 ```
 
 ---
 
-## 🛞 Componentes UI
+### `paginas/page1.tex` — Página 1
 
-### Luces de Advertencia
+#### Información General del Vehículo
 
-El formulario incluye **17 iconos** del tablero del vehículo:
+Edita directamente los valores dentro de cada `\begin{inputbox}`:
+
+```latex
+\begin{inputbox}VOLKSWAGEN TIGUAN 2026\end{inputbox}   % Modelo del vehículo
+\begin{inputbox}JCZ-263-A\end{inputbox}                % Placas
+\begin{inputbox}85,000\end{inputbox}                   % Kilometraje
+\begin{inputbox}3N1BC13E38L592153\end{inputbox}        % Número de serie
+\begin{inputbox}CAMBIO DE LLANTAS CON ALINEACIÓN Y BALANCEO\end{inputbox}  % Razón de ingreso
+```
+
+#### Chips de Luces Encendidas
+
+Agrega o elimina etiquetas de texto libre que describen las luces activas:
+
+```latex
+\chip{Batería}\hspace{2mm}
+\chip{Cinturón}\hspace{2mm}
+\chip{Puertas abiertas}
+```
+
+#### Indicadores de Advertencia (Grid)
+
+El último parámetro activa (`1`) o desactiva (`0`) cada icono:
+
+```latex
+\warniconij{col}{fila}{icono.png}{estado}
+% Ejemplo:
+\warniconij{0}{0}{engine.png}{1}    % ✅ Motor — encendida
+\warniconij{1}{0}{oil.png}{0}       % ❌ Aceite — apagada
+```
 
 | Icono | Indicador | | Icono | Indicador |
 |---|---|---|---|---|
@@ -144,7 +139,151 @@ El formulario incluye **17 iconos** del tablero del vehículo:
 | `lighbulb.png` | Luces | | `windshield-washer.png` | Limpiaparabrisas |
 | `steering-wheel.png` | Dirección | | | |
 
-### Tarjeta de Neumáticos (TireCard)
+#### Nivel de Gasolina
+
+```latex
+\gasolinebar{4}  % 0=BAJO  1=1/4  2=MEDIO  3=3/4  4=LLENO
+```
+
+#### Inspección de Líquidos
+
+```latex
+\oillevelbar{2}                          % 0=DEBAJO DEL NIVEL  1=A NIVEL  2=ARRIBA DEL NIVEL
+\oilcolorselector{0}                     % 0=Limpio  1=Medio  2=Quemado
+\fluidselectorfour{1}{Anticongelante}    % primer arg: 0=N/A  1=A Nivel  2=Arriba del Nivel  3=Debajo del Nivel
+\fluidselectorfour{3}{Dirección Hidraulica}
+\fluidselectorfour{0}{Líquido de frenos}
+```
+
+#### Líquido Limpiaparabrisas
+
+```latex
+\yesnoselector{0}  % 0=SI seleccionado  1=NO seleccionado
+```
+
+---
+
+### `paginas/page2.tex` — Página 2
+
+#### Logo y Modelo de Llanta por Posición
+
+Cambia el archivo de logo y el nombre del modelo para cada una de las cuatro ruedas:
+
+```latex
+\newcommand{\WheelLogoFileFrontRight}{Goodyear.png}
+\newcommand{\WheelModelNameFrontRight}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileRearRight}{Firestone.png}
+\newcommand{\WheelModelNameRearRight}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileFrontLeft}{Onyx.png}
+\newcommand{\WheelModelNameFrontLeft}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+
+\newcommand{\WheelLogoFileRearLeft}{Continental.png}
+\newcommand{\WheelModelNameRearLeft}{WRANGLER ALL TERRAIN ADVENTURE W/KEVLAR 110T}
+```
+
+#### Métricas por Llanta (`\SimpleWheelBlock`)
+
+Cada llamada acepta: `{posición}{logo}{modelo}{medida}{PSI}{profundidad}{desgaste disco}{desgaste balata}`
+
+```latex
+\SimpleWheelBlock{Delantera Derecha}{\WheelLogoFileFrontRight}{\WheelModelNameFrontRight}
+  {315/35/R21}  % Medida
+  {25}           % PSI actual
+  {3 mm}         % Profundidad de banda
+  {9 mm}         % Desgaste de discos
+  {8 mm}         % Desgaste de balatas/tambores
+```
+
+#### Observaciones de Llantas
+
+```latex
+\renewcommand{\WheelObservacionesTexto}{Escribe aquí tus observaciones de llantas.}
+% Si se deja vacío, se muestra el texto de placeholder en gris.
+```
+
+#### Sistema de Suspensión
+
+El primer argumento selecciona el estado: `0=N/A  1=Buena  2=Regular  3=Mala`
+
+```latex
+\SuspensionSelector{0}{Baleros de rueda / Delanteros y Traseros}{CON MASA}
+\SuspensionSelector{3}{Cremallera / Caja de Dirección}{FUGA DE ACEITE}
+\SuspensionSelector{3}{Horquillas, Rótulas o articulaciones}{CAMBIO SUPERIOR E INFERIOR}
+```
+
+#### Barra Estabilizadora (fila adicional)
+
+```latex
+\newcommand{\SuspensionExtraTitulo}{Barra estabilizadora y sus componentes}
+\newcommand{\SuspensionExtraEstado}{0}   % 0=N/A  1=Buena  2=Regular  3=Mala
+\newcommand{\SuspensionExtraObservacionesTexto}{CON MASA, FUGA DE ACEITE, CAMBIO SUPERIOR E INFERIOR.}
+```
+
+#### Inspección de Batería
+
+```latex
+\newcommand{\BatteryEstado}{2}              % 0=N/A  1=Buena  2=Regular  3=Mala
+\newcommand{\BatteryVoltajeValor}{12}       % Valor numérico del voltaje (v)
+\newcommand{\BatteryComentariosTexto}{}     % Texto libre de comentarios
+```
+
+---
+
+### `paginas/page3.tex` — Página 3
+
+#### Estados de Amortiguadores y Bases
+
+Cada variable acepta: `0=sin seleccionar  1=Buena  2=Regular  3=Mala`
+
+```latex
+% Amortiguadores
+\newcommand{\ShockAmortDelDerEstado}{1}   % Delantera Derecha
+\newcommand{\ShockAmortDelIzqEstado}{2}   % Delantera Izquierda
+\newcommand{\ShockAmortTraDerEstado}{3}   % Trasera Derecha
+\newcommand{\ShockAmortTraIzqEstado}{1}   % Trasera Izquierda
+
+% Bases
+\newcommand{\ShockBaseDelDerEstado}{0}    % Delantera Derecha
+\newcommand{\ShockBaseDelIzqEstado}{0}    % Delantera Izquierda
+\newcommand{\ShockBaseTraDerEstado}{0}    % Trasera Derecha
+\newcommand{\ShockBaseTraIzqEstado}{0}    % Trasera Izquierda
+```
+
+#### Cierre de Inspección
+
+```latex
+\ShockClosureCard{REVISADOR POR}{Señor mecánico juanito}   % Nombre del técnico
+\ShockClosureCard{SUCURSAL}{Matriz lázaro cárdenas}        % Nombre de la sucursal
+```
+
+#### Fecha de Registro
+
+```latex
+{\fontsize{7}{8.4}\selectfont\color{black} Fecha de registro: Vie, 20 de febrero 2026}
+% Edita el texto de fecha directamente en esta línea.
+```
+
+---
+
+## 🎨 Personalización Rápida
+
+### Colores
+
+Los colores principales están definidos en `main.tex` y se pueden ajustar fácilmente:
+
+```latex
+\definecolor{warningyellow}{HTML}{FCC01A}  % Amarillo de advertencia
+\definecolor{trackgray}{HTML}{E6E6E6}      % Gris de las barras
+\definecolor{oiltrack}{HTML}{E6E6E6}       % Gris para la barra de aceite
+```
+
+---
+
+## 🛞 Componentes UI
+
+### Tarjeta de Neumáticos (TireCard — `tirepage_components.tex`)
 
 Cada neumático se documenta con una tarjeta completa:
 
