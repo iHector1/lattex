@@ -568,15 +568,16 @@
     width=\linewidth,
     height=16mm,
     colback=white,
-    colframe=black!15,
-    boxrule=0.45pt,
+    colframe=white,
+    boxrule=0pt,
     arc=1.1mm,
     left=0mm,
     right=0mm,
     top=0mm,
     bottom=0mm,
     boxsep=0mm,
-    valign=top
+    valign=top,
+    overlay={\draw[draw=black!15,line width=0.45pt,rounded corners=1.1mm] (frame.south west) rectangle (frame.north east);}
   ]
     \begin{tcolorbox}[
       enhanced,
