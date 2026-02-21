@@ -13,6 +13,7 @@
 \usepackage{xcolor} % <-- xcolor ANTES de definecolor
 \usepackage{tabularx}
 \usepackage{tikz}
+\usepackage{eso-pic}
 \usetikzlibrary{calc}
 \input{configuraciones/rutas}
 
@@ -462,6 +463,12 @@
 % DOCUMENTO
 % =========================
 \begin{document}
+% Footer fijo en página 3, independiente del contenido
+\AddToShipoutPictureBG{%
+  \ifnum\value{page}=3
+    \AtPageLowerLeft{\includegraphics[width=\paperwidth]{botton.png}}%
+  \fi
+}
 \input{paginas/page1}
 \input{paginas/page2}
 \input{paginas/page3}
