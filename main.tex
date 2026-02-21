@@ -41,7 +41,15 @@
 % =========================
 % FUENTES
 % =========================
-\setmainfont{Montserrat}
+% Montserrat local (coloca aquí los 4 archivos .ttf)
+\setmainfont[
+  Path=./configuraciones/,
+  Extension=.ttf,
+  UprightFont=Montserrat-Regular,
+  BoldFont=Montserrat-Bold,
+  ItalicFont=Montserrat-Italic,
+  BoldItalicFont=Montserrat-BoldItalic
+]{Montserrat}
 
 % Kode Mono Variable (archivo local en la carpeta)
 \newfontfamily\kodemono[
