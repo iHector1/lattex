@@ -37,33 +37,33 @@
   \begin{minipage}{\contentwidth}
     \begin{minipage}{\innerwidth}
 
-      \vspace{1mm}
+      \vspace{0.1mm}
 
       % Subtítulo (Kode Mono)
       {\kodemono\fontseries{b}\fontsize{12}{14}\selectfont Información General del Vehículo}
       \vspace{2mm}
 
       % --- FILA 1 ---
-      \begin{tabularx}{\textwidth}{X @{\hspace{6mm}} p{0.22\textwidth} @{\hspace{6mm}} p{0.18\textwidth}}
+      \begin{tabularx}{\textwidth}{@{}X@{\hspace{1mm}}p{0.22\textwidth}@{\hspace{1mm}}p{0.18\textwidth}@{}}
         \fieldlabel{Modelo del vehículo} & \fieldlabel{Placas} & \fieldlabel{Kilometraje} \\
         \begin{inputbox}\fontsize{10.5}{12}\selectfont VOLKSWAGEN TIGUAN 2026\end{inputbox} &
         \begin{inputbox}\fontsize{10.5}{12}\selectfont JCZ-263-A\end{inputbox} &
         \begin{inputbox}\fontsize{10.5}{12}\selectfont 85,000\end{inputbox} \\
       \end{tabularx}
 
-      \vspace{2mm}
+      \vspace{0mm}
 
       % --- FILA 2 ---
-      \begin{tabularx}{\textwidth}{p{0.30\textwidth} @{\hspace{6mm}} X}
+      \begin{tabularx}{\textwidth}{@{}p{0.30\textwidth}@{\hspace{1mm}}X@{}}
         \fieldlabel{Número de serie} & \fieldlabel{Razón de ingreso} \\
         \begin{inputbox}\fontsize{10.5}{12}\selectfont 3N1BC13E38L592153\end{inputbox} &
         \begin{inputbox}\fontsize{10.5}{12}\selectfont CAMBIO DE LLANTAS CON ALINEACIÓN Y BALANCEO\end{inputbox} \\
       \end{tabularx}
 
       % ===== NUEVA SECCIÓN: LUCES DE ADVERTENCIA =====
-      \vspace{3mm}
+      \vspace{1mm}
       {\fontsize{10}{12}\selectfont Luces de advertencia encendidas}
-      \vspace{2mm}
+      \vspace{1mm}
 
       % --- Chips ---
       \chip{Batería}\hspace{2mm}
@@ -187,3 +187,8 @@
     \end{minipage}
   \end{minipage}
 \end{center}
+
+\vfill
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south,inner sep=0pt] at (current page.south) {\includegraphics[width=\paperwidth]{botton.png}};
+\end{tikzpicture}
